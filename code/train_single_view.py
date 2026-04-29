@@ -357,7 +357,7 @@ if MODE == "exp2":
         X_train,
         y_train_scaled,
         validation_split=0.2,
-        epochs=80,
+        epochs=200,
         batch_size=8,
         callbacks=[early_stop, reduce_lr],
         verbose=1
@@ -367,7 +367,7 @@ else:
         [X_train_seq, X_train_feat],
         y_train_scaled,
         validation_split=0.2,
-        epochs=80,
+        epochs=200,
         batch_size=8,
         callbacks=[early_stop, reduce_lr],
         verbose=1
