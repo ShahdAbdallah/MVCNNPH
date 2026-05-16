@@ -1,0 +1,11 @@
+===== Results =====
+Camera = C0
+Mode = exp2
+Target_len = 150
+MAE  = 0.4984557032585144
+RMSE = 0.6692987680435181
+R2   = 0.42756165662584444
+Test Loss = 0.3327915668487549
+Test MAE scaled = 0.6501551270484924
+Train samples = 423
+Test samples  = 106
