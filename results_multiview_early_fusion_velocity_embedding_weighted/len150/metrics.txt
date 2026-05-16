@@ -1,0 +1,122 @@
+===== Multi-view Early Fusion + Velocity + Exercise Embedding + Light Weighting Results =====
+Target_len = 150
+Epochs requested = 500
+Epochs trained = 292
+Fusion type = Early fusion
+Views = C0 + C1 + C2
+Fusion method = Concatenate along feature dimension
+Input per view = 51 pose features + 51 velocity features = 102
+Fused input features = 306
+Loss = Huber(delta=1.0)
+Learning rate = 2e-5
+Batch size = 256
+Filters = 16, 24, 24, 32
+Dropout = 0.10
+Added features = velocity only
+Exercise embedding = Yes, embedding_dim=4
+Light low-score weighting = Yes
+Weight formula = 1.0 + (5.0 - score) * 0.35, clipped [1.0, 2.4]
+Sample weighting = Yes
+
+===== Overall Test Metrics =====
+Overall MAE = 0.46322736144065857
+Overall RMSE = 0.5982683300971985
+Overall R2 = 0.417142098352999
+Overall PCC = 0.6662111690119641
+Overall PCC p-value = 4.8400325790294804e-15
+Test Loss = 0.25031334161758423
+Test MAE scaled = 0.5708987712860107
+Test RMSE scaled = 0.7366111278533936
+
+===== Dataset Sizes =====
+Fit samples = 314
+Validation samples = 92
+Test samples = 107
+X_fit shape = (314, 150, 306)
+X_val shape = (92, 150, 306)
+X_test shape = (107, 150, 306)
+Bad skipped files = 53
+Incomplete multiview trials = 18
+
+===== Sample Weight Summary =====
+count    314.000000
+mean       1.315106
+std        0.284730
+min        1.000000
+25%        1.098000
+50%        1.218750
+75%        1.455000
+max        2.281000
+Name: sample_weight, dtype: float64
+
+===== Split Person Summary =====
+split person  num_samples  mean_score  min_score  max_score  good_count  bad_count
+ test    P12           24    3.144792     2.1400       4.64           3         21
+ test    P13           25    3.699000     2.4250       5.00           6         19
+ test     P8           29    4.603452     3.9400       5.00          28          1
+ test     P9           29    4.413255     3.4000       5.00          25          4
+train     P0           26    4.491215     3.7000       5.00          23          3
+train    P10           50    3.312232     1.3400       4.96          12         38
+train    P14           50    3.659432     1.8000       5.00          18         32
+train    P15           50    3.641866     1.5800       4.90          16         34
+train     P2           27    4.724074     4.3750       5.00          27          0
+train     P3           26    4.571835     4.1600       4.98          26          0
+train     P4           27    4.564663     4.1000       5.00          27          0
+train     P5           29    4.659769     4.1600       5.00          29          0
+train     P7           29    4.657252     4.2400       5.00          29          0
+valid     P1           27    4.803459     4.5667       5.00          27          0
+valid    P11           40    3.541000     2.2800       5.00          11         29
+valid     P6           25    4.571000     3.8200       4.96          24          1
+
+===== Split Exercise Summary =====
+split exercise  num_samples  mean_score  good_count  bad_count
+ test       E0           16    3.631875           6         10
+ test       E1           11    4.186364           7          4
+ test       E2            9    3.997778           5          4
+ test       E3           11    3.495400           3          8
+ test       E4           10    3.614000           5          5
+ test       E5           11    4.268182           8          3
+ test       E6           11    4.489091           7          4
+ test       E7           11    4.121818           8          3
+ test       E8           11    4.248636           7          4
+ test       E9            6    4.383350           6          0
+train       E0           33    3.746161          19         14
+train       E1           33    3.971061          19         14
+train       E2           27    4.099259          13         14
+train       E3           33    4.014188          24          9
+train       E4           33    3.933421          20         13
+train       E5           31    4.397394          25          6
+train       E6           32    4.552500          25          7
+train       E7           33    4.075152          25          8
+train       E8           27    4.266296          18          9
+train       E9           32    4.000522          19         13
+valid       E0           10    3.518000           4          6
+valid       E1           11    4.075000           7          4
+valid       E2           10    4.076000           5          5
+valid       E3           10    4.050000           7          3
+valid       E4           11    3.989091           7          4
+valid       E5           11    4.480909           8          3
+valid       E6           10    4.442000           7          3
+valid       E7           11    4.383636           9          2
+valid       E8            6    4.900000           6          0
+valid       E9            2    4.566700           2          0
+
+===== Per-exercise scores =====
+exercise  num_test_trials  mean_true_score  mean_predicted_score      MAE     RMSE        R2       PCC
+      E0               16         3.631875              3.762721 0.414707 0.489382  0.608886  0.805742
+      E1               11         4.186364              4.063373 0.455530 0.543539  0.574246  0.792967
+      E2                9         3.997778              4.172148 0.415469 0.551916  0.552594  0.825012
+      E3               11         3.495400              4.123906 0.852131 0.936139 -0.832301  0.333842
+      E4               10         3.614000              4.144038 0.577961 0.758347  0.031842  0.728541
+      E5               11         4.268182              4.172784 0.371855 0.462921  0.327892  0.704763
+      E6               11         4.489091              4.277053 0.308895 0.434630  0.568561  0.819318
+      E7               11         4.121818              4.234264 0.485851 0.619875 -0.331679  0.327365
+      E8               11         4.248636              4.216515 0.381828 0.553129  0.537680  0.744015
+      E9                6         4.383350              4.642074 0.332366 0.419641 -4.238348 -0.760289
+
+===== Per-person scores =====
+person  num_test_trials  mean_true_score  mean_predicted_score      MAE     RMSE        R2       PCC
+   P12               24         3.144792              3.570251 0.719187 0.842785 -0.591995 -0.113792
+   P13               25         3.699000              3.608284 0.494661 0.648066  0.003565  0.162442
+    P8               29         4.603452              4.612439 0.226244 0.288132  0.208304  0.479311
+    P9               29         4.413255              4.598575 0.461284 0.536392 -0.365819 -0.101147

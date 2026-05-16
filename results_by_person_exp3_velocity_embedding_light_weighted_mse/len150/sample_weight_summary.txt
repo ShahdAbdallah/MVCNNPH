@@ -1,0 +1,13 @@
+Light low-score weighting
+weight = 1.0 + (5.0 - score) * 0.35
+clipped between 1.0 and 2.4
+
+count    964.000000
+mean       1.309534
+std        0.283622
+min        1.000000
+25%        1.091000
+50%        1.217000
+75%        1.455000
+max        2.281000
+Name: sample_weight, dtype: float64
