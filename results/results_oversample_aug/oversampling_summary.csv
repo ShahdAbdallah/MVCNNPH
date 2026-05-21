@@ -1,0 +1,6 @@
+group,original_count,target_count
+low_<3,111,643
+mid_low_3_to_4,210,643
+high_>=4,643,643
+augmented_added,965,643
+final_train,1929,643
