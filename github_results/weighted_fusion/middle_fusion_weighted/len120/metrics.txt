@@ -1,0 +1,135 @@
+===== Multi-view Weighted Middle Fusion Velocity Only: All Exercises Except E3, E7, E9 =====
+
+Target_len = 120
+Epochs requested = 500
+Epochs trained = 500
+Batch size = 256
+Fusion type = Weighted middle fusion
+Fusion method = multiply camera feature maps by fixed weights, then concatenate after two CNN blocks per camera
+Camera weights: C0=0.5, C1=0.25, C2=0.25
+Views = C0 + C1 + C2
+Complete-camera rule = if any camera is missing, the full trial is skipped
+Included exercises = all except E3, E7, E9
+Excluded exercises = ['E3', 'E7', 'E9']
+Added features = velocity only
+Loss = MSE
+Learning rate = 2e-5
+Branch filters = 16, 24
+Shared filters after fusion = 32, 48
+Dense layers = 64, 32
+Dropout = 0.10
+Images archive = images.tar.gz
+
+===== Overall Test Metrics =====
+MAE = 0.4086470901966095
+RMSE = 0.5490626096725464
+R2 = 0.55150457672637
+PCC = 0.771580811100326
+PCC p-value = 8.696477530091722e-17
+Test Loss = 0.4272720217704773
+Test MAE scaled = 0.48809245228767395
+Test RMSE scaled = 0.6536604762077332
+
+===== Dataset Sizes =====
+Train samples = 216
+Validation samples = 69
+Test samples = 79
+X0_fit shape = (216, 120, 102)
+X1_fit shape = (216, 120, 102)
+X2_fit shape = (216, 120, 102)
+Incomplete trials removed = 12
+Bad files = 53
+Skipped excluded exercise files = 4517
+
+===== Split Person Summary =====
+split person  num_samples  mean_score  min_score  max_score  good_count  bad_count
+ test    P12           19    3.137632      2.180      4.375           2         17
+ test    P13           20    3.644750      2.425      4.840           4         16
+ test     P8           20    4.735000      4.040      5.000          20          0
+ test     P9           20    4.606750      3.700      5.000          19          1
+train     P0           17    4.570982      3.700      5.000          15          2
+train    P10           35    3.325380      1.340      4.960           8         27
+train    P14           35    3.675000      2.020      4.920          12         23
+train    P15           35    3.582523      1.580      4.900          10         25
+train     P2           18    4.835833      4.600      5.000          18          0
+train     P3           17    4.647018      4.380      4.980          17          0
+train     P4           19    4.639168      4.100      5.000          19          0
+train     P5           20    4.754000      4.220      5.000          20          0
+train     P7           20    4.748180      4.380      5.000          20          0
+valid     P1           20    4.861000      4.640      5.000          20          0
+valid    P11           30    3.432667      2.280      4.760           6         24
+valid     P6           19    4.608158      3.820      4.960          18          1
+
+===== Split Exercise Summary =====
+split exercise  num_samples  mean_score  min_score  max_score  good_count  bad_count
+ test       E0           16    3.631875      2.300       4.75           6         10
+ test       E1           11    4.186364      2.660       5.00           7          4
+ test       E2            9    3.997778      2.640       4.94           5          4
+ test       E4           10    3.614000      2.180       4.36           5          5
+ test       E5           11    4.268182      3.180       4.80           8          3
+ test       E6           11    4.489091      3.300       5.00           7          4
+ test       E8           11    4.248636      2.425       4.90           7          4
+train       E0           33    3.746161      1.340       4.74          19         14
+train       E1           33    3.971061      2.020       5.00          19         14
+train       E2           27    4.099259      2.340       4.96          13         14
+train       E4           33    3.933421      1.580       4.84          20         13
+train       E5           31    4.397394      2.950       4.90          25          6
+train       E6           32    4.552500      3.100       5.00          25          7
+train       E8           27    4.266296      2.580       4.96          18          9
+valid       E0           10    3.518000      2.280       4.68           4          6
+valid       E1           11    4.075000      2.850       4.94           7          4
+valid       E2           10    4.076000      2.660       5.00           5          5
+valid       E4           11    3.989091      2.640       4.82           7          4
+valid       E5           11    4.480909      3.720       4.86           8          3
+valid       E6           10    4.442000      3.600       4.96           7          3
+valid       E8            6    4.900000      4.900       4.90           6          0
+
+===== Per-exercise scores =====
+exercise  num_test_trials  mean_true_score  mean_predicted_score      MAE     RMSE        R2      PCC
+      E0               16         3.631875              3.935162 0.492023 0.605841  0.400588 0.761159
+      E1               11         4.186364              4.192951 0.357030 0.487962  0.656862 0.825890
+      E2                9         3.997778              4.169558 0.329019 0.445012  0.709130 0.895415
+      E4               10         3.614000              4.268676 0.685354 0.827987 -0.154138 0.791701
+      E5               11         4.268182              4.217495 0.349815 0.468051  0.312915 0.696484
+      E6               11         4.489090              4.340964 0.301970 0.398181  0.637889 0.831959
+      E8               11         4.248636              4.336924 0.318098 0.479817  0.652110 0.823005
+
+===== Per-person scores =====
+person  num_test_trials  mean_true_score  mean_predicted_score      MAE     RMSE        R2       PCC
+   P12               19         3.137632              3.634232 0.697249 0.824475 -0.897004 -0.216268
+   P13               20         3.644750              3.684311 0.524590 0.620871  0.004372  0.138076
+    P8               20         4.735000              4.666155 0.175098 0.212620  0.272467  0.590557
+    P9               20         4.606750              4.754366 0.252081 0.338153  0.129764  0.578055
+
+===== Worst 30 predictions =====
+exercise person trial  true_score  predicted_score  abs_error
+      E4    P12    T4       2.180         3.574583   1.394583
+      E4    P12    T5       2.580         3.864116   1.284117
+      E0    P12    T5       2.300         3.572267   1.272267
+      E8    P13    T6       2.425         3.681191   1.256191
+      E0    P12    T6       2.520         3.720328   1.200328
+      E4    P12    T3       2.700         3.868748   1.168748
+      E5    P13    T0       4.800         3.689339   1.110661
+      E1    P12    T3       2.660         3.761280   1.101280
+      E6    P13    T0       4.840         3.745975   1.094025
+      E4     P9    T1       3.700         4.709121   1.009121
+      E2    P12    T5       2.640         3.608486   0.968486
+      E0    P13    T4       2.840         3.644944   0.804945
+      E1    P12    T0       4.375         3.572692   0.802308
+      E8    P13    T0       4.660         3.867557   0.792443
+      E5    P13    T3       4.280         3.518731   0.761269
+      E0    P12    T3       2.800         3.550992   0.750992
+      E0    P13    T6       3.180         3.852862   0.672862
+      E2    P12    T6       3.140         3.807377   0.667377
+      E1    P12    T5       3.100         3.758897   0.658897
+      E4     P9    T0       4.060         4.660113   0.600113
+      E4     P8    T2       4.040         4.561649   0.521649
+      E0    P12    T0       3.580         3.102394   0.477606
+      E0    P13    T0       3.920         3.466567   0.453433
+      E0    P13    T3       3.220         3.673431   0.453431
+      E0    P13    T5       3.340         3.778126   0.438126
+      E4     P9    T2       4.300         4.718501   0.418500
+      E2    P12    T0       4.100         3.704878   0.395122
+      E1     P8    T2       4.900         4.505875   0.394125
+      E6    P13    T5       3.300         3.685730   0.385730
+      E8    P13    T4       3.250         3.632457   0.382457
