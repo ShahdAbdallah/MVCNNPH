@@ -1,0 +1,116 @@
+===== Multi-view E0 Early Fusion Velocity Only Results =====
+Target exercise = E0
+Fusion type = Early fusion
+Fusion method = Concatenate C0, C1, C2 along feature dimension before CNN
+Views = C0 + C1 + C2
+Complete-camera rule = if any camera is missing, the full trial is skipped
+Target_len = 120
+Epochs requested = 500
+Epochs trained = 500
+Batch size = 256
+Loss = MSE
+Learning rate = 2e-5
+Filters = 16, 24, 24, 32
+Dense layers = 32
+Dropout = 0.10
+Added features = velocity only
+Input per view = 102
+Fused input features = 306
+Exercise embedding = No
+Oversampling = No
+Augmentation = No
+Extra checks = camera_alignment_check.csv, label_mismatch_check.csv, train/validation/test metrics
+Images archive = images.tar.gz
+
+===== Train Metrics =====
+Train MAE = 0.380711168050766
+Train RMSE = 0.5355300307273865
+Train R2 = 0.7065023346000783
+Train PCC = 0.9107391237621365
+Train PCC p-value = 1.9255951620347136e-13
+Train Loss scaled = 0.2934976816177368
+Train MAE scaled = 0.38513603806495667
+Train RMSE scaled = 0.5417542457580566
+
+===== Validation Metrics =====
+Validation MAE = 0.5574368238449097
+Validation RMSE = 0.7247071862220764
+Validation R2 = 0.3502212770195474
+Validation PCC = 0.7803334563567602
+Validation PCC p-value = 0.007739549953938329
+Validation Loss scaled = 0.5374799370765686
+Validation MAE scaled = 0.5639156699180603
+Validation RMSE scaled = 0.7331302165985107
+
+===== Test Metrics =====
+Test MAE = 0.5327877998352051
+Test RMSE = 0.6266072392463684
+Test R2 = 0.3587932983369404
+Test PCC = 0.6737142973914017
+Test PCC p-value = 0.004218337040537293
+Test Loss scaled = 0.40181657671928406
+Test MAE scaled = 0.5389801859855652
+Test RMSE scaled = 0.6338900327682495
+
+===== Dataset Sizes =====
+Fit samples = 33
+Validation samples = 10
+Test samples = 16
+X_fit shape = (33, 120, 306)
+X_val shape = (10, 120, 306)
+X_test shape = (16, 120, 306)
+Bad skipped files = 22
+Incomplete camera trials = 1
+Label mismatches = 0
+Skipped non-target files = 13623
+
+===== Split Person Summary =====
+split person  num_samples  mean_score  min_score  max_score  good_count  bad_count
+ test    P12            5    2.928000       2.30     3.5800           0          5
+ test    P13            5    3.300000       2.84     3.9200           0          5
+ test     P8            3    4.653333       4.58     4.7000           3          0
+ test     P9            3    4.336667       4.10     4.7500           3          0
+train     P0            3    4.262233       4.16     4.3667           3          0
+train    P10            5    2.394660       1.34     3.8333           0          5
+train    P14            5    3.184000       2.10     4.6400           1          4
+train    P15            5    3.136660       2.00     3.7833           0          5
+train     P2            3    4.733333       4.72     4.7400           3          0
+train     P3            3    4.413333       4.38     4.4400           3          0
+train     P4            3    4.473333       4.40     4.5800           3          0
+train     P5            3    4.246667       4.22     4.3000           3          0
+train     P7            3    4.553333       4.48     4.6400           3          0
+valid     P1            2    4.660000       4.64     4.6800           2          0
+valid    P11            5    2.708000       2.28     3.5600           0          5
+valid     P6            3    4.106667       3.82     4.2800           2          1
+
+===== Split Exercise Summary =====
+split exercise  num_samples  mean_score  min_score  max_score  good_count  bad_count
+ test       E0           16    3.631875       2.30       4.75           6         10
+train       E0           33    3.746161       1.34       4.74          19         14
+valid       E0           10    3.518000       2.28       4.68           4          6
+
+===== Per-person test scores =====
+person  num_test_trials  mean_true_score  mean_predicted_score      MAE     RMSE         R2       PCC
+   P12                5         2.928000              3.565273 0.637273 0.773537  -1.366032  0.489767
+   P13                5         3.300000              3.580494 0.562777 0.601645  -1.926718 -0.680010
+    P8                3         4.653333              4.232335 0.420998 0.430710 -66.322813 -0.348483
+    P9                3         4.336667              3.916214 0.420453 0.554968  -2.580350 -0.917300
+
+===== Worst 30 test predictions =====
+split exercise person trial  true_score  predicted_score  abs_error
+ test       E0    P12    T6        2.52         3.784053   1.264053
+ test       E0    P12    T5        2.30         3.228198   0.928198
+ test       E0     P9    T2        4.75         3.824226   0.925774
+ test       E0    P13    T4        2.84         3.695518   0.855518
+ test       E0    P13    T0        3.92         3.214293   0.705707
+ test       E0    P12    T3        2.80         3.456040   0.656040
+ test       E0    P13    T3        3.22         3.798856   0.578856
+ test       E0     P8    T0        4.68         4.150036   0.529963
+ test       E0    P13    T5        3.34         3.771427   0.431427
+ test       E0     P8    T2        4.70         4.274302   0.425698
+ test       E0    P12    T0        3.58         3.898843   0.318843
+ test       E0     P8    T1        4.58         4.272666   0.307333
+ test       E0    P13    T6        3.18         3.422377   0.242377
+ test       E0     P9    T0        4.16         3.919392   0.240608
+ test       E0     P9    T1        4.10         4.005024   0.094976
+ test       E0    P12    T4        3.44         3.459234   0.019234

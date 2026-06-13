@@ -1,0 +1,85 @@
+===== EXP2 Fine LR Results =====
+Camera = C0
+Target_len = 150
+Epochs requested = 300
+Epochs trained = 75
+Learning rate = 5e-5
+MAE  = 0.4263928234577179
+RMSE = 0.5917692184448242
+R2   = 0.44002758564753064
+Test Loss = 0.25082913041114807
+Test MAE scaled = 0.548728346824646
+Fit samples = 338
+Validation samples = 85
+Test samples = 106
+X_fit shape = (338, 150, 51)
+X_val shape = (85, 150, 51)
+X_test shape = (106, 150, 51)
+Bad skipped files = 0
+
+Fit performance distribution:
+good    222
+bad     116
+Name: performance, dtype: int64
+
+Validation performance distribution:
+good    56
+bad     29
+Name: performance, dtype: int64
+
+Test performance distribution:
+good    69
+bad     37
+Name: performance, dtype: int64
+
+Fit exercise distribution:
+E0    37
+E1    35
+E2    32
+E3    35
+E4    35
+E5    34
+E6    35
+E7    34
+E8    32
+E9    29
+Name: exercise, dtype: int64
+
+Validation exercise distribution:
+E0    10
+E1     9
+E2     7
+E3     8
+E4     9
+E5     9
+E6     9
+E7     9
+E8     8
+E9     7
+Name: exercise, dtype: int64
+
+Test exercise distribution:
+E0    12
+E1    11
+E2    10
+E3    11
+E4    10
+E5    10
+E6    11
+E7    12
+E8    10
+E9     9
+Name: exercise, dtype: int64
+
+Per-exercise scores:
+exercise  num_test_trials  mean_true_score  mean_predicted_score      MAE     RMSE        R2
+      E0               12         3.753333              3.942884 0.400486 0.484344  0.591039
+      E1               11         4.229545              4.059110 0.344864 0.431405  0.592443
+      E2               10         3.832000              4.062173 0.487653 0.652618  0.449399
+      E3               11         3.847273              3.947547 0.594993 0.792618  0.223329
+      E4               10         3.784000              3.945012 0.475374 0.722999  0.355663
+      E5               10         4.501420              4.299259 0.260490 0.444368  0.469473
+      E6               11         4.492727              4.275559 0.284468 0.441307  0.402304
+      E7               12         4.133333              4.453944 0.421456 0.479567 -0.096092
+      E8               10         4.169500              3.951741 0.491914 0.650331  0.350289
+      E9                9         3.975933              4.080475 0.523605 0.726857  0.185309

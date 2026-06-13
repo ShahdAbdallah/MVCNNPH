@@ -1,0 +1,59 @@
+Split summary
+Camera = C2
+Fit trials = 336
+Validation trials = 84
+Test trials = 106
+
+Fit performance distribution:
+good    220
+bad     116
+Name: performance, dtype: int64
+
+Validation performance distribution:
+good    55
+bad     29
+Name: performance, dtype: int64
+
+Test performance distribution:
+good    69
+bad     37
+Name: performance, dtype: int64
+
+Fit exercise distribution:
+E0    37
+E1    35
+E2    32
+E3    35
+E4    35
+E5    34
+E6    34
+E7    34
+E8    32
+E9    28
+Name: exercise, dtype: int64
+
+Validation exercise distribution:
+E0    10
+E1     9
+E2     7
+E3     8
+E4     9
+E5     9
+E6     8
+E7     9
+E8     8
+E9     7
+Name: exercise, dtype: int64
+
+Test exercise distribution:
+E0    12
+E1    11
+E2    10
+E3    11
+E4    10
+E5    10
+E6    11
+E7    12
+E8    10
+E9     9
+Name: exercise, dtype: int64

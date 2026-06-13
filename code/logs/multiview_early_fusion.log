@@ -1,0 +1,10 @@
+2026-05-15 01:54:16.815359: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+Experiment: Multi-view Early Fusion + Velocity + Exercise Embedding + Light Weighting
+Target length: 150
+Epochs: 500
+Output: /mvdlph/shahd/MVCNNPH/results_multiview_early_fusion_velocity_embedding_weighted/len150
+Fit multiview samples: 314
+Validation multiview samples: 92
+Test multiview samples: 107
+Bad files: 53
+Incomplete multiview trials: 18

@@ -1,0 +1,71 @@
+===== Pure CNN v2 - All Views Stratified Results =====
+Target_len = 150
+Epochs requested = 150
+Epochs trained = 31
+MAE  = 0.5093515515327454
+RMSE = 0.7502017021179199
+R2   = 0.18210849628658987
+Test Loss = 0.3429419994354248
+Test MAE scaled = 0.6479712724685669
+Train single-view samples = 1254
+Test single-view samples  = 318
+Train unique trials = 424
+Test unique trials  = 107
+X_train shape = (1254, 150, 51)
+X_test shape  = (318, 150, 51)
+Bad skipped files = 3
+
+Train performance distribution:
+good    279
+bad     145
+Name: performance, dtype: int64
+
+Test performance distribution:
+good    70
+bad     37
+Name: performance, dtype: int64
+
+Train exercise distribution:
+E0    48
+E1    44
+E2    39
+E3    44
+E4    44
+E5    43
+E6    44
+E7    43
+E8    39
+E9    36
+Name: exercise, dtype: int64
+
+Test exercise distribution:
+E0    12
+E1    11
+E2    10
+E3    11
+E4    10
+E5    10
+E6    11
+E7    12
+E8    11
+E9     9
+Name: exercise, dtype: int64
+
+Per-exercise scores:
+exercise  num_test_samples  mean_true_score  mean_predicted_score      MAE     RMSE        R2
+      E0                36         3.700833              4.253964 0.613606 0.900647 -0.016997
+      E1                33         4.073936              4.332643 0.564959 0.762730  0.267177
+      E2                28         3.768571              4.357828 0.707192 0.989332 -0.273720
+      E3                33         3.850909              4.251432 0.575474 0.921588 -0.047058
+      E4                30         3.784000              4.233064 0.585165 0.936899 -0.081990
+      E5                30         4.501420              4.354247 0.439584 0.508111  0.306354
+      E6                33         4.492727              4.367643 0.348222 0.414706  0.472188
+      E7                36         4.133333              4.409410 0.287835 0.418188  0.166528
+      E8                32         4.212656              4.252288 0.532794 0.648046  0.341961
+      E9                27         3.975933              4.325405 0.474186 0.761315  0.106235
+
+Per-camera scores:
+camera  num_test_samples  mean_true_score  mean_predicted_score      MAE     RMSE       R2
+    C0               107         4.057158              4.305295 0.498439 0.744550 0.192459
+    C1               104         4.036691              4.317525 0.523135 0.762938 0.157889
+    C2               107         4.057158              4.318661 0.506867 0.743316 0.195135

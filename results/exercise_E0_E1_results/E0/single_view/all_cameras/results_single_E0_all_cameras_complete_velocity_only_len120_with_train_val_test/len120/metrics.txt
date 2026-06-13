@@ -1,0 +1,142 @@
+===== Single-view E0 C0+C1+C2 complete only Velocity Only Results =====
+Target exercise = E0
+Target camera mode = C0+C1+C2 complete only
+Target_len = 120
+Epochs requested = 500
+Epochs trained = 500
+Batch size = 256
+Loss = MSE
+Learning rate = 2e-5
+Filters = 16, 24, 24, 32
+Dropout = 0.10
+Added features = velocity only
+Exercise embedding = No
+Oversampling = No
+Replacement = No
+Augmentation = No
+Extra checks = label-camera debug CSV, train/validation/test metrics, camera counts
+Complete-camera rule = if any of C0/C1/C2 is missing, the full trial is skipped from all cameras
+Images archive = images.tar.gz
+
+===== Train Metrics =====
+Train MAE = 0.27455005049705505
+Train RMSE = 0.4251003563404083
+Train R2 = 0.8150646437344704
+Train PCC = 0.9165339913373696
+Train PCC p-value = 2.1863727061450264e-40
+Train Loss scaled = 0.18493534624576569
+Train MAE scaled = 0.277741014957428
+Train RMSE scaled = 0.43004110455513
+
+===== Validation Metrics =====
+Validation MAE = 0.4534544348716736
+Validation RMSE = 0.5302031636238098
+Validation R2 = 0.6522037281317273
+Validation PCC = 0.8504103669096754
+Validation PCC p-value = 2.690566246781962e-09
+Validation Loss scaled = 0.28768789768218994
+Validation MAE scaled = 0.4587247669696808
+Validation RMSE scaled = 0.5363654494285583
+
+===== Test Metrics =====
+Test MAE = 0.40602755546569824
+Test RMSE = 0.477285236120224
+Test R2 = 0.6279826084086864
+Test PCC = 0.820668299974896
+Test PCC p-value = 9.314716219761074e-13
+Test Loss scaled = 0.23312723636627197
+Test MAE scaled = 0.41074666380882263
+Test RMSE scaled = 0.48283252120018005
+
+===== Dataset Sizes =====
+Fit samples = 99
+Validation samples = 30
+Test samples = 48
+X_fit shape = (99, 120, 102)
+X_val shape = (30, 120, 102)
+X_test shape = (48, 120, 102)
+Bad skipped files = 22
+Skipped non-target files = 13623
+Incomplete camera trials = 1
+
+===== Camera Counts =====
+Train camera counts = {'C0': 33, 'C1': 33, 'C2': 33}
+Validation camera counts = {'C0': 10, 'C1': 10, 'C2': 10}
+Test camera counts = {'C0': 16, 'C1': 16, 'C2': 16}
+
+===== Split Person Summary =====
+split person  num_samples  mean_score  min_score  max_score  good_count  bad_count
+ test    P12           15    2.928000       2.30     3.5800           0         15
+ test    P13           15    3.300000       2.84     3.9200           0         15
+ test     P8            9    4.653333       4.58     4.7000           9          0
+ test     P9            9    4.336667       4.10     4.7500           9          0
+train     P0            9    4.262233       4.16     4.3667           9          0
+train    P10           15    2.394660       1.34     3.8333           0         15
+train    P14           15    3.184000       2.10     4.6400           3         12
+train    P15           15    3.136660       2.00     3.7833           0         15
+train     P2            9    4.733333       4.72     4.7400           9          0
+train     P3            9    4.413333       4.38     4.4400           9          0
+train     P4            9    4.473333       4.40     4.5800           9          0
+train     P5            9    4.246667       4.22     4.3000           9          0
+train     P7            9    4.553333       4.48     4.6400           9          0
+valid     P1            6    4.660000       4.64     4.6800           6          0
+valid    P11           15    2.708000       2.28     3.5600           0         15
+valid     P6            9    4.106667       3.82     4.2800           6          3
+
+===== Camera Split Summary =====
+split camera  num_samples  mean_score  good_count  bad_count
+ test     C0           16    3.631875           6         10
+ test     C1           16    3.631875           6         10
+ test     C2           16    3.631875           6         10
+train     C0           33    3.746161          19         14
+train     C1           33    3.746161          19         14
+train     C2           33    3.746161          19         14
+valid     C0           10    3.518000           4          6
+valid     C1           10    3.518000           4          6
+valid     C2           10    3.518000           4          6
+
+===== Per-person test scores =====
+person  num_trials  mean_true_score  mean_predicted_score      MAE     RMSE         R2       PCC
+   P12          15         2.928000              2.990427 0.525856 0.582361  -0.341042 -0.082578
+   P13          15         3.300000              2.943060 0.479667 0.540804  -1.364725  0.177425
+    P8           9         4.653333              4.499095 0.189413 0.234244 -18.912545 -0.370770
+    P9           9         4.336667              4.543231 0.300196 0.327690  -0.248290  0.509114
+
+===== Per-camera test scores =====
+camera  num_trials  mean_true_score  mean_predicted_score      MAE     RMSE       R2      PCC
+    C0          16         3.631875              3.542308 0.420373 0.513522 0.569348 0.795812
+    C1          16         3.631875              3.447743 0.396001 0.463029 0.649875 0.859827
+    C2          16         3.631875              3.658902 0.401709 0.453104 0.664724 0.823195
+
+===== Worst 30 test predictions =====
+split exercise person trial camera  true_score  predicted_score  abs_error
+ test       E0    P12    T5     C0        2.30         3.285097   0.985097
+ test       E0    P13    T0     C0        3.92         2.962190   0.957810
+ test       E0    P13    T0     C2        3.92         3.050437   0.869563
+ test       E0    P13    T6     C1        3.18         2.362527   0.817473
+ test       E0    P12    T4     C0        3.44         2.647847   0.792153
+ test       E0    P12    T0     C1        3.58         2.791388   0.788612
+ test       E0    P12    T5     C2        2.30         2.952734   0.652734
+ test       E0    P13    T0     C1        3.92         3.271882   0.648118
+ test       E0    P12    T0     C0        3.58         2.932276   0.647724
+ test       E0    P13    T3     C1        3.22         2.597268   0.622732
+ test       E0    P12    T6     C2        2.52         3.138209   0.618209
+ test       E0    P12    T4     C2        3.44         2.843297   0.596703
+ test       E0    P12    T3     C0        2.80         3.363342   0.563342
+ test       E0    P13    T5     C0        3.34         2.811797   0.528203
+ test       E0     P9    T0     C2        4.16         4.666873   0.506874
+ test       E0    P12    T4     C1        3.44         2.939449   0.500551
+ test       E0    P12    T6     C1        2.52         3.020171   0.500171
+ test       E0    P13    T3     C2        3.22         2.735883   0.484117
+ test       E0     P8    T2     C1        4.70         4.217379   0.482621
+ test       E0    P12    T5     C1        2.30         2.773555   0.473555
+ test       E0     P9    T1     C2        4.10         4.553328   0.453328
+ test       E0    P12    T3     C2        2.80         3.248391   0.448391
+ test       E0     P9    T1     C0        4.10         4.538640   0.438640
+ test       E0    P13    T4     C2        2.84         3.243421   0.403421
+ test       E0    P13    T3     C0        3.22         2.840583   0.379417
+ test       E0    P13    T4     C0        2.84         3.209003   0.369004
+ test       E0    P13    T6     C0        3.18         2.835174   0.344826
+ test       E0     P8    T0     C2        4.68         4.376341   0.303659
+ test       E0     P9    T1     C1        4.10         4.402034   0.302034
+ test       E0     P9    T2     C1        4.75         4.452377   0.297623

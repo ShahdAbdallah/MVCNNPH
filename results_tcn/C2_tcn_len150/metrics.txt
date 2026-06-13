@@ -1,0 +1,13 @@
+===== TCN Results =====
+Camera = C2
+Target_len = 150
+MAE  = 0.45744606852531433
+RMSE = 0.6224503517150879
+R2   = 0.5103929211238442
+Test Loss = 0.28940549492836
+Test MAE scaled = 0.5992612838745117
+Train samples = 420
+Test samples  = 106
+X_train shape = (420, 150, 51)
+X_test shape  = (106, 150, 51)
+Bad skipped files = 2

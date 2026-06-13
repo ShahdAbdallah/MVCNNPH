@@ -1,0 +1,86 @@
+===== Single-view E3 C2 Velocity + Acceleration BS16 Results =====
+Target exercise = E3
+Target camera mode = C2
+Target_len = 150
+Epochs requested = 500
+Epochs trained = 200
+Loss = MSE
+Learning rate = 2e-5
+Batch size = 16
+Filters = 16, 24, 24, 32
+Dropout = 0.10
+Added features = position + velocity + acceleration
+Exercise embedding = No
+Oversampling = No
+Replacement = No
+Augmentation = No
+Images archive = images.tar.gz
+
+===== Overall Test Metrics =====
+Overall MAE = 0.8001871705055237
+Overall RMSE = 0.92159503698349
+Overall R2 = -0.7758085458141057
+Overall PCC = 0.27239270058690124
+Overall PCC p-value = 0.4177359700354279
+Test Loss = 1.0852015018463135
+Test MAE scaled = 0.9044960141181946
+Test RMSE scaled = 1.0417300462722778
+
+===== Dataset Sizes =====
+Fit samples = 33
+Validation samples = 10
+Test samples = 11
+X_fit shape = (33, 150, 153)
+X_val shape = (10, 150, 153)
+X_test shape = (11, 150, 153)
+Bad skipped files = 0
+Skipped non-target files = 14849
+Incomplete camera trials = 0
+
+===== Split Person Summary =====
+split person  num_samples  mean_score  min_score  max_score  good_count  bad_count
+ test    P12            5    3.172000       2.14       4.64           1          4
+ test     P8            3    4.006667       3.94       4.06           2          1
+ test     P9            3    3.523133       3.40       3.70           0          3
+train     P0            3    4.416067       4.40       4.44           3          0
+train    P10            5    2.852000       1.44       4.32           1          4
+train    P14            5    3.356000       1.98       4.74           2          3
+train    P15            5    3.896000       3.30       4.30           3          2
+train     P2            3    4.600000       4.50       4.80           3          0
+train     P3            3    4.580000       4.56       4.60           3          0
+train     P4            3    4.566667       4.42       4.68           3          0
+train     P5            3    4.606667       4.58       4.62           3          0
+train     P7            3    4.546667       4.44       4.64           3          0
+valid     P1            2    4.750000       4.68       4.82           2          0
+valid    P11            5    3.548000       2.88       4.56           2          3
+valid     P6            3    4.420000       4.34       4.50           3          0
+
+===== Camera Split Summary =====
+split camera  num_samples  mean_score  good_count  bad_count
+ test     C2           11    3.495400           3          8
+train     C2           33    4.014188          24          9
+valid     C2           10    4.050000           7          3
+
+===== Per-person scores =====
+person  num_test_trials  mean_true_score  mean_predicted_score      MAE     RMSE         R2       PCC
+   P12                5         3.172000              3.505639 0.887582 1.058440  -0.438163 -0.553648
+    P8                3         4.006667              4.431507 0.424840 0.429801 -73.221627  0.148253
+    P9                3         3.523133              4.553009 1.029876 1.030704 -63.605569  0.981316
+
+===== Per-camera scores =====
+camera  num_test_trials  mean_true_score  mean_predicted_score      MAE     RMSE        R2      PCC
+    C2               11           3.4954              4.043795 0.800187 0.921595 -0.775809 0.272393
+
+===== Worst 30 predictions =====
+exercise person trial camera  true_score  predicted_score  abs_error
+      E3    P12    T6     C2      2.1400         3.805317   1.665317
+      E3    P12    T0     C2      4.6400         3.274380   1.365619
+      E3     P9    T1     C2      3.4000         4.484170   1.084170
+      E3     P9    T0     C2      3.4694         4.490794   1.021394
+      E3     P9    T2     C2      3.7000         4.684063   0.984063
+      E3    P12    T3     C2      2.7800         3.474130   0.694130
+      E3    P12    T4     C2      2.6400         3.333607   0.693607
+      E3     P8    T0     C2      3.9400         4.444462   0.504462
+      E3     P8    T2     C2      4.0600         4.485089   0.425089
+      E3     P8    T1     C2      4.0200         4.364970   0.344970
+      E3    P12    T5     C2      3.6600         3.640763   0.019237

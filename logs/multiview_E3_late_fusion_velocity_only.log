@@ -1,0 +1,1341 @@
+2026-05-26 18:08:31.360660: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2026-05-26 18:08:34.612977: I tensorflow/compiler/jit/xla_cpu_device.cc:41] Not creating XLA devices, tf_xla_enable_xla_devices not set
+2026-05-26 18:08:34.614357: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcuda.so.1
+2026-05-26 18:08:34.622314: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1720] Found device 0 with properties: 
+pciBusID: 0000:3b:00.0 name: Tesla V100-PCIE-32GB computeCapability: 7.0
+coreClock: 1.38GHz coreCount: 80 deviceMemorySize: 31.73GiB deviceMemoryBandwidth: 836.37GiB/s
+2026-05-26 18:08:34.622538: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1720] Found device 1 with properties: 
+pciBusID: 0000:d8:00.0 name: Tesla V100-PCIE-32GB computeCapability: 7.0
+coreClock: 1.38GHz coreCount: 80 deviceMemorySize: 31.73GiB deviceMemoryBandwidth: 836.37GiB/s
+2026-05-26 18:08:34.622572: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2026-05-26 18:08:34.623082: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcublas.so.11'; dlerror: libcublas.so.11: cannot open shared object file: No such file or directory
+2026-05-26 18:08:34.623167: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcublasLt.so.11'; dlerror: libcublasLt.so.11: cannot open shared object file: No such file or directory
+2026-05-26 18:08:34.625390: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcufft.so.10
+2026-05-26 18:08:34.625761: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcurand.so.10
+2026-05-26 18:08:34.628042: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcusolver.so.10
+2026-05-26 18:08:34.628172: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcusparse.so.11'; dlerror: libcusparse.so.11: cannot open shared object file: No such file or directory
+2026-05-26 18:08:34.628248: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudnn.so.8'; dlerror: libcudnn.so.8: cannot open shared object file: No such file or directory
+2026-05-26 18:08:34.628261: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1757] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+Skipping registering GPU devices...
+2026-05-26 18:08:34.628508: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 AVX512F FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-05-26 18:08:34.631917: I tensorflow/compiler/jit/xla_gpu_device.cc:99] Not creating XLA devices, tf_xla_enable_xla_devices not set
+2026-05-26 18:08:34.631965: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1261] Device interconnect StreamExecutor with strength 1 edge matrix:
+2026-05-26 18:08:34.631974: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1267]      
+Experiment: Multi-view E3 Late Fusion Velocity Only
+Target exercise: E3
+Fusion: Late fusion
+Output: /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150
+Fit samples: 33
+Validation samples: 10
+Test samples: 11
+Bad files: 0
+Incomplete camera trials: 1
+Skipped non-E3 files: 13779
+X0_fit shape: (33, 150, 102)
+X1_fit shape: (33, 150, 102)
+X2_fit shape: (33, 150, 102)
+Model: "model"
+__________________________________________________________________________________________________
+Layer (type)                    Output Shape         Param #     Connected to                     
+==================================================================================================
+input_c0 (InputLayer)           [(None, 150, 102)]   0                                            
+__________________________________________________________________________________________________
+input_c1 (InputLayer)           [(None, 150, 102)]   0                                            
+__________________________________________________________________________________________________
+input_c2 (InputLayer)           [(None, 150, 102)]   0                                            
+__________________________________________________________________________________________________
+conv1d (Conv1D)                 (None, 150, 16)      8176        input_c0[0][0]                   
+__________________________________________________________________________________________________
+conv1d_4 (Conv1D)               (None, 150, 16)      8176        input_c1[0][0]                   
+__________________________________________________________________________________________________
+conv1d_8 (Conv1D)               (None, 150, 16)      8176        input_c2[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization (BatchNorma (None, 150, 16)      64          conv1d[0][0]                     
+__________________________________________________________________________________________________
+batch_normalization_4 (BatchNor (None, 150, 16)      64          conv1d_4[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_8 (BatchNor (None, 150, 16)      64          conv1d_8[0][0]                   
+__________________________________________________________________________________________________
+max_pooling1d (MaxPooling1D)    (None, 75, 16)       0           batch_normalization[0][0]        
+__________________________________________________________________________________________________
+max_pooling1d_2 (MaxPooling1D)  (None, 75, 16)       0           batch_normalization_4[0][0]      
+__________________________________________________________________________________________________
+max_pooling1d_4 (MaxPooling1D)  (None, 75, 16)       0           batch_normalization_8[0][0]      
+__________________________________________________________________________________________________
+conv1d_1 (Conv1D)               (None, 75, 24)       1176        max_pooling1d[0][0]              
+__________________________________________________________________________________________________
+conv1d_5 (Conv1D)               (None, 75, 24)       1176        max_pooling1d_2[0][0]            
+__________________________________________________________________________________________________
+conv1d_9 (Conv1D)               (None, 75, 24)       1176        max_pooling1d_4[0][0]            
+__________________________________________________________________________________________________
+batch_normalization_1 (BatchNor (None, 75, 24)       96          conv1d_1[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_5 (BatchNor (None, 75, 24)       96          conv1d_5[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_9 (BatchNor (None, 75, 24)       96          conv1d_9[0][0]                   
+__________________________________________________________________________________________________
+max_pooling1d_1 (MaxPooling1D)  (None, 37, 24)       0           batch_normalization_1[0][0]      
+__________________________________________________________________________________________________
+max_pooling1d_3 (MaxPooling1D)  (None, 37, 24)       0           batch_normalization_5[0][0]      
+__________________________________________________________________________________________________
+max_pooling1d_5 (MaxPooling1D)  (None, 37, 24)       0           batch_normalization_9[0][0]      
+__________________________________________________________________________________________________
+conv1d_2 (Conv1D)               (None, 37, 24)       1752        max_pooling1d_1[0][0]            
+__________________________________________________________________________________________________
+conv1d_6 (Conv1D)               (None, 37, 24)       1752        max_pooling1d_3[0][0]            
+__________________________________________________________________________________________________
+conv1d_10 (Conv1D)              (None, 37, 24)       1752        max_pooling1d_5[0][0]            
+__________________________________________________________________________________________________
+batch_normalization_2 (BatchNor (None, 37, 24)       96          conv1d_2[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_6 (BatchNor (None, 37, 24)       96          conv1d_6[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_10 (BatchNo (None, 37, 24)       96          conv1d_10[0][0]                  
+__________________________________________________________________________________________________
+conv1d_3 (Conv1D)               (None, 37, 32)       2336        batch_normalization_2[0][0]      
+__________________________________________________________________________________________________
+conv1d_7 (Conv1D)               (None, 37, 32)       2336        batch_normalization_6[0][0]      
+__________________________________________________________________________________________________
+conv1d_11 (Conv1D)              (None, 37, 32)       2336        batch_normalization_10[0][0]     
+__________________________________________________________________________________________________
+batch_normalization_3 (BatchNor (None, 37, 32)       128         conv1d_3[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_7 (BatchNor (None, 37, 32)       128         conv1d_7[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_11 (BatchNo (None, 37, 32)       128         conv1d_11[0][0]                  
+__________________________________________________________________________________________________
+global_average_pooling1d (Globa (None, 32)           0           batch_normalization_3[0][0]      
+__________________________________________________________________________________________________
+global_average_pooling1d_1 (Glo (None, 32)           0           batch_normalization_7[0][0]      
+__________________________________________________________________________________________________
+global_average_pooling1d_2 (Glo (None, 32)           0           batch_normalization_11[0][0]     
+__________________________________________________________________________________________________
+late_fusion_concat (Concatenate (None, 96)           0           global_average_pooling1d[0][0]   
+                                                                 global_average_pooling1d_1[0][0] 
+                                                                 global_average_pooling1d_2[0][0] 
+2026-05-26 18:08:34.909485: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:116] None of the MLIR optimization passes are enabled (registered 2)
+2026-05-26 18:08:34.910010: I tensorflow/core/platform/profile_utils/cpu_utils.cc:112] CPU Frequency: 2100000000 Hz
+__________________________________________________________________________________________________
+dense (Dense)                   (None, 64)           6208        late_fusion_concat[0][0]         
+__________________________________________________________________________________________________
+dropout (Dropout)               (None, 64)           0           dense[0][0]                      
+__________________________________________________________________________________________________
+dense_1 (Dense)                 (None, 32)           2080        dropout[0][0]                    
+__________________________________________________________________________________________________
+dense_2 (Dense)                 (None, 1)            33          dense_1[0][0]                    
+==================================================================================================
+Total params: 49,793
+Trainable params: 49,217
+Non-trainable params: 576
+__________________________________________________________________________________________________
+Epoch 1/500
+1/1 [==============================] - ETA: 0s - loss: 0.8373 - mae: 0.6727 - rmse: 0.91501/1 [==============================] - 3s 3s/step - loss: 0.8373 - mae: 0.6727 - rmse: 0.9150 - val_loss: 0.6907 - val_mae: 0.7996 - val_rmse: 0.8311
+
+Epoch 00001: val_loss improved from inf to 0.69068, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 2/500
+1/1 [==============================] - ETA: 0s - loss: 0.8217 - mae: 0.6589 - rmse: 0.90651/1 [==============================] - 0s 46ms/step - loss: 0.8217 - mae: 0.6589 - rmse: 0.9065 - val_loss: 0.6879 - val_mae: 0.7978 - val_rmse: 0.8294
+
+Epoch 00002: val_loss improved from 0.69068 to 0.68790, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 3/500
+1/1 [==============================] - ETA: 0s - loss: 0.8018 - mae: 0.6653 - rmse: 0.89541/1 [==============================] - 0s 45ms/step - loss: 0.8018 - mae: 0.6653 - rmse: 0.8954 - val_loss: 0.6852 - val_mae: 0.7960 - val_rmse: 0.8278
+
+Epoch 00003: val_loss improved from 0.68790 to 0.68517, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 4/500
+1/1 [==============================] - ETA: 0s - loss: 0.8192 - mae: 0.6641 - rmse: 0.90511/1 [==============================] - 0s 46ms/step - loss: 0.8192 - mae: 0.6641 - rmse: 0.9051 - val_loss: 0.6827 - val_mae: 0.7943 - val_rmse: 0.8262
+
+Epoch 00004: val_loss improved from 0.68517 to 0.68266, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 5/500
+1/1 [==============================] - ETA: 0s - loss: 0.8154 - mae: 0.6522 - rmse: 0.90301/1 [==============================] - 0s 44ms/step - loss: 0.8154 - mae: 0.6522 - rmse: 0.9030 - val_loss: 0.6802 - val_mae: 0.7925 - val_rmse: 0.8247
+
+Epoch 00005: val_loss improved from 0.68266 to 0.68017, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 6/500
+1/1 [==============================] - ETA: 0s - loss: 0.8030 - mae: 0.6498 - rmse: 0.89611/1 [==============================] - 0s 40ms/step - loss: 0.8030 - mae: 0.6498 - rmse: 0.8961 - val_loss: 0.6777 - val_mae: 0.7908 - val_rmse: 0.8232
+
+Epoch 00006: val_loss improved from 0.68017 to 0.67771, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 7/500
+1/1 [==============================] - ETA: 0s - loss: 0.7812 - mae: 0.6594 - rmse: 0.88381/1 [==============================] - 0s 43ms/step - loss: 0.7812 - mae: 0.6594 - rmse: 0.8838 - val_loss: 0.6754 - val_mae: 0.7891 - val_rmse: 0.8218
+
+Epoch 00007: val_loss improved from 0.67771 to 0.67538, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 8/500
+1/1 [==============================] - ETA: 0s - loss: 0.7642 - mae: 0.6393 - rmse: 0.87421/1 [==============================] - 0s 44ms/step - loss: 0.7642 - mae: 0.6393 - rmse: 0.8742 - val_loss: 0.6731 - val_mae: 0.7875 - val_rmse: 0.8204
+
+Epoch 00008: val_loss improved from 0.67538 to 0.67307, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 9/500
+1/1 [==============================] - ETA: 0s - loss: 0.7894 - mae: 0.6450 - rmse: 0.88851/1 [==============================] - 0s 43ms/step - loss: 0.7894 - mae: 0.6450 - rmse: 0.8885 - val_loss: 0.6708 - val_mae: 0.7858 - val_rmse: 0.8190
+
+Epoch 00009: val_loss improved from 0.67307 to 0.67081, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 10/500
+1/1 [==============================] - ETA: 0s - loss: 0.8127 - mae: 0.6649 - rmse: 0.90151/1 [==============================] - 0s 43ms/step - loss: 0.8127 - mae: 0.6649 - rmse: 0.9015 - val_loss: 0.6686 - val_mae: 0.7842 - val_rmse: 0.8177
+
+Epoch 00010: val_loss improved from 0.67081 to 0.66858, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 11/500
+1/1 [==============================] - ETA: 0s - loss: 0.7838 - mae: 0.6419 - rmse: 0.88541/1 [==============================] - 0s 43ms/step - loss: 0.7838 - mae: 0.6419 - rmse: 0.8854 - val_loss: 0.6664 - val_mae: 0.7826 - val_rmse: 0.8163
+
+Epoch 00011: val_loss improved from 0.66858 to 0.66640, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 12/500
+1/1 [==============================] - ETA: 0s - loss: 0.7831 - mae: 0.6535 - rmse: 0.88491/1 [==============================] - 0s 43ms/step - loss: 0.7831 - mae: 0.6535 - rmse: 0.8849 - val_loss: 0.6644 - val_mae: 0.7811 - val_rmse: 0.8151
+
+Epoch 00012: val_loss improved from 0.66640 to 0.66439, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 13/500
+1/1 [==============================] - ETA: 0s - loss: 0.7377 - mae: 0.6216 - rmse: 0.85891/1 [==============================] - 0s 42ms/step - loss: 0.7377 - mae: 0.6216 - rmse: 0.8589 - val_loss: 0.6626 - val_mae: 0.7797 - val_rmse: 0.8140
+
+Epoch 00013: val_loss improved from 0.66439 to 0.66256, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 14/500
+1/1 [==============================] - ETA: 0s - loss: 0.7499 - mae: 0.6429 - rmse: 0.86601/1 [==============================] - 0s 40ms/step - loss: 0.7499 - mae: 0.6429 - rmse: 0.8660 - val_loss: 0.6608 - val_mae: 0.7783 - val_rmse: 0.8129
+
+Epoch 00014: val_loss improved from 0.66256 to 0.66079, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 15/500
+1/1 [==============================] - ETA: 0s - loss: 0.7028 - mae: 0.6180 - rmse: 0.83841/1 [==============================] - 0s 45ms/step - loss: 0.7028 - mae: 0.6180 - rmse: 0.8384 - val_loss: 0.6591 - val_mae: 0.7769 - val_rmse: 0.8118
+
+Epoch 00015: val_loss improved from 0.66079 to 0.65906, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 16/500
+1/1 [==============================] - ETA: 0s - loss: 0.7151 - mae: 0.6188 - rmse: 0.84561/1 [==============================] - 0s 45ms/step - loss: 0.7151 - mae: 0.6188 - rmse: 0.8456 - val_loss: 0.6574 - val_mae: 0.7756 - val_rmse: 0.8108
+
+Epoch 00016: val_loss improved from 0.65906 to 0.65740, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 17/500
+1/1 [==============================] - ETA: 0s - loss: 0.7139 - mae: 0.6229 - rmse: 0.84491/1 [==============================] - 0s 40ms/step - loss: 0.7139 - mae: 0.6229 - rmse: 0.8449 - val_loss: 0.6556 - val_mae: 0.7741 - val_rmse: 0.8097
+
+Epoch 00017: val_loss improved from 0.65740 to 0.65561, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 18/500
+1/1 [==============================] - ETA: 0s - loss: 0.6909 - mae: 0.6091 - rmse: 0.83121/1 [==============================] - 0s 42ms/step - loss: 0.6909 - mae: 0.6091 - rmse: 0.8312 - val_loss: 0.6538 - val_mae: 0.7725 - val_rmse: 0.8085
+
+Epoch 00018: val_loss improved from 0.65561 to 0.65375, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 19/500
+1/1 [==============================] - ETA: 0s - loss: 0.6971 - mae: 0.6206 - rmse: 0.83491/1 [==============================] - 0s 41ms/step - loss: 0.6971 - mae: 0.6206 - rmse: 0.8349 - val_loss: 0.6518 - val_mae: 0.7709 - val_rmse: 0.8073
+
+Epoch 00019: val_loss improved from 0.65375 to 0.65180, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 20/500
+1/1 [==============================] - ETA: 0s - loss: 0.6885 - mae: 0.6165 - rmse: 0.82971/1 [==============================] - 0s 41ms/step - loss: 0.6885 - mae: 0.6165 - rmse: 0.8297 - val_loss: 0.6498 - val_mae: 0.7692 - val_rmse: 0.8061
+
+Epoch 00020: val_loss improved from 0.65180 to 0.64981, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 21/500
+1/1 [==============================] - ETA: 0s - loss: 0.6629 - mae: 0.6151 - rmse: 0.81421/1 [==============================] - 0s 45ms/step - loss: 0.6629 - mae: 0.6151 - rmse: 0.8142 - val_loss: 0.6478 - val_mae: 0.7675 - val_rmse: 0.8048
+
+Epoch 00021: val_loss improved from 0.64981 to 0.64776, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 22/500
+1/1 [==============================] - ETA: 0s - loss: 0.6582 - mae: 0.5931 - rmse: 0.81131/1 [==============================] - 0s 41ms/step - loss: 0.6582 - mae: 0.5931 - rmse: 0.8113 - val_loss: 0.6459 - val_mae: 0.7659 - val_rmse: 0.8037
+
+Epoch 00022: val_loss improved from 0.64776 to 0.64592, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 23/500
+1/1 [==============================] - ETA: 0s - loss: 0.6637 - mae: 0.6021 - rmse: 0.81471/1 [==============================] - 0s 38ms/step - loss: 0.6637 - mae: 0.6021 - rmse: 0.8147 - val_loss: 0.6441 - val_mae: 0.7643 - val_rmse: 0.8026
+
+Epoch 00023: val_loss improved from 0.64592 to 0.64413, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 24/500
+1/1 [==============================] - ETA: 0s - loss: 0.6666 - mae: 0.5922 - rmse: 0.81641/1 [==============================] - 0s 41ms/step - loss: 0.6666 - mae: 0.5922 - rmse: 0.8164 - val_loss: 0.6425 - val_mae: 0.7628 - val_rmse: 0.8015
+
+Epoch 00024: val_loss improved from 0.64413 to 0.64248, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 25/500
+1/1 [==============================] - ETA: 0s - loss: 0.6357 - mae: 0.5783 - rmse: 0.79731/1 [==============================] - 0s 45ms/step - loss: 0.6357 - mae: 0.5783 - rmse: 0.7973 - val_loss: 0.6408 - val_mae: 0.7612 - val_rmse: 0.8005
+
+Epoch 00025: val_loss improved from 0.64248 to 0.64077, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 26/500
+1/1 [==============================] - ETA: 0s - loss: 0.6146 - mae: 0.5755 - rmse: 0.78391/1 [==============================] - 0s 46ms/step - loss: 0.6146 - mae: 0.5755 - rmse: 0.7839 - val_loss: 0.6390 - val_mae: 0.7596 - val_rmse: 0.7994
+
+Epoch 00026: val_loss improved from 0.64077 to 0.63897, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 27/500
+1/1 [==============================] - ETA: 0s - loss: 0.6350 - mae: 0.5876 - rmse: 0.79691/1 [==============================] - 0s 45ms/step - loss: 0.6350 - mae: 0.5876 - rmse: 0.7969 - val_loss: 0.6371 - val_mae: 0.7578 - val_rmse: 0.7982
+
+Epoch 00027: val_loss improved from 0.63897 to 0.63709, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 28/500
+1/1 [==============================] - ETA: 0s - loss: 0.6535 - mae: 0.5887 - rmse: 0.80841/1 [==============================] - 0s 41ms/step - loss: 0.6535 - mae: 0.5887 - rmse: 0.8084 - val_loss: 0.6352 - val_mae: 0.7561 - val_rmse: 0.7970
+
+Epoch 00028: val_loss improved from 0.63709 to 0.63518, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 29/500
+1/1 [==============================] - ETA: 0s - loss: 0.6466 - mae: 0.5810 - rmse: 0.80411/1 [==============================] - 0s 40ms/step - loss: 0.6466 - mae: 0.5810 - rmse: 0.8041 - val_loss: 0.6333 - val_mae: 0.7543 - val_rmse: 0.7958
+
+Epoch 00029: val_loss improved from 0.63518 to 0.63327, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 30/500
+1/1 [==============================] - ETA: 0s - loss: 0.6329 - mae: 0.5824 - rmse: 0.79561/1 [==============================] - 0s 40ms/step - loss: 0.6329 - mae: 0.5824 - rmse: 0.7956 - val_loss: 0.6313 - val_mae: 0.7525 - val_rmse: 0.7945
+
+Epoch 00030: val_loss improved from 0.63327 to 0.63126, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 31/500
+1/1 [==============================] - ETA: 0s - loss: 0.6205 - mae: 0.5958 - rmse: 0.78771/1 [==============================] - 0s 41ms/step - loss: 0.6205 - mae: 0.5958 - rmse: 0.7877 - val_loss: 0.6289 - val_mae: 0.7504 - val_rmse: 0.7930
+
+Epoch 00031: val_loss improved from 0.63126 to 0.62889, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 32/500
+1/1 [==============================] - ETA: 0s - loss: 0.5826 - mae: 0.5699 - rmse: 0.76331/1 [==============================] - 0s 39ms/step - loss: 0.5826 - mae: 0.5699 - rmse: 0.7633 - val_loss: 0.6264 - val_mae: 0.7483 - val_rmse: 0.7915
+
+Epoch 00032: val_loss improved from 0.62889 to 0.62641, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 33/500
+1/1 [==============================] - ETA: 0s - loss: 0.6493 - mae: 0.5876 - rmse: 0.80581/1 [==============================] - 0s 42ms/step - loss: 0.6493 - mae: 0.5876 - rmse: 0.8058 - val_loss: 0.6238 - val_mae: 0.7461 - val_rmse: 0.7898
+
+Epoch 00033: val_loss improved from 0.62641 to 0.62381, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 34/500
+1/1 [==============================] - ETA: 0s - loss: 0.5773 - mae: 0.5681 - rmse: 0.75981/1 [==============================] - 0s 44ms/step - loss: 0.5773 - mae: 0.5681 - rmse: 0.7598 - val_loss: 0.6211 - val_mae: 0.7437 - val_rmse: 0.7881
+
+Epoch 00034: val_loss improved from 0.62381 to 0.62107, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 35/500
+1/1 [==============================] - ETA: 0s - loss: 0.5958 - mae: 0.5599 - rmse: 0.77191/1 [==============================] - 0s 43ms/step - loss: 0.5958 - mae: 0.5599 - rmse: 0.7719 - val_loss: 0.6182 - val_mae: 0.7413 - val_rmse: 0.7863
+
+Epoch 00035: val_loss improved from 0.62107 to 0.61821, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 36/500
+1/1 [==============================] - ETA: 0s - loss: 0.6082 - mae: 0.5694 - rmse: 0.77991/1 [==============================] - 0s 37ms/step - loss: 0.6082 - mae: 0.5694 - rmse: 0.7799 - val_loss: 0.6149 - val_mae: 0.7385 - val_rmse: 0.7842
+
+Epoch 00036: val_loss improved from 0.61821 to 0.61490, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 37/500
+1/1 [==============================] - ETA: 0s - loss: 0.5550 - mae: 0.5454 - rmse: 0.74501/1 [==============================] - 0s 41ms/step - loss: 0.5550 - mae: 0.5454 - rmse: 0.7450 - val_loss: 0.6114 - val_mae: 0.7356 - val_rmse: 0.7819
+
+Epoch 00037: val_loss improved from 0.61490 to 0.61142, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 38/500
+1/1 [==============================] - ETA: 0s - loss: 0.5760 - mae: 0.5512 - rmse: 0.75901/1 [==============================] - 0s 40ms/step - loss: 0.5760 - mae: 0.5512 - rmse: 0.7590 - val_loss: 0.6077 - val_mae: 0.7325 - val_rmse: 0.7796
+
+Epoch 00038: val_loss improved from 0.61142 to 0.60774, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 39/500
+1/1 [==============================] - ETA: 0s - loss: 0.5752 - mae: 0.5494 - rmse: 0.75841/1 [==============================] - 0s 40ms/step - loss: 0.5752 - mae: 0.5494 - rmse: 0.7584 - val_loss: 0.6036 - val_mae: 0.7291 - val_rmse: 0.7769
+
+Epoch 00039: val_loss improved from 0.60774 to 0.60365, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 40/500
+1/1 [==============================] - ETA: 0s - loss: 0.5710 - mae: 0.5583 - rmse: 0.75561/1 [==============================] - 0s 42ms/step - loss: 0.5710 - mae: 0.5583 - rmse: 0.7556 - val_loss: 0.5994 - val_mae: 0.7255 - val_rmse: 0.7742
+
+Epoch 00040: val_loss improved from 0.60365 to 0.59942, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 41/500
+1/1 [==============================] - ETA: 0s - loss: 0.5398 - mae: 0.5515 - rmse: 0.73471/1 [==============================] - 0s 39ms/step - loss: 0.5398 - mae: 0.5515 - rmse: 0.7347 - val_loss: 0.5953 - val_mae: 0.7219 - val_rmse: 0.7715
+
+Epoch 00041: val_loss improved from 0.59942 to 0.59527, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 42/500
+1/1 [==============================] - ETA: 0s - loss: 0.5373 - mae: 0.5228 - rmse: 0.73301/1 [==============================] - 0s 40ms/step - loss: 0.5373 - mae: 0.5228 - rmse: 0.7330 - val_loss: 0.5910 - val_mae: 0.7180 - val_rmse: 0.7687
+
+Epoch 00042: val_loss improved from 0.59527 to 0.59097, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 43/500
+1/1 [==============================] - ETA: 0s - loss: 0.5080 - mae: 0.5274 - rmse: 0.71281/1 [==============================] - 0s 47ms/step - loss: 0.5080 - mae: 0.5274 - rmse: 0.7128 - val_loss: 0.5866 - val_mae: 0.7141 - val_rmse: 0.7659
+
+Epoch 00043: val_loss improved from 0.59097 to 0.58657, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 44/500
+1/1 [==============================] - ETA: 0s - loss: 0.5658 - mae: 0.5534 - rmse: 0.75221/1 [==============================] - 0s 42ms/step - loss: 0.5658 - mae: 0.5534 - rmse: 0.7522 - val_loss: 0.5823 - val_mae: 0.7102 - val_rmse: 0.7631
+
+Epoch 00044: val_loss improved from 0.58657 to 0.58233, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 45/500
+1/1 [==============================] - ETA: 0s - loss: 0.4952 - mae: 0.5307 - rmse: 0.70371/1 [==============================] - 0s 40ms/step - loss: 0.4952 - mae: 0.5307 - rmse: 0.7037 - val_loss: 0.5785 - val_mae: 0.7068 - val_rmse: 0.7606
+
+Epoch 00045: val_loss improved from 0.58233 to 0.57850, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 46/500
+1/1 [==============================] - ETA: 0s - loss: 0.4886 - mae: 0.5218 - rmse: 0.69901/1 [==============================] - 0s 42ms/step - loss: 0.4886 - mae: 0.5218 - rmse: 0.6990 - val_loss: 0.5747 - val_mae: 0.7034 - val_rmse: 0.7581
+
+Epoch 00046: val_loss improved from 0.57850 to 0.57469, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 47/500
+1/1 [==============================] - ETA: 0s - loss: 0.5000 - mae: 0.5162 - rmse: 0.70711/1 [==============================] - 0s 40ms/step - loss: 0.5000 - mae: 0.5162 - rmse: 0.7071 - val_loss: 0.5708 - val_mae: 0.6999 - val_rmse: 0.7555
+
+Epoch 00047: val_loss improved from 0.57469 to 0.57084, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 48/500
+1/1 [==============================] - ETA: 0s - loss: 0.5321 - mae: 0.5396 - rmse: 0.72941/1 [==============================] - 0s 48ms/step - loss: 0.5321 - mae: 0.5396 - rmse: 0.7294 - val_loss: 0.5672 - val_mae: 0.6965 - val_rmse: 0.7531
+
+Epoch 00048: val_loss improved from 0.57084 to 0.56717, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 49/500
+1/1 [==============================] - ETA: 0s - loss: 0.5133 - mae: 0.5336 - rmse: 0.71651/1 [==============================] - 0s 51ms/step - loss: 0.5133 - mae: 0.5336 - rmse: 0.7165 - val_loss: 0.5641 - val_mae: 0.6936 - val_rmse: 0.7511
+
+Epoch 00049: val_loss improved from 0.56717 to 0.56409, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 50/500
+1/1 [==============================] - ETA: 0s - loss: 0.5400 - mae: 0.5293 - rmse: 0.73481/1 [==============================] - 0s 44ms/step - loss: 0.5400 - mae: 0.5293 - rmse: 0.7348 - val_loss: 0.5612 - val_mae: 0.6909 - val_rmse: 0.7491
+
+Epoch 00050: val_loss improved from 0.56409 to 0.56121, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 51/500
+1/1 [==============================] - ETA: 0s - loss: 0.5047 - mae: 0.5349 - rmse: 0.71041/1 [==============================] - 0s 42ms/step - loss: 0.5047 - mae: 0.5349 - rmse: 0.7104 - val_loss: 0.5583 - val_mae: 0.6881 - val_rmse: 0.7472
+
+Epoch 00051: val_loss improved from 0.56121 to 0.55833, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 52/500
+1/1 [==============================] - ETA: 0s - loss: 0.4948 - mae: 0.5137 - rmse: 0.70341/1 [==============================] - 0s 41ms/step - loss: 0.4948 - mae: 0.5137 - rmse: 0.7034 - val_loss: 0.5554 - val_mae: 0.6854 - val_rmse: 0.7453
+
+Epoch 00052: val_loss improved from 0.55833 to 0.55541, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 53/500
+1/1 [==============================] - ETA: 0s - loss: 0.5001 - mae: 0.5239 - rmse: 0.70721/1 [==============================] - 0s 42ms/step - loss: 0.5001 - mae: 0.5239 - rmse: 0.7072 - val_loss: 0.5526 - val_mae: 0.6827 - val_rmse: 0.7434
+
+Epoch 00053: val_loss improved from 0.55541 to 0.55264, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 54/500
+1/1 [==============================] - ETA: 0s - loss: 0.4698 - mae: 0.5078 - rmse: 0.68541/1 [==============================] - 0s 43ms/step - loss: 0.4698 - mae: 0.5078 - rmse: 0.6854 - val_loss: 0.5498 - val_mae: 0.6800 - val_rmse: 0.7415
+
+Epoch 00054: val_loss improved from 0.55264 to 0.54985, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 55/500
+1/1 [==============================] - ETA: 0s - loss: 0.4887 - mae: 0.5209 - rmse: 0.69911/1 [==============================] - 0s 40ms/step - loss: 0.4887 - mae: 0.5209 - rmse: 0.6991 - val_loss: 0.5472 - val_mae: 0.6775 - val_rmse: 0.7398
+
+Epoch 00055: val_loss improved from 0.54985 to 0.54724, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 56/500
+1/1 [==============================] - ETA: 0s - loss: 0.4696 - mae: 0.5006 - rmse: 0.68521/1 [==============================] - 0s 40ms/step - loss: 0.4696 - mae: 0.5006 - rmse: 0.6852 - val_loss: 0.5447 - val_mae: 0.6751 - val_rmse: 0.7380
+
+Epoch 00056: val_loss improved from 0.54724 to 0.54466, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 57/500
+1/1 [==============================] - ETA: 0s - loss: 0.4698 - mae: 0.5055 - rmse: 0.68541/1 [==============================] - 0s 42ms/step - loss: 0.4698 - mae: 0.5055 - rmse: 0.6854 - val_loss: 0.5423 - val_mae: 0.6729 - val_rmse: 0.7364
+
+Epoch 00057: val_loss improved from 0.54466 to 0.54228, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 58/500
+1/1 [==============================] - ETA: 0s - loss: 0.4644 - mae: 0.4941 - rmse: 0.68151/1 [==============================] - 0s 40ms/step - loss: 0.4644 - mae: 0.4941 - rmse: 0.6815 - val_loss: 0.5401 - val_mae: 0.6708 - val_rmse: 0.7349
+
+Epoch 00058: val_loss improved from 0.54228 to 0.54013, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 59/500
+1/1 [==============================] - ETA: 0s - loss: 0.4609 - mae: 0.4918 - rmse: 0.67891/1 [==============================] - 0s 46ms/step - loss: 0.4609 - mae: 0.4918 - rmse: 0.6789 - val_loss: 0.5381 - val_mae: 0.6689 - val_rmse: 0.7336
+
+Epoch 00059: val_loss improved from 0.54013 to 0.53812, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 60/500
+1/1 [==============================] - ETA: 0s - loss: 0.4533 - mae: 0.4945 - rmse: 0.67331/1 [==============================] - 0s 38ms/step - loss: 0.4533 - mae: 0.4945 - rmse: 0.6733 - val_loss: 0.5364 - val_mae: 0.6673 - val_rmse: 0.7324
+
+Epoch 00060: val_loss improved from 0.53812 to 0.53639, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 61/500
+1/1 [==============================] - ETA: 0s - loss: 0.4570 - mae: 0.5014 - rmse: 0.67601/1 [==============================] - 0s 38ms/step - loss: 0.4570 - mae: 0.5014 - rmse: 0.6760 - val_loss: 0.5347 - val_mae: 0.6657 - val_rmse: 0.7312
+
+Epoch 00061: val_loss improved from 0.53639 to 0.53467, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 62/500
+1/1 [==============================] - ETA: 0s - loss: 0.4431 - mae: 0.4913 - rmse: 0.66561/1 [==============================] - 0s 44ms/step - loss: 0.4431 - mae: 0.4913 - rmse: 0.6656 - val_loss: 0.5330 - val_mae: 0.6641 - val_rmse: 0.7301
+
+Epoch 00062: val_loss improved from 0.53467 to 0.53303, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 63/500
+1/1 [==============================] - ETA: 0s - loss: 0.4529 - mae: 0.4916 - rmse: 0.67301/1 [==============================] - 0s 39ms/step - loss: 0.4529 - mae: 0.4916 - rmse: 0.6730 - val_loss: 0.5314 - val_mae: 0.6625 - val_rmse: 0.7289
+
+Epoch 00063: val_loss improved from 0.53303 to 0.53136, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 64/500
+1/1 [==============================] - ETA: 0s - loss: 0.4544 - mae: 0.4887 - rmse: 0.67411/1 [==============================] - 0s 40ms/step - loss: 0.4544 - mae: 0.4887 - rmse: 0.6741 - val_loss: 0.5299 - val_mae: 0.6610 - val_rmse: 0.7280
+
+Epoch 00064: val_loss improved from 0.53136 to 0.52993, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 65/500
+1/1 [==============================] - ETA: 0s - loss: 0.4260 - mae: 0.4862 - rmse: 0.65271/1 [==============================] - 0s 41ms/step - loss: 0.4260 - mae: 0.4862 - rmse: 0.6527 - val_loss: 0.5287 - val_mae: 0.6597 - val_rmse: 0.7271
+
+Epoch 00065: val_loss improved from 0.52993 to 0.52869, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 66/500
+1/1 [==============================] - ETA: 0s - loss: 0.4528 - mae: 0.4781 - rmse: 0.67291/1 [==============================] - 0s 41ms/step - loss: 0.4528 - mae: 0.4781 - rmse: 0.6729 - val_loss: 0.5274 - val_mae: 0.6583 - val_rmse: 0.7262
+
+Epoch 00066: val_loss improved from 0.52869 to 0.52742, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 67/500
+1/1 [==============================] - ETA: 0s - loss: 0.3825 - mae: 0.4578 - rmse: 0.61851/1 [==============================] - 0s 41ms/step - loss: 0.3825 - mae: 0.4578 - rmse: 0.6185 - val_loss: 0.5263 - val_mae: 0.6571 - val_rmse: 0.7255
+
+Epoch 00067: val_loss improved from 0.52742 to 0.52633, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 68/500
+1/1 [==============================] - ETA: 0s - loss: 0.4751 - mae: 0.4945 - rmse: 0.68931/1 [==============================] - 0s 55ms/step - loss: 0.4751 - mae: 0.4945 - rmse: 0.6893 - val_loss: 0.5254 - val_mae: 0.6560 - val_rmse: 0.7248
+
+Epoch 00068: val_loss improved from 0.52633 to 0.52537, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 69/500
+1/1 [==============================] - ETA: 0s - loss: 0.3955 - mae: 0.4647 - rmse: 0.62891/1 [==============================] - 0s 44ms/step - loss: 0.3955 - mae: 0.4647 - rmse: 0.6289 - val_loss: 0.5245 - val_mae: 0.6551 - val_rmse: 0.7242
+
+Epoch 00069: val_loss improved from 0.52537 to 0.52454, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 70/500
+1/1 [==============================] - ETA: 0s - loss: 0.3643 - mae: 0.4469 - rmse: 0.60361/1 [==============================] - 0s 54ms/step - loss: 0.3643 - mae: 0.4469 - rmse: 0.6036 - val_loss: 0.5236 - val_mae: 0.6541 - val_rmse: 0.7236
+
+Epoch 00070: val_loss improved from 0.52454 to 0.52356, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 71/500
+1/1 [==============================] - ETA: 0s - loss: 0.3970 - mae: 0.4555 - rmse: 0.63011/1 [==============================] - 0s 42ms/step - loss: 0.3970 - mae: 0.4555 - rmse: 0.6301 - val_loss: 0.5226 - val_mae: 0.6531 - val_rmse: 0.7229
+
+Epoch 00071: val_loss improved from 0.52356 to 0.52265, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 72/500
+1/1 [==============================] - ETA: 0s - loss: 0.4410 - mae: 0.4817 - rmse: 0.66401/1 [==============================] - 0s 44ms/step - loss: 0.4410 - mae: 0.4817 - rmse: 0.6640 - val_loss: 0.5217 - val_mae: 0.6521 - val_rmse: 0.7223
+
+Epoch 00072: val_loss improved from 0.52265 to 0.52172, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 73/500
+1/1 [==============================] - ETA: 0s - loss: 0.4331 - mae: 0.4851 - rmse: 0.65811/1 [==============================] - 0s 48ms/step - loss: 0.4331 - mae: 0.4851 - rmse: 0.6581 - val_loss: 0.5207 - val_mae: 0.6511 - val_rmse: 0.7216
+
+Epoch 00073: val_loss improved from 0.52172 to 0.52072, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 74/500
+1/1 [==============================] - ETA: 0s - loss: 0.3939 - mae: 0.4686 - rmse: 0.62761/1 [==============================] - 0s 42ms/step - loss: 0.3939 - mae: 0.4686 - rmse: 0.6276 - val_loss: 0.5193 - val_mae: 0.6498 - val_rmse: 0.7206
+
+Epoch 00074: val_loss improved from 0.52072 to 0.51933, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 75/500
+1/1 [==============================] - ETA: 0s - loss: 0.3894 - mae: 0.4687 - rmse: 0.62401/1 [==============================] - 0s 37ms/step - loss: 0.3894 - mae: 0.4687 - rmse: 0.6240 - val_loss: 0.5178 - val_mae: 0.6483 - val_rmse: 0.7196
+
+Epoch 00075: val_loss improved from 0.51933 to 0.51776, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 76/500
+1/1 [==============================] - ETA: 0s - loss: 0.3817 - mae: 0.4590 - rmse: 0.61781/1 [==============================] - 0s 48ms/step - loss: 0.3817 - mae: 0.4590 - rmse: 0.6178 - val_loss: 0.5162 - val_mae: 0.6467 - val_rmse: 0.7185
+
+Epoch 00076: val_loss improved from 0.51776 to 0.51621, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 77/500
+1/1 [==============================] - ETA: 0s - loss: 0.3787 - mae: 0.4600 - rmse: 0.61541/1 [==============================] - 0s 44ms/step - loss: 0.3787 - mae: 0.4600 - rmse: 0.6154 - val_loss: 0.5147 - val_mae: 0.6452 - val_rmse: 0.7175
+
+Epoch 00077: val_loss improved from 0.51621 to 0.51474, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 78/500
+1/1 [==============================] - ETA: 0s - loss: 0.3968 - mae: 0.4584 - rmse: 0.62991/1 [==============================] - 0s 47ms/step - loss: 0.3968 - mae: 0.4584 - rmse: 0.6299 - val_loss: 0.5133 - val_mae: 0.6438 - val_rmse: 0.7165
+
+Epoch 00078: val_loss improved from 0.51474 to 0.51333, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 79/500
+1/1 [==============================] - ETA: 0s - loss: 0.3440 - mae: 0.4350 - rmse: 0.58651/1 [==============================] - 0s 49ms/step - loss: 0.3440 - mae: 0.4350 - rmse: 0.5865 - val_loss: 0.5119 - val_mae: 0.6424 - val_rmse: 0.7155
+
+Epoch 00079: val_loss improved from 0.51333 to 0.51187, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 80/500
+1/1 [==============================] - ETA: 0s - loss: 0.3803 - mae: 0.4503 - rmse: 0.61671/1 [==============================] - 0s 49ms/step - loss: 0.3803 - mae: 0.4503 - rmse: 0.6167 - val_loss: 0.5102 - val_mae: 0.6409 - val_rmse: 0.7143
+
+Epoch 00080: val_loss improved from 0.51187 to 0.51019, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 81/500
+1/1 [==============================] - ETA: 0s - loss: 0.3259 - mae: 0.4216 - rmse: 0.57091/1 [==============================] - 0s 51ms/step - loss: 0.3259 - mae: 0.4216 - rmse: 0.5709 - val_loss: 0.5087 - val_mae: 0.6396 - val_rmse: 0.7132
+
+Epoch 00081: val_loss improved from 0.51019 to 0.50868, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 82/500
+1/1 [==============================] - ETA: 0s - loss: 0.4132 - mae: 0.4738 - rmse: 0.64281/1 [==============================] - 0s 54ms/step - loss: 0.4132 - mae: 0.4738 - rmse: 0.6428 - val_loss: 0.5073 - val_mae: 0.6383 - val_rmse: 0.7123
+
+Epoch 00082: val_loss improved from 0.50868 to 0.50732, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 83/500
+1/1 [==============================] - ETA: 0s - loss: 0.3663 - mae: 0.4474 - rmse: 0.60531/1 [==============================] - 0s 49ms/step - loss: 0.3663 - mae: 0.4474 - rmse: 0.6053 - val_loss: 0.5060 - val_mae: 0.6371 - val_rmse: 0.7113
+
+Epoch 00083: val_loss improved from 0.50732 to 0.50600, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 84/500
+1/1 [==============================] - ETA: 0s - loss: 0.3882 - mae: 0.4814 - rmse: 0.62301/1 [==============================] - 0s 48ms/step - loss: 0.3882 - mae: 0.4814 - rmse: 0.6230 - val_loss: 0.5046 - val_mae: 0.6359 - val_rmse: 0.7104
+
+Epoch 00084: val_loss improved from 0.50600 to 0.50461, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 85/500
+1/1 [==============================] - ETA: 0s - loss: 0.3289 - mae: 0.4197 - rmse: 0.57351/1 [==============================] - 0s 51ms/step - loss: 0.3289 - mae: 0.4197 - rmse: 0.5735 - val_loss: 0.5032 - val_mae: 0.6346 - val_rmse: 0.7094
+
+Epoch 00085: val_loss improved from 0.50461 to 0.50321, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 86/500
+1/1 [==============================] - ETA: 0s - loss: 0.3343 - mae: 0.4300 - rmse: 0.57821/1 [==============================] - 0s 55ms/step - loss: 0.3343 - mae: 0.4300 - rmse: 0.5782 - val_loss: 0.5018 - val_mae: 0.6333 - val_rmse: 0.7084
+
+Epoch 00086: val_loss improved from 0.50321 to 0.50182, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 87/500
+1/1 [==============================] - ETA: 0s - loss: 0.4221 - mae: 0.4840 - rmse: 0.64971/1 [==============================] - 0s 51ms/step - loss: 0.4221 - mae: 0.4840 - rmse: 0.6497 - val_loss: 0.5004 - val_mae: 0.6321 - val_rmse: 0.7074
+
+Epoch 00087: val_loss improved from 0.50182 to 0.50041, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 88/500
+1/1 [==============================] - ETA: 0s - loss: 0.3262 - mae: 0.4132 - rmse: 0.57111/1 [==============================] - 0s 45ms/step - loss: 0.3262 - mae: 0.4132 - rmse: 0.5711 - val_loss: 0.4990 - val_mae: 0.6308 - val_rmse: 0.7064
+
+Epoch 00088: val_loss improved from 0.50041 to 0.49899, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 89/500
+1/1 [==============================] - ETA: 0s - loss: 0.3328 - mae: 0.4365 - rmse: 0.57681/1 [==============================] - 0s 52ms/step - loss: 0.3328 - mae: 0.4365 - rmse: 0.5768 - val_loss: 0.4975 - val_mae: 0.6295 - val_rmse: 0.7054
+
+Epoch 00089: val_loss improved from 0.49899 to 0.49753, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 90/500
+1/1 [==============================] - ETA: 0s - loss: 0.3346 - mae: 0.4242 - rmse: 0.57841/1 [==============================] - 0s 47ms/step - loss: 0.3346 - mae: 0.4242 - rmse: 0.5784 - val_loss: 0.4961 - val_mae: 0.6282 - val_rmse: 0.7043
+
+Epoch 00090: val_loss improved from 0.49753 to 0.49605, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 91/500
+1/1 [==============================] - ETA: 0s - loss: 0.3581 - mae: 0.4350 - rmse: 0.59841/1 [==============================] - 0s 56ms/step - loss: 0.3581 - mae: 0.4350 - rmse: 0.5984 - val_loss: 0.4949 - val_mae: 0.6273 - val_rmse: 0.7035
+
+Epoch 00091: val_loss improved from 0.49605 to 0.49487, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 92/500
+1/1 [==============================] - ETA: 0s - loss: 0.3113 - mae: 0.4123 - rmse: 0.55801/1 [==============================] - 0s 50ms/step - loss: 0.3113 - mae: 0.4123 - rmse: 0.5580 - val_loss: 0.4937 - val_mae: 0.6264 - val_rmse: 0.7026
+
+Epoch 00092: val_loss improved from 0.49487 to 0.49370, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 93/500
+1/1 [==============================] - ETA: 0s - loss: 0.3523 - mae: 0.4425 - rmse: 0.59361/1 [==============================] - 0s 45ms/step - loss: 0.3523 - mae: 0.4425 - rmse: 0.5936 - val_loss: 0.4925 - val_mae: 0.6254 - val_rmse: 0.7018
+
+Epoch 00093: val_loss improved from 0.49370 to 0.49251, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 94/500
+1/1 [==============================] - ETA: 0s - loss: 0.2922 - mae: 0.4076 - rmse: 0.54061/1 [==============================] - 0s 50ms/step - loss: 0.2922 - mae: 0.4076 - rmse: 0.5406 - val_loss: 0.4913 - val_mae: 0.6245 - val_rmse: 0.7009
+
+Epoch 00094: val_loss improved from 0.49251 to 0.49128, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 95/500
+1/1 [==============================] - ETA: 0s - loss: 0.3663 - mae: 0.4341 - rmse: 0.60521/1 [==============================] - 0s 47ms/step - loss: 0.3663 - mae: 0.4341 - rmse: 0.6052 - val_loss: 0.4901 - val_mae: 0.6236 - val_rmse: 0.7001
+
+Epoch 00095: val_loss improved from 0.49128 to 0.49008, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 96/500
+1/1 [==============================] - ETA: 0s - loss: 0.3275 - mae: 0.4125 - rmse: 0.57221/1 [==============================] - 0s 50ms/step - loss: 0.3275 - mae: 0.4125 - rmse: 0.5722 - val_loss: 0.4889 - val_mae: 0.6228 - val_rmse: 0.6992
+
+Epoch 00096: val_loss improved from 0.49008 to 0.48886, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 97/500
+1/1 [==============================] - ETA: 0s - loss: 0.2841 - mae: 0.4075 - rmse: 0.53301/1 [==============================] - 0s 43ms/step - loss: 0.2841 - mae: 0.4075 - rmse: 0.5330 - val_loss: 0.4876 - val_mae: 0.6220 - val_rmse: 0.6983
+
+Epoch 00097: val_loss improved from 0.48886 to 0.48757, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 98/500
+1/1 [==============================] - ETA: 0s - loss: 0.2783 - mae: 0.3954 - rmse: 0.52751/1 [==============================] - 0s 52ms/step - loss: 0.2783 - mae: 0.3954 - rmse: 0.5275 - val_loss: 0.4862 - val_mae: 0.6211 - val_rmse: 0.6973
+
+Epoch 00098: val_loss improved from 0.48757 to 0.48622, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 99/500
+1/1 [==============================] - ETA: 0s - loss: 0.3062 - mae: 0.4105 - rmse: 0.55331/1 [==============================] - 0s 59ms/step - loss: 0.3062 - mae: 0.4105 - rmse: 0.5533 - val_loss: 0.4848 - val_mae: 0.6202 - val_rmse: 0.6963
+
+Epoch 00099: val_loss improved from 0.48622 to 0.48483, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 100/500
+1/1 [==============================] - ETA: 0s - loss: 0.3154 - mae: 0.4181 - rmse: 0.56161/1 [==============================] - 0s 44ms/step - loss: 0.3154 - mae: 0.4181 - rmse: 0.5616 - val_loss: 0.4834 - val_mae: 0.6192 - val_rmse: 0.6953
+
+Epoch 00100: val_loss improved from 0.48483 to 0.48340, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 101/500
+1/1 [==============================] - ETA: 0s - loss: 0.2844 - mae: 0.4023 - rmse: 0.53331/1 [==============================] - 0s 51ms/step - loss: 0.2844 - mae: 0.4023 - rmse: 0.5333 - val_loss: 0.4821 - val_mae: 0.6183 - val_rmse: 0.6943
+
+Epoch 00101: val_loss improved from 0.48340 to 0.48205, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 102/500
+1/1 [==============================] - ETA: 0s - loss: 0.2944 - mae: 0.4124 - rmse: 0.54261/1 [==============================] - 0s 45ms/step - loss: 0.2944 - mae: 0.4124 - rmse: 0.5426 - val_loss: 0.4807 - val_mae: 0.6173 - val_rmse: 0.6934
+
+Epoch 00102: val_loss improved from 0.48205 to 0.48074, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 103/500
+1/1 [==============================] - ETA: 0s - loss: 0.2789 - mae: 0.4003 - rmse: 0.52811/1 [==============================] - 0s 58ms/step - loss: 0.2789 - mae: 0.4003 - rmse: 0.5281 - val_loss: 0.4794 - val_mae: 0.6164 - val_rmse: 0.6924
+
+Epoch 00103: val_loss improved from 0.48074 to 0.47944, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 104/500
+1/1 [==============================] - ETA: 0s - loss: 0.3082 - mae: 0.4215 - rmse: 0.55521/1 [==============================] - 0s 45ms/step - loss: 0.3082 - mae: 0.4215 - rmse: 0.5552 - val_loss: 0.4781 - val_mae: 0.6155 - val_rmse: 0.6914
+
+Epoch 00104: val_loss improved from 0.47944 to 0.47806, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 105/500
+1/1 [==============================] - ETA: 0s - loss: 0.2880 - mae: 0.4013 - rmse: 0.53671/1 [==============================] - 0s 45ms/step - loss: 0.2880 - mae: 0.4013 - rmse: 0.5367 - val_loss: 0.4767 - val_mae: 0.6146 - val_rmse: 0.6904
+
+Epoch 00105: val_loss improved from 0.47806 to 0.47669, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 106/500
+1/1 [==============================] - ETA: 0s - loss: 0.3268 - mae: 0.4342 - rmse: 0.57171/1 [==============================] - 0s 43ms/step - loss: 0.3268 - mae: 0.4342 - rmse: 0.5717 - val_loss: 0.4754 - val_mae: 0.6137 - val_rmse: 0.6895
+
+Epoch 00106: val_loss improved from 0.47669 to 0.47535, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 107/500
+1/1 [==============================] - ETA: 0s - loss: 0.2982 - mae: 0.3996 - rmse: 0.54611/1 [==============================] - 0s 54ms/step - loss: 0.2982 - mae: 0.3996 - rmse: 0.5461 - val_loss: 0.4742 - val_mae: 0.6129 - val_rmse: 0.6886
+
+Epoch 00107: val_loss improved from 0.47535 to 0.47417, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 108/500
+1/1 [==============================] - ETA: 0s - loss: 0.2511 - mae: 0.3617 - rmse: 0.50111/1 [==============================] - 0s 45ms/step - loss: 0.2511 - mae: 0.3617 - rmse: 0.5011 - val_loss: 0.4730 - val_mae: 0.6121 - val_rmse: 0.6878
+
+Epoch 00108: val_loss improved from 0.47417 to 0.47300, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 109/500
+1/1 [==============================] - ETA: 0s - loss: 0.3010 - mae: 0.3914 - rmse: 0.54871/1 [==============================] - 0s 55ms/step - loss: 0.3010 - mae: 0.3914 - rmse: 0.5487 - val_loss: 0.4718 - val_mae: 0.6113 - val_rmse: 0.6869
+
+Epoch 00109: val_loss improved from 0.47300 to 0.47182, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 110/500
+1/1 [==============================] - ETA: 0s - loss: 0.2788 - mae: 0.3933 - rmse: 0.52801/1 [==============================] - 0s 51ms/step - loss: 0.2788 - mae: 0.3933 - rmse: 0.5280 - val_loss: 0.4706 - val_mae: 0.6105 - val_rmse: 0.6860
+
+Epoch 00110: val_loss improved from 0.47182 to 0.47064, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 111/500
+1/1 [==============================] - ETA: 0s - loss: 0.2498 - mae: 0.3623 - rmse: 0.49981/1 [==============================] - 0s 47ms/step - loss: 0.2498 - mae: 0.3623 - rmse: 0.4998 - val_loss: 0.4695 - val_mae: 0.6097 - val_rmse: 0.6852
+
+Epoch 00111: val_loss improved from 0.47064 to 0.46947, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 112/500
+1/1 [==============================] - ETA: 0s - loss: 0.2858 - mae: 0.4012 - rmse: 0.53461/1 [==============================] - 0s 44ms/step - loss: 0.2858 - mae: 0.4012 - rmse: 0.5346 - val_loss: 0.4683 - val_mae: 0.6088 - val_rmse: 0.6843
+
+Epoch 00112: val_loss improved from 0.46947 to 0.46828, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 113/500
+1/1 [==============================] - ETA: 0s - loss: 0.2574 - mae: 0.3753 - rmse: 0.50731/1 [==============================] - 0s 42ms/step - loss: 0.2574 - mae: 0.3753 - rmse: 0.5073 - val_loss: 0.4670 - val_mae: 0.6079 - val_rmse: 0.6834
+
+Epoch 00113: val_loss improved from 0.46828 to 0.46702, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 114/500
+1/1 [==============================] - ETA: 0s - loss: 0.2578 - mae: 0.3815 - rmse: 0.50771/1 [==============================] - 0s 50ms/step - loss: 0.2578 - mae: 0.3815 - rmse: 0.5077 - val_loss: 0.4658 - val_mae: 0.6070 - val_rmse: 0.6825
+
+Epoch 00114: val_loss improved from 0.46702 to 0.46578, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 115/500
+1/1 [==============================] - ETA: 0s - loss: 0.2597 - mae: 0.3658 - rmse: 0.50961/1 [==============================] - 0s 42ms/step - loss: 0.2597 - mae: 0.3658 - rmse: 0.5096 - val_loss: 0.4645 - val_mae: 0.6061 - val_rmse: 0.6815
+
+Epoch 00115: val_loss improved from 0.46578 to 0.46449, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 116/500
+1/1 [==============================] - ETA: 0s - loss: 0.2364 - mae: 0.3536 - rmse: 0.48621/1 [==============================] - 0s 43ms/step - loss: 0.2364 - mae: 0.3536 - rmse: 0.4862 - val_loss: 0.4633 - val_mae: 0.6053 - val_rmse: 0.6807
+
+Epoch 00116: val_loss improved from 0.46449 to 0.46329, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 117/500
+1/1 [==============================] - ETA: 0s - loss: 0.2763 - mae: 0.3736 - rmse: 0.52561/1 [==============================] - 0s 51ms/step - loss: 0.2763 - mae: 0.3736 - rmse: 0.5256 - val_loss: 0.4621 - val_mae: 0.6045 - val_rmse: 0.6798
+
+Epoch 00117: val_loss improved from 0.46329 to 0.46213, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 118/500
+1/1 [==============================] - ETA: 0s - loss: 0.2198 - mae: 0.3549 - rmse: 0.46881/1 [==============================] - 0s 54ms/step - loss: 0.2198 - mae: 0.3549 - rmse: 0.4688 - val_loss: 0.4610 - val_mae: 0.6037 - val_rmse: 0.6790
+
+Epoch 00118: val_loss improved from 0.46213 to 0.46098, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 119/500
+1/1 [==============================] - ETA: 0s - loss: 0.2869 - mae: 0.3916 - rmse: 0.53561/1 [==============================] - 0s 54ms/step - loss: 0.2869 - mae: 0.3916 - rmse: 0.5356 - val_loss: 0.4598 - val_mae: 0.6029 - val_rmse: 0.6781
+
+Epoch 00119: val_loss improved from 0.46098 to 0.45984, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 120/500
+1/1 [==============================] - ETA: 0s - loss: 0.2410 - mae: 0.3629 - rmse: 0.49091/1 [==============================] - 0s 47ms/step - loss: 0.2410 - mae: 0.3629 - rmse: 0.4909 - val_loss: 0.4587 - val_mae: 0.6022 - val_rmse: 0.6773
+
+Epoch 00120: val_loss improved from 0.45984 to 0.45872, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 121/500
+1/1 [==============================] - ETA: 0s - loss: 0.2666 - mae: 0.3756 - rmse: 0.51641/1 [==============================] - 0s 48ms/step - loss: 0.2666 - mae: 0.3756 - rmse: 0.5164 - val_loss: 0.4576 - val_mae: 0.6015 - val_rmse: 0.6765
+
+Epoch 00121: val_loss improved from 0.45872 to 0.45760, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 122/500
+1/1 [==============================] - ETA: 0s - loss: 0.2697 - mae: 0.3838 - rmse: 0.51931/1 [==============================] - 0s 45ms/step - loss: 0.2697 - mae: 0.3838 - rmse: 0.5193 - val_loss: 0.4565 - val_mae: 0.6007 - val_rmse: 0.6756
+
+Epoch 00122: val_loss improved from 0.45760 to 0.45647, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 123/500
+1/1 [==============================] - ETA: 0s - loss: 0.2478 - mae: 0.3754 - rmse: 0.49781/1 [==============================] - 0s 39ms/step - loss: 0.2478 - mae: 0.3754 - rmse: 0.4978 - val_loss: 0.4553 - val_mae: 0.5999 - val_rmse: 0.6748
+
+Epoch 00123: val_loss improved from 0.45647 to 0.45533, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 124/500
+1/1 [==============================] - ETA: 0s - loss: 0.2376 - mae: 0.3558 - rmse: 0.48741/1 [==============================] - 0s 43ms/step - loss: 0.2376 - mae: 0.3558 - rmse: 0.4874 - val_loss: 0.4542 - val_mae: 0.5991 - val_rmse: 0.6739
+
+Epoch 00124: val_loss improved from 0.45533 to 0.45418, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 125/500
+1/1 [==============================] - ETA: 0s - loss: 0.2572 - mae: 0.3629 - rmse: 0.50721/1 [==============================] - 0s 44ms/step - loss: 0.2572 - mae: 0.3629 - rmse: 0.5072 - val_loss: 0.4530 - val_mae: 0.5982 - val_rmse: 0.6730
+
+Epoch 00125: val_loss improved from 0.45418 to 0.45296, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 126/500
+1/1 [==============================] - ETA: 0s - loss: 0.2400 - mae: 0.3548 - rmse: 0.48991/1 [==============================] - 0s 44ms/step - loss: 0.2400 - mae: 0.3548 - rmse: 0.4899 - val_loss: 0.4517 - val_mae: 0.5974 - val_rmse: 0.6721
+
+Epoch 00126: val_loss improved from 0.45296 to 0.45174, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 127/500
+1/1 [==============================] - ETA: 0s - loss: 0.2847 - mae: 0.3674 - rmse: 0.53361/1 [==============================] - 0s 49ms/step - loss: 0.2847 - mae: 0.3674 - rmse: 0.5336 - val_loss: 0.4505 - val_mae: 0.5964 - val_rmse: 0.6712
+
+Epoch 00127: val_loss improved from 0.45174 to 0.45047, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 128/500
+1/1 [==============================] - ETA: 0s - loss: 0.2269 - mae: 0.3457 - rmse: 0.47631/1 [==============================] - 0s 46ms/step - loss: 0.2269 - mae: 0.3457 - rmse: 0.4763 - val_loss: 0.4492 - val_mae: 0.5955 - val_rmse: 0.6702
+
+Epoch 00128: val_loss improved from 0.45047 to 0.44918, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 129/500
+1/1 [==============================] - ETA: 0s - loss: 0.2189 - mae: 0.3600 - rmse: 0.46791/1 [==============================] - 0s 49ms/step - loss: 0.2189 - mae: 0.3600 - rmse: 0.4679 - val_loss: 0.4479 - val_mae: 0.5946 - val_rmse: 0.6692
+
+Epoch 00129: val_loss improved from 0.44918 to 0.44789, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 130/500
+1/1 [==============================] - ETA: 0s - loss: 0.2324 - mae: 0.3446 - rmse: 0.48201/1 [==============================] - 0s 43ms/step - loss: 0.2324 - mae: 0.3446 - rmse: 0.4820 - val_loss: 0.4466 - val_mae: 0.5937 - val_rmse: 0.6683
+
+Epoch 00130: val_loss improved from 0.44789 to 0.44657, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 131/500
+1/1 [==============================] - ETA: 0s - loss: 0.2842 - mae: 0.3735 - rmse: 0.53311/1 [==============================] - 0s 44ms/step - loss: 0.2842 - mae: 0.3735 - rmse: 0.5331 - val_loss: 0.4452 - val_mae: 0.5928 - val_rmse: 0.6673
+
+Epoch 00131: val_loss improved from 0.44657 to 0.44525, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 132/500
+1/1 [==============================] - ETA: 0s - loss: 0.2277 - mae: 0.3574 - rmse: 0.47721/1 [==============================] - 0s 43ms/step - loss: 0.2277 - mae: 0.3574 - rmse: 0.4772 - val_loss: 0.4439 - val_mae: 0.5919 - val_rmse: 0.6663
+
+Epoch 00132: val_loss improved from 0.44525 to 0.44391, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 133/500
+1/1 [==============================] - ETA: 0s - loss: 0.2302 - mae: 0.3423 - rmse: 0.47981/1 [==============================] - 0s 40ms/step - loss: 0.2302 - mae: 0.3423 - rmse: 0.4798 - val_loss: 0.4426 - val_mae: 0.5910 - val_rmse: 0.6653
+
+Epoch 00133: val_loss improved from 0.44391 to 0.44260, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 134/500
+1/1 [==============================] - ETA: 0s - loss: 0.2369 - mae: 0.3549 - rmse: 0.48681/1 [==============================] - 0s 41ms/step - loss: 0.2369 - mae: 0.3549 - rmse: 0.4868 - val_loss: 0.4413 - val_mae: 0.5901 - val_rmse: 0.6643
+
+Epoch 00134: val_loss improved from 0.44260 to 0.44129, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 135/500
+1/1 [==============================] - ETA: 0s - loss: 0.1934 - mae: 0.3204 - rmse: 0.43981/1 [==============================] - 0s 42ms/step - loss: 0.1934 - mae: 0.3204 - rmse: 0.4398 - val_loss: 0.4400 - val_mae: 0.5892 - val_rmse: 0.6633
+
+Epoch 00135: val_loss improved from 0.44129 to 0.43998, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 136/500
+1/1 [==============================] - ETA: 0s - loss: 0.2177 - mae: 0.3433 - rmse: 0.46651/1 [==============================] - 0s 40ms/step - loss: 0.2177 - mae: 0.3433 - rmse: 0.4665 - val_loss: 0.4387 - val_mae: 0.5883 - val_rmse: 0.6623
+
+Epoch 00136: val_loss improved from 0.43998 to 0.43870, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 137/500
+1/1 [==============================] - ETA: 0s - loss: 0.2399 - mae: 0.3722 - rmse: 0.48981/1 [==============================] - 0s 44ms/step - loss: 0.2399 - mae: 0.3722 - rmse: 0.4898 - val_loss: 0.4374 - val_mae: 0.5874 - val_rmse: 0.6614
+
+Epoch 00137: val_loss improved from 0.43870 to 0.43739, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 138/500
+1/1 [==============================] - ETA: 0s - loss: 0.2291 - mae: 0.3374 - rmse: 0.47861/1 [==============================] - 0s 40ms/step - loss: 0.2291 - mae: 0.3374 - rmse: 0.4786 - val_loss: 0.4361 - val_mae: 0.5865 - val_rmse: 0.6603
+
+Epoch 00138: val_loss improved from 0.43739 to 0.43606, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 139/500
+1/1 [==============================] - ETA: 0s - loss: 0.2175 - mae: 0.3304 - rmse: 0.46641/1 [==============================] - 0s 45ms/step - loss: 0.2175 - mae: 0.3304 - rmse: 0.4664 - val_loss: 0.4347 - val_mae: 0.5855 - val_rmse: 0.6593
+
+Epoch 00139: val_loss improved from 0.43606 to 0.43470, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 140/500
+1/1 [==============================] - ETA: 0s - loss: 0.2588 - mae: 0.3684 - rmse: 0.50871/1 [==============================] - 0s 45ms/step - loss: 0.2588 - mae: 0.3684 - rmse: 0.5087 - val_loss: 0.4334 - val_mae: 0.5846 - val_rmse: 0.6583
+
+Epoch 00140: val_loss improved from 0.43470 to 0.43336, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 141/500
+1/1 [==============================] - ETA: 0s - loss: 0.2427 - mae: 0.3507 - rmse: 0.49261/1 [==============================] - 0s 44ms/step - loss: 0.2427 - mae: 0.3507 - rmse: 0.4926 - val_loss: 0.4321 - val_mae: 0.5836 - val_rmse: 0.6573
+
+Epoch 00141: val_loss improved from 0.43336 to 0.43206, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 142/500
+1/1 [==============================] - ETA: 0s - loss: 0.2221 - mae: 0.3386 - rmse: 0.47131/1 [==============================] - 0s 40ms/step - loss: 0.2221 - mae: 0.3386 - rmse: 0.4713 - val_loss: 0.4307 - val_mae: 0.5827 - val_rmse: 0.6563
+
+Epoch 00142: val_loss improved from 0.43206 to 0.43073, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 143/500
+1/1 [==============================] - ETA: 0s - loss: 0.2543 - mae: 0.3530 - rmse: 0.50431/1 [==============================] - 0s 41ms/step - loss: 0.2543 - mae: 0.3530 - rmse: 0.5043 - val_loss: 0.4294 - val_mae: 0.5817 - val_rmse: 0.6553
+
+Epoch 00143: val_loss improved from 0.43073 to 0.42936, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 144/500
+1/1 [==============================] - ETA: 0s - loss: 0.2295 - mae: 0.3325 - rmse: 0.47911/1 [==============================] - 0s 39ms/step - loss: 0.2295 - mae: 0.3325 - rmse: 0.4791 - val_loss: 0.4280 - val_mae: 0.5807 - val_rmse: 0.6542
+
+Epoch 00144: val_loss improved from 0.42936 to 0.42798, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 145/500
+1/1 [==============================] - ETA: 0s - loss: 0.2172 - mae: 0.3262 - rmse: 0.46601/1 [==============================] - 0s 39ms/step - loss: 0.2172 - mae: 0.3262 - rmse: 0.4660 - val_loss: 0.4266 - val_mae: 0.5797 - val_rmse: 0.6532
+
+Epoch 00145: val_loss improved from 0.42798 to 0.42661, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 146/500
+1/1 [==============================] - ETA: 0s - loss: 0.2409 - mae: 0.3544 - rmse: 0.49091/1 [==============================] - 0s 41ms/step - loss: 0.2409 - mae: 0.3544 - rmse: 0.4909 - val_loss: 0.4253 - val_mae: 0.5787 - val_rmse: 0.6521
+
+Epoch 00146: val_loss improved from 0.42661 to 0.42525, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 147/500
+1/1 [==============================] - ETA: 0s - loss: 0.2160 - mae: 0.3131 - rmse: 0.46471/1 [==============================] - 0s 40ms/step - loss: 0.2160 - mae: 0.3131 - rmse: 0.4647 - val_loss: 0.4238 - val_mae: 0.5777 - val_rmse: 0.6510
+
+Epoch 00147: val_loss improved from 0.42525 to 0.42384, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 148/500
+1/1 [==============================] - ETA: 0s - loss: 0.2020 - mae: 0.3124 - rmse: 0.44941/1 [==============================] - 0s 36ms/step - loss: 0.2020 - mae: 0.3124 - rmse: 0.4494 - val_loss: 0.4224 - val_mae: 0.5767 - val_rmse: 0.6499
+
+Epoch 00148: val_loss improved from 0.42384 to 0.42243, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 149/500
+1/1 [==============================] - ETA: 0s - loss: 0.1684 - mae: 0.2944 - rmse: 0.41041/1 [==============================] - 0s 39ms/step - loss: 0.1684 - mae: 0.2944 - rmse: 0.4104 - val_loss: 0.4210 - val_mae: 0.5757 - val_rmse: 0.6489
+
+Epoch 00149: val_loss improved from 0.42243 to 0.42104, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 150/500
+1/1 [==============================] - ETA: 0s - loss: 0.1525 - mae: 0.2875 - rmse: 0.39051/1 [==============================] - 0s 37ms/step - loss: 0.1525 - mae: 0.2875 - rmse: 0.3905 - val_loss: 0.4197 - val_mae: 0.5747 - val_rmse: 0.6478
+
+Epoch 00150: val_loss improved from 0.42104 to 0.41968, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 151/500
+1/1 [==============================] - ETA: 0s - loss: 0.2345 - mae: 0.3425 - rmse: 0.48421/1 [==============================] - 0s 44ms/step - loss: 0.2345 - mae: 0.3425 - rmse: 0.4842 - val_loss: 0.4183 - val_mae: 0.5737 - val_rmse: 0.6468
+
+Epoch 00151: val_loss improved from 0.41968 to 0.41831, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 152/500
+1/1 [==============================] - ETA: 0s - loss: 0.1806 - mae: 0.3060 - rmse: 0.42501/1 [==============================] - 0s 40ms/step - loss: 0.1806 - mae: 0.3060 - rmse: 0.4250 - val_loss: 0.4169 - val_mae: 0.5727 - val_rmse: 0.6457
+
+Epoch 00152: val_loss improved from 0.41831 to 0.41691, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 153/500
+1/1 [==============================] - ETA: 0s - loss: 0.1751 - mae: 0.3142 - rmse: 0.41851/1 [==============================] - 0s 37ms/step - loss: 0.1751 - mae: 0.3142 - rmse: 0.4185 - val_loss: 0.4156 - val_mae: 0.5717 - val_rmse: 0.6446
+
+Epoch 00153: val_loss improved from 0.41691 to 0.41555, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 154/500
+1/1 [==============================] - ETA: 0s - loss: 0.1715 - mae: 0.3046 - rmse: 0.41421/1 [==============================] - 0s 37ms/step - loss: 0.1715 - mae: 0.3046 - rmse: 0.4142 - val_loss: 0.4143 - val_mae: 0.5707 - val_rmse: 0.6436
+
+Epoch 00154: val_loss improved from 0.41555 to 0.41425, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 155/500
+1/1 [==============================] - ETA: 0s - loss: 0.1554 - mae: 0.2947 - rmse: 0.39421/1 [==============================] - 0s 39ms/step - loss: 0.1554 - mae: 0.2947 - rmse: 0.3942 - val_loss: 0.4130 - val_mae: 0.5697 - val_rmse: 0.6426
+
+Epoch 00155: val_loss improved from 0.41425 to 0.41299, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 156/500
+1/1 [==============================] - ETA: 0s - loss: 0.1759 - mae: 0.3091 - rmse: 0.41941/1 [==============================] - 0s 42ms/step - loss: 0.1759 - mae: 0.3091 - rmse: 0.4194 - val_loss: 0.4117 - val_mae: 0.5687 - val_rmse: 0.6416
+
+Epoch 00156: val_loss improved from 0.41299 to 0.41168, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 157/500
+1/1 [==============================] - ETA: 0s - loss: 0.2042 - mae: 0.3024 - rmse: 0.45191/1 [==============================] - 0s 39ms/step - loss: 0.2042 - mae: 0.3024 - rmse: 0.4519 - val_loss: 0.4104 - val_mae: 0.5677 - val_rmse: 0.6406
+
+Epoch 00157: val_loss improved from 0.41168 to 0.41038, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 158/500
+1/1 [==============================] - ETA: 0s - loss: 0.1805 - mae: 0.3204 - rmse: 0.42481/1 [==============================] - 0s 47ms/step - loss: 0.1805 - mae: 0.3204 - rmse: 0.4248 - val_loss: 0.4091 - val_mae: 0.5667 - val_rmse: 0.6396
+
+Epoch 00158: val_loss improved from 0.41038 to 0.40911, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 159/500
+1/1 [==============================] - ETA: 0s - loss: 0.1480 - mae: 0.2842 - rmse: 0.38481/1 [==============================] - 0s 42ms/step - loss: 0.1480 - mae: 0.2842 - rmse: 0.3848 - val_loss: 0.4079 - val_mae: 0.5657 - val_rmse: 0.6386
+
+Epoch 00159: val_loss improved from 0.40911 to 0.40786, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 160/500
+1/1 [==============================] - ETA: 0s - loss: 0.1672 - mae: 0.3049 - rmse: 0.40891/1 [==============================] - 0s 37ms/step - loss: 0.1672 - mae: 0.3049 - rmse: 0.4089 - val_loss: 0.4066 - val_mae: 0.5647 - val_rmse: 0.6377
+
+Epoch 00160: val_loss improved from 0.40786 to 0.40662, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 161/500
+1/1 [==============================] - ETA: 0s - loss: 0.1912 - mae: 0.3186 - rmse: 0.43731/1 [==============================] - 0s 40ms/step - loss: 0.1912 - mae: 0.3186 - rmse: 0.4373 - val_loss: 0.4056 - val_mae: 0.5638 - val_rmse: 0.6369
+
+Epoch 00161: val_loss improved from 0.40662 to 0.40563, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 162/500
+1/1 [==============================] - ETA: 0s - loss: 0.1854 - mae: 0.3124 - rmse: 0.43061/1 [==============================] - 0s 41ms/step - loss: 0.1854 - mae: 0.3124 - rmse: 0.4306 - val_loss: 0.4046 - val_mae: 0.5629 - val_rmse: 0.6361
+
+Epoch 00162: val_loss improved from 0.40563 to 0.40459, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 163/500
+1/1 [==============================] - ETA: 0s - loss: 0.1870 - mae: 0.3161 - rmse: 0.43251/1 [==============================] - 0s 45ms/step - loss: 0.1870 - mae: 0.3161 - rmse: 0.4325 - val_loss: 0.4036 - val_mae: 0.5620 - val_rmse: 0.6353
+
+Epoch 00163: val_loss improved from 0.40459 to 0.40356, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 164/500
+1/1 [==============================] - ETA: 0s - loss: 0.1974 - mae: 0.3046 - rmse: 0.44431/1 [==============================] - 0s 51ms/step - loss: 0.1974 - mae: 0.3046 - rmse: 0.4443 - val_loss: 0.4025 - val_mae: 0.5611 - val_rmse: 0.6344
+
+Epoch 00164: val_loss improved from 0.40356 to 0.40251, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 165/500
+1/1 [==============================] - ETA: 0s - loss: 0.1565 - mae: 0.2851 - rmse: 0.39561/1 [==============================] - 0s 40ms/step - loss: 0.1565 - mae: 0.2851 - rmse: 0.3956 - val_loss: 0.4014 - val_mae: 0.5601 - val_rmse: 0.6336
+
+Epoch 00165: val_loss improved from 0.40251 to 0.40142, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 166/500
+1/1 [==============================] - ETA: 0s - loss: 0.1684 - mae: 0.3005 - rmse: 0.41031/1 [==============================] - 0s 42ms/step - loss: 0.1684 - mae: 0.3005 - rmse: 0.4103 - val_loss: 0.4003 - val_mae: 0.5591 - val_rmse: 0.6327
+
+Epoch 00166: val_loss improved from 0.40142 to 0.40032, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 167/500
+1/1 [==============================] - ETA: 0s - loss: 0.2050 - mae: 0.3277 - rmse: 0.45271/1 [==============================] - 0s 42ms/step - loss: 0.2050 - mae: 0.3277 - rmse: 0.4527 - val_loss: 0.3992 - val_mae: 0.5581 - val_rmse: 0.6318
+
+Epoch 00167: val_loss improved from 0.40032 to 0.39923, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 168/500
+1/1 [==============================] - ETA: 0s - loss: 0.2418 - mae: 0.3373 - rmse: 0.49181/1 [==============================] - 0s 39ms/step - loss: 0.2418 - mae: 0.3373 - rmse: 0.4918 - val_loss: 0.3982 - val_mae: 0.5571 - val_rmse: 0.6310
+
+Epoch 00168: val_loss improved from 0.39923 to 0.39815, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 169/500
+1/1 [==============================] - ETA: 0s - loss: 0.1954 - mae: 0.3274 - rmse: 0.44211/1 [==============================] - 0s 43ms/step - loss: 0.1954 - mae: 0.3274 - rmse: 0.4421 - val_loss: 0.3971 - val_mae: 0.5561 - val_rmse: 0.6301
+
+Epoch 00169: val_loss improved from 0.39815 to 0.39708, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 170/500
+1/1 [==============================] - ETA: 0s - loss: 0.1974 - mae: 0.3049 - rmse: 0.44431/1 [==============================] - 0s 41ms/step - loss: 0.1974 - mae: 0.3049 - rmse: 0.4443 - val_loss: 0.3960 - val_mae: 0.5550 - val_rmse: 0.6293
+
+Epoch 00170: val_loss improved from 0.39708 to 0.39602, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 171/500
+1/1 [==============================] - ETA: 0s - loss: 0.1470 - mae: 0.2856 - rmse: 0.38341/1 [==============================] - 0s 37ms/step - loss: 0.1470 - mae: 0.2856 - rmse: 0.3834 - val_loss: 0.3950 - val_mae: 0.5540 - val_rmse: 0.6285
+
+Epoch 00171: val_loss improved from 0.39602 to 0.39496, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 172/500
+1/1 [==============================] - ETA: 0s - loss: 0.1521 - mae: 0.2788 - rmse: 0.39001/1 [==============================] - 0s 40ms/step - loss: 0.1521 - mae: 0.2788 - rmse: 0.3900 - val_loss: 0.3939 - val_mae: 0.5529 - val_rmse: 0.6276
+
+Epoch 00172: val_loss improved from 0.39496 to 0.39391, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 173/500
+1/1 [==============================] - ETA: 0s - loss: 0.1522 - mae: 0.2750 - rmse: 0.39021/1 [==============================] - 0s 41ms/step - loss: 0.1522 - mae: 0.2750 - rmse: 0.3902 - val_loss: 0.3929 - val_mae: 0.5518 - val_rmse: 0.6268
+
+Epoch 00173: val_loss improved from 0.39391 to 0.39287, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 174/500
+1/1 [==============================] - ETA: 0s - loss: 0.1404 - mae: 0.2697 - rmse: 0.37471/1 [==============================] - 0s 41ms/step - loss: 0.1404 - mae: 0.2697 - rmse: 0.3747 - val_loss: 0.3918 - val_mae: 0.5507 - val_rmse: 0.6260
+
+Epoch 00174: val_loss improved from 0.39287 to 0.39185, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 175/500
+1/1 [==============================] - ETA: 0s - loss: 0.1318 - mae: 0.2700 - rmse: 0.36311/1 [==============================] - 0s 54ms/step - loss: 0.1318 - mae: 0.2700 - rmse: 0.3631 - val_loss: 0.3908 - val_mae: 0.5496 - val_rmse: 0.6252
+
+Epoch 00175: val_loss improved from 0.39185 to 0.39084, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 176/500
+1/1 [==============================] - ETA: 0s - loss: 0.1463 - mae: 0.2738 - rmse: 0.38251/1 [==============================] - 0s 42ms/step - loss: 0.1463 - mae: 0.2738 - rmse: 0.3825 - val_loss: 0.3899 - val_mae: 0.5484 - val_rmse: 0.6244
+
+Epoch 00176: val_loss improved from 0.39084 to 0.38985, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 177/500
+1/1 [==============================] - ETA: 0s - loss: 0.1636 - mae: 0.2848 - rmse: 0.40441/1 [==============================] - 0s 40ms/step - loss: 0.1636 - mae: 0.2848 - rmse: 0.4044 - val_loss: 0.3889 - val_mae: 0.5474 - val_rmse: 0.6236
+
+Epoch 00177: val_loss improved from 0.38985 to 0.38891, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 178/500
+1/1 [==============================] - ETA: 0s - loss: 0.1318 - mae: 0.2642 - rmse: 0.36301/1 [==============================] - 0s 38ms/step - loss: 0.1318 - mae: 0.2642 - rmse: 0.3630 - val_loss: 0.3880 - val_mae: 0.5463 - val_rmse: 0.6229
+
+Epoch 00178: val_loss improved from 0.38891 to 0.38799, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 179/500
+1/1 [==============================] - ETA: 0s - loss: 0.1298 - mae: 0.2662 - rmse: 0.36031/1 [==============================] - 0s 43ms/step - loss: 0.1298 - mae: 0.2662 - rmse: 0.3603 - val_loss: 0.3871 - val_mae: 0.5452 - val_rmse: 0.6222
+
+Epoch 00179: val_loss improved from 0.38799 to 0.38707, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 180/500
+1/1 [==============================] - ETA: 0s - loss: 0.1468 - mae: 0.2721 - rmse: 0.38311/1 [==============================] - 0s 41ms/step - loss: 0.1468 - mae: 0.2721 - rmse: 0.3831 - val_loss: 0.3862 - val_mae: 0.5441 - val_rmse: 0.6215
+
+Epoch 00180: val_loss improved from 0.38707 to 0.38621, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 181/500
+1/1 [==============================] - ETA: 0s - loss: 0.1277 - mae: 0.2673 - rmse: 0.35741/1 [==============================] - 0s 42ms/step - loss: 0.1277 - mae: 0.2673 - rmse: 0.3574 - val_loss: 0.3853 - val_mae: 0.5431 - val_rmse: 0.6208
+
+Epoch 00181: val_loss improved from 0.38621 to 0.38534, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 182/500
+1/1 [==============================] - ETA: 0s - loss: 0.1291 - mae: 0.2546 - rmse: 0.35931/1 [==============================] - 0s 39ms/step - loss: 0.1291 - mae: 0.2546 - rmse: 0.3593 - val_loss: 0.3845 - val_mae: 0.5420 - val_rmse: 0.6201
+
+Epoch 00182: val_loss improved from 0.38534 to 0.38450, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 183/500
+1/1 [==============================] - ETA: 0s - loss: 0.1666 - mae: 0.2913 - rmse: 0.40821/1 [==============================] - 0s 41ms/step - loss: 0.1666 - mae: 0.2913 - rmse: 0.4082 - val_loss: 0.3837 - val_mae: 0.5409 - val_rmse: 0.6194
+
+Epoch 00183: val_loss improved from 0.38450 to 0.38368, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 184/500
+1/1 [==============================] - ETA: 0s - loss: 0.1295 - mae: 0.2655 - rmse: 0.35991/1 [==============================] - 0s 38ms/step - loss: 0.1295 - mae: 0.2655 - rmse: 0.3599 - val_loss: 0.3829 - val_mae: 0.5399 - val_rmse: 0.6188
+
+Epoch 00184: val_loss improved from 0.38368 to 0.38288, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 185/500
+1/1 [==============================] - ETA: 0s - loss: 0.1508 - mae: 0.2781 - rmse: 0.38841/1 [==============================] - 0s 39ms/step - loss: 0.1508 - mae: 0.2781 - rmse: 0.3884 - val_loss: 0.3822 - val_mae: 0.5389 - val_rmse: 0.6182
+
+Epoch 00185: val_loss improved from 0.38288 to 0.38215, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 186/500
+1/1 [==============================] - ETA: 0s - loss: 0.1551 - mae: 0.2731 - rmse: 0.39381/1 [==============================] - 0s 44ms/step - loss: 0.1551 - mae: 0.2731 - rmse: 0.3938 - val_loss: 0.3815 - val_mae: 0.5379 - val_rmse: 0.6176
+
+Epoch 00186: val_loss improved from 0.38215 to 0.38146, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 187/500
+1/1 [==============================] - ETA: 0s - loss: 0.1166 - mae: 0.2505 - rmse: 0.34151/1 [==============================] - 0s 41ms/step - loss: 0.1166 - mae: 0.2505 - rmse: 0.3415 - val_loss: 0.3808 - val_mae: 0.5369 - val_rmse: 0.6171
+
+Epoch 00187: val_loss improved from 0.38146 to 0.38079, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 188/500
+1/1 [==============================] - ETA: 0s - loss: 0.1211 - mae: 0.2513 - rmse: 0.34801/1 [==============================] - 0s 38ms/step - loss: 0.1211 - mae: 0.2513 - rmse: 0.3480 - val_loss: 0.3801 - val_mae: 0.5360 - val_rmse: 0.6166
+
+Epoch 00188: val_loss improved from 0.38079 to 0.38015, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 189/500
+1/1 [==============================] - ETA: 0s - loss: 0.1469 - mae: 0.2694 - rmse: 0.38331/1 [==============================] - 0s 38ms/step - loss: 0.1469 - mae: 0.2694 - rmse: 0.3833 - val_loss: 0.3794 - val_mae: 0.5349 - val_rmse: 0.6160
+
+Epoch 00189: val_loss improved from 0.38015 to 0.37944, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 190/500
+1/1 [==============================] - ETA: 0s - loss: 0.1612 - mae: 0.2926 - rmse: 0.40141/1 [==============================] - 0s 44ms/step - loss: 0.1612 - mae: 0.2926 - rmse: 0.4014 - val_loss: 0.3787 - val_mae: 0.5339 - val_rmse: 0.6154
+
+Epoch 00190: val_loss improved from 0.37944 to 0.37873, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 191/500
+1/1 [==============================] - ETA: 0s - loss: 0.1390 - mae: 0.2669 - rmse: 0.37281/1 [==============================] - 0s 40ms/step - loss: 0.1390 - mae: 0.2669 - rmse: 0.3728 - val_loss: 0.3780 - val_mae: 0.5328 - val_rmse: 0.6149
+
+Epoch 00191: val_loss improved from 0.37873 to 0.37804, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 192/500
+1/1 [==============================] - ETA: 0s - loss: 0.1712 - mae: 0.2914 - rmse: 0.41381/1 [==============================] - 0s 36ms/step - loss: 0.1712 - mae: 0.2914 - rmse: 0.4138 - val_loss: 0.3773 - val_mae: 0.5317 - val_rmse: 0.6143
+
+Epoch 00192: val_loss improved from 0.37804 to 0.37734, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 193/500
+1/1 [==============================] - ETA: 0s - loss: 0.1141 - mae: 0.2573 - rmse: 0.33781/1 [==============================] - 0s 38ms/step - loss: 0.1141 - mae: 0.2573 - rmse: 0.3378 - val_loss: 0.3767 - val_mae: 0.5306 - val_rmse: 0.6138
+
+Epoch 00193: val_loss improved from 0.37734 to 0.37670, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 194/500
+1/1 [==============================] - ETA: 0s - loss: 0.1325 - mae: 0.2866 - rmse: 0.36401/1 [==============================] - 0s 39ms/step - loss: 0.1325 - mae: 0.2866 - rmse: 0.3640 - val_loss: 0.3761 - val_mae: 0.5295 - val_rmse: 0.6132
+
+Epoch 00194: val_loss improved from 0.37670 to 0.37607, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 195/500
+1/1 [==============================] - ETA: 0s - loss: 0.1688 - mae: 0.2801 - rmse: 0.41081/1 [==============================] - 0s 38ms/step - loss: 0.1688 - mae: 0.2801 - rmse: 0.4108 - val_loss: 0.3754 - val_mae: 0.5284 - val_rmse: 0.6127
+
+Epoch 00195: val_loss improved from 0.37607 to 0.37540, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 196/500
+1/1 [==============================] - ETA: 0s - loss: 0.1487 - mae: 0.2783 - rmse: 0.38571/1 [==============================] - 0s 49ms/step - loss: 0.1487 - mae: 0.2783 - rmse: 0.3857 - val_loss: 0.3747 - val_mae: 0.5271 - val_rmse: 0.6122
+
+Epoch 00196: val_loss improved from 0.37540 to 0.37473, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 197/500
+1/1 [==============================] - ETA: 0s - loss: 0.1070 - mae: 0.2390 - rmse: 0.32701/1 [==============================] - 0s 39ms/step - loss: 0.1070 - mae: 0.2390 - rmse: 0.3270 - val_loss: 0.3741 - val_mae: 0.5259 - val_rmse: 0.6116
+
+Epoch 00197: val_loss improved from 0.37473 to 0.37411, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 198/500
+1/1 [==============================] - ETA: 0s - loss: 0.1305 - mae: 0.2483 - rmse: 0.36131/1 [==============================] - 0s 38ms/step - loss: 0.1305 - mae: 0.2483 - rmse: 0.3613 - val_loss: 0.3735 - val_mae: 0.5247 - val_rmse: 0.6112
+
+Epoch 00198: val_loss improved from 0.37411 to 0.37351, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 199/500
+1/1 [==============================] - ETA: 0s - loss: 0.1669 - mae: 0.2906 - rmse: 0.40851/1 [==============================] - 0s 37ms/step - loss: 0.1669 - mae: 0.2906 - rmse: 0.4085 - val_loss: 0.3729 - val_mae: 0.5235 - val_rmse: 0.6107
+
+Epoch 00199: val_loss improved from 0.37351 to 0.37295, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 200/500
+1/1 [==============================] - ETA: 0s - loss: 0.0944 - mae: 0.2391 - rmse: 0.30731/1 [==============================] - 0s 42ms/step - loss: 0.0944 - mae: 0.2391 - rmse: 0.3073 - val_loss: 0.3723 - val_mae: 0.5222 - val_rmse: 0.6102
+
+Epoch 00200: val_loss improved from 0.37295 to 0.37233, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 201/500
+1/1 [==============================] - ETA: 0s - loss: 0.1139 - mae: 0.2536 - rmse: 0.33751/1 [==============================] - 0s 40ms/step - loss: 0.1139 - mae: 0.2536 - rmse: 0.3375 - val_loss: 0.3717 - val_mae: 0.5208 - val_rmse: 0.6097
+
+Epoch 00201: val_loss improved from 0.37233 to 0.37169, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 202/500
+1/1 [==============================] - ETA: 0s - loss: 0.1125 - mae: 0.2399 - rmse: 0.33551/1 [==============================] - 0s 41ms/step - loss: 0.1125 - mae: 0.2399 - rmse: 0.3355 - val_loss: 0.3711 - val_mae: 0.5195 - val_rmse: 0.6092
+
+Epoch 00202: val_loss improved from 0.37169 to 0.37108, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 203/500
+1/1 [==============================] - ETA: 0s - loss: 0.1310 - mae: 0.2606 - rmse: 0.36201/1 [==============================] - 0s 41ms/step - loss: 0.1310 - mae: 0.2606 - rmse: 0.3620 - val_loss: 0.3705 - val_mae: 0.5182 - val_rmse: 0.6087
+
+Epoch 00203: val_loss improved from 0.37108 to 0.37052, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 204/500
+1/1 [==============================] - ETA: 0s - loss: 0.1240 - mae: 0.2593 - rmse: 0.35221/1 [==============================] - 0s 45ms/step - loss: 0.1240 - mae: 0.2593 - rmse: 0.3522 - val_loss: 0.3700 - val_mae: 0.5169 - val_rmse: 0.6082
+
+Epoch 00204: val_loss improved from 0.37052 to 0.36996, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 205/500
+1/1 [==============================] - ETA: 0s - loss: 0.1151 - mae: 0.2407 - rmse: 0.33921/1 [==============================] - 0s 39ms/step - loss: 0.1151 - mae: 0.2407 - rmse: 0.3392 - val_loss: 0.3694 - val_mae: 0.5155 - val_rmse: 0.6078
+
+Epoch 00205: val_loss improved from 0.36996 to 0.36942, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 206/500
+1/1 [==============================] - ETA: 0s - loss: 0.1523 - mae: 0.2651 - rmse: 0.39021/1 [==============================] - 0s 43ms/step - loss: 0.1523 - mae: 0.2651 - rmse: 0.3902 - val_loss: 0.3689 - val_mae: 0.5142 - val_rmse: 0.6074
+
+Epoch 00206: val_loss improved from 0.36942 to 0.36895, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 207/500
+1/1 [==============================] - ETA: 0s - loss: 0.1523 - mae: 0.2954 - rmse: 0.39031/1 [==============================] - 0s 47ms/step - loss: 0.1523 - mae: 0.2954 - rmse: 0.3903 - val_loss: 0.3685 - val_mae: 0.5129 - val_rmse: 0.6070
+
+Epoch 00207: val_loss improved from 0.36895 to 0.36850, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 208/500
+1/1 [==============================] - ETA: 0s - loss: 0.1389 - mae: 0.2633 - rmse: 0.37261/1 [==============================] - 0s 39ms/step - loss: 0.1389 - mae: 0.2633 - rmse: 0.3726 - val_loss: 0.3681 - val_mae: 0.5116 - val_rmse: 0.6067
+
+Epoch 00208: val_loss improved from 0.36850 to 0.36812, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 209/500
+1/1 [==============================] - ETA: 0s - loss: 0.1041 - mae: 0.2274 - rmse: 0.32261/1 [==============================] - 0s 44ms/step - loss: 0.1041 - mae: 0.2274 - rmse: 0.3226 - val_loss: 0.3678 - val_mae: 0.5104 - val_rmse: 0.6065
+
+Epoch 00209: val_loss improved from 0.36812 to 0.36782, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 210/500
+1/1 [==============================] - ETA: 0s - loss: 0.1500 - mae: 0.2700 - rmse: 0.38731/1 [==============================] - 0s 41ms/step - loss: 0.1500 - mae: 0.2700 - rmse: 0.3873 - val_loss: 0.3676 - val_mae: 0.5092 - val_rmse: 0.6063
+
+Epoch 00210: val_loss improved from 0.36782 to 0.36757, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 211/500
+1/1 [==============================] - ETA: 0s - loss: 0.0946 - mae: 0.2296 - rmse: 0.30761/1 [==============================] - 0s 43ms/step - loss: 0.0946 - mae: 0.2296 - rmse: 0.3076 - val_loss: 0.3674 - val_mae: 0.5081 - val_rmse: 0.6061
+
+Epoch 00211: val_loss improved from 0.36757 to 0.36737, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 212/500
+1/1 [==============================] - ETA: 0s - loss: 0.1218 - mae: 0.2592 - rmse: 0.34901/1 [==============================] - 0s 45ms/step - loss: 0.1218 - mae: 0.2592 - rmse: 0.3490 - val_loss: 0.3672 - val_mae: 0.5069 - val_rmse: 0.6060
+
+Epoch 00212: val_loss improved from 0.36737 to 0.36718, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 213/500
+1/1 [==============================] - ETA: 0s - loss: 0.0915 - mae: 0.2273 - rmse: 0.30251/1 [==============================] - 0s 44ms/step - loss: 0.0915 - mae: 0.2273 - rmse: 0.3025 - val_loss: 0.3670 - val_mae: 0.5057 - val_rmse: 0.6058
+
+Epoch 00213: val_loss improved from 0.36718 to 0.36699, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 214/500
+1/1 [==============================] - ETA: 0s - loss: 0.0994 - mae: 0.2360 - rmse: 0.31531/1 [==============================] - 0s 46ms/step - loss: 0.0994 - mae: 0.2360 - rmse: 0.3153 - val_loss: 0.3668 - val_mae: 0.5045 - val_rmse: 0.6057
+
+Epoch 00214: val_loss improved from 0.36699 to 0.36683, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 215/500
+1/1 [==============================] - ETA: 0s - loss: 0.1412 - mae: 0.2669 - rmse: 0.37581/1 [==============================] - 0s 43ms/step - loss: 0.1412 - mae: 0.2669 - rmse: 0.3758 - val_loss: 0.3667 - val_mae: 0.5034 - val_rmse: 0.6055
+
+Epoch 00215: val_loss improved from 0.36683 to 0.36669, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 216/500
+1/1 [==============================] - ETA: 0s - loss: 0.1083 - mae: 0.2417 - rmse: 0.32921/1 [==============================] - 0s 47ms/step - loss: 0.1083 - mae: 0.2417 - rmse: 0.3292 - val_loss: 0.3666 - val_mae: 0.5022 - val_rmse: 0.6055
+
+Epoch 00216: val_loss improved from 0.36669 to 0.36661, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 217/500
+1/1 [==============================] - ETA: 0s - loss: 0.0960 - mae: 0.2179 - rmse: 0.30981/1 [==============================] - 0s 43ms/step - loss: 0.0960 - mae: 0.2179 - rmse: 0.3098 - val_loss: 0.3665 - val_mae: 0.5011 - val_rmse: 0.6054
+
+Epoch 00217: val_loss improved from 0.36661 to 0.36655, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 218/500
+1/1 [==============================] - ETA: 0s - loss: 0.1402 - mae: 0.2707 - rmse: 0.37451/1 [==============================] - 0s 39ms/step - loss: 0.1402 - mae: 0.2707 - rmse: 0.3745 - val_loss: 0.3665 - val_mae: 0.4999 - val_rmse: 0.6054
+
+Epoch 00218: val_loss improved from 0.36655 to 0.36647, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 219/500
+1/1 [==============================] - ETA: 0s - loss: 0.0781 - mae: 0.2011 - rmse: 0.27941/1 [==============================] - 0s 40ms/step - loss: 0.0781 - mae: 0.2011 - rmse: 0.2794 - val_loss: 0.3664 - val_mae: 0.4987 - val_rmse: 0.6053
+
+Epoch 00219: val_loss improved from 0.36647 to 0.36640, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 220/500
+1/1 [==============================] - ETA: 0s - loss: 0.1061 - mae: 0.2457 - rmse: 0.32581/1 [==============================] - 0s 47ms/step - loss: 0.1061 - mae: 0.2457 - rmse: 0.3258 - val_loss: 0.3663 - val_mae: 0.4975 - val_rmse: 0.6053
+
+Epoch 00220: val_loss improved from 0.36640 to 0.36634, saving model to /mvdlph/shahd/MVCNNPH/results_multiview_E3_late_fusion_velocity_only/len150/best_model.keras
+Epoch 221/500
+1/1 [==============================] - ETA: 0s - loss: 0.0961 - mae: 0.2239 - rmse: 0.31011/1 [==============================] - 0s 40ms/step - loss: 0.0961 - mae: 0.2239 - rmse: 0.3101 - val_loss: 0.3663 - val_mae: 0.4963 - val_rmse: 0.6053
+
+Epoch 00221: val_loss did not improve from 0.36634
+Epoch 222/500
+1/1 [==============================] - ETA: 0s - loss: 0.0843 - mae: 0.2151 - rmse: 0.29041/1 [==============================] - 0s 41ms/step - loss: 0.0843 - mae: 0.2151 - rmse: 0.2904 - val_loss: 0.3664 - val_mae: 0.4952 - val_rmse: 0.6053
+
+Epoch 00222: val_loss did not improve from 0.36634
+Epoch 223/500
+1/1 [==============================] - ETA: 0s - loss: 0.0857 - mae: 0.2137 - rmse: 0.29271/1 [==============================] - 0s 43ms/step - loss: 0.0857 - mae: 0.2137 - rmse: 0.2927 - val_loss: 0.3666 - val_mae: 0.4941 - val_rmse: 0.6055
+
+Epoch 00223: val_loss did not improve from 0.36634
+Epoch 224/500
+1/1 [==============================] - ETA: 0s - loss: 0.1061 - mae: 0.2309 - rmse: 0.32581/1 [==============================] - 0s 48ms/step - loss: 0.1061 - mae: 0.2309 - rmse: 0.3258 - val_loss: 0.3668 - val_mae: 0.4930 - val_rmse: 0.6056
+
+Epoch 00224: val_loss did not improve from 0.36634
+Epoch 225/500
+1/1 [==============================] - ETA: 0s - loss: 0.1185 - mae: 0.2453 - rmse: 0.34431/1 [==============================] - 0s 49ms/step - loss: 0.1185 - mae: 0.2453 - rmse: 0.3443 - val_loss: 0.3670 - val_mae: 0.4919 - val_rmse: 0.6058
+
+Epoch 00225: val_loss did not improve from 0.36634
+Epoch 226/500
+1/1 [==============================] - ETA: 0s - loss: 0.0649 - mae: 0.1899 - rmse: 0.25471/1 [==============================] - 0s 44ms/step - loss: 0.0649 - mae: 0.1899 - rmse: 0.2547 - val_loss: 0.3673 - val_mae: 0.4907 - val_rmse: 0.6060
+
+Epoch 00226: val_loss did not improve from 0.36634
+Epoch 227/500
+1/1 [==============================] - ETA: 0s - loss: 0.1049 - mae: 0.2449 - rmse: 0.32381/1 [==============================] - 0s 42ms/step - loss: 0.1049 - mae: 0.2449 - rmse: 0.3238 - val_loss: 0.3676 - val_mae: 0.4896 - val_rmse: 0.6063
+
+Epoch 00227: val_loss did not improve from 0.36634
+Epoch 228/500
+1/1 [==============================] - ETA: 0s - loss: 0.0810 - mae: 0.2138 - rmse: 0.28461/1 [==============================] - 0s 42ms/step - loss: 0.0810 - mae: 0.2138 - rmse: 0.2846 - val_loss: 0.3679 - val_mae: 0.4885 - val_rmse: 0.6066
+
+Epoch 00228: val_loss did not improve from 0.36634
+Epoch 229/500
+1/1 [==============================] - ETA: 0s - loss: 0.0931 - mae: 0.2170 - rmse: 0.30521/1 [==============================] - 0s 48ms/step - loss: 0.0931 - mae: 0.2170 - rmse: 0.3052 - val_loss: 0.3683 - val_mae: 0.4875 - val_rmse: 0.6069
+
+Epoch 00229: val_loss did not improve from 0.36634
+Epoch 230/500
+1/1 [==============================] - ETA: 0s - loss: 0.0936 - mae: 0.2250 - rmse: 0.30591/1 [==============================] - 0s 46ms/step - loss: 0.0936 - mae: 0.2250 - rmse: 0.3059 - val_loss: 0.3688 - val_mae: 0.4864 - val_rmse: 0.6073
+
+Epoch 00230: val_loss did not improve from 0.36634
+Epoch 231/500
+1/1 [==============================] - ETA: 0s - loss: 0.1059 - mae: 0.2504 - rmse: 0.32551/1 [==============================] - 0s 43ms/step - loss: 0.1059 - mae: 0.2504 - rmse: 0.3255 - val_loss: 0.3693 - val_mae: 0.4854 - val_rmse: 0.6077
+
+Epoch 00231: val_loss did not improve from 0.36634
+Epoch 232/500
+1/1 [==============================] - ETA: 0s - loss: 0.1285 - mae: 0.2335 - rmse: 0.35851/1 [==============================] - 0s 46ms/step - loss: 0.1285 - mae: 0.2335 - rmse: 0.3585 - val_loss: 0.3699 - val_mae: 0.4846 - val_rmse: 0.6082
+
+Epoch 00232: val_loss did not improve from 0.36634
+Epoch 233/500
+1/1 [==============================] - ETA: 0s - loss: 0.1092 - mae: 0.2235 - rmse: 0.33051/1 [==============================] - 0s 44ms/step - loss: 0.1092 - mae: 0.2235 - rmse: 0.3305 - val_loss: 0.3705 - val_mae: 0.4838 - val_rmse: 0.6087
+
+Epoch 00233: val_loss did not improve from 0.36634
+Epoch 234/500
+1/1 [==============================] - ETA: 0s - loss: 0.1039 - mae: 0.2272 - rmse: 0.32231/1 [==============================] - 0s 44ms/step - loss: 0.1039 - mae: 0.2272 - rmse: 0.3223 - val_loss: 0.3712 - val_mae: 0.4830 - val_rmse: 0.6092
+
+Epoch 00234: val_loss did not improve from 0.36634
+Epoch 235/500
+1/1 [==============================] - ETA: 0s - loss: 0.0896 - mae: 0.2112 - rmse: 0.29931/1 [==============================] - 0s 45ms/step - loss: 0.0896 - mae: 0.2112 - rmse: 0.2993 - val_loss: 0.3719 - val_mae: 0.4823 - val_rmse: 0.6098
+
+Epoch 00235: val_loss did not improve from 0.36634
+Epoch 236/500
+1/1 [==============================] - ETA: 0s - loss: 0.1327 - mae: 0.2507 - rmse: 0.36431/1 [==============================] - 0s 46ms/step - loss: 0.1327 - mae: 0.2507 - rmse: 0.3643 - val_loss: 0.3727 - val_mae: 0.4815 - val_rmse: 0.6105
+
+Epoch 00236: val_loss did not improve from 0.36634
+Epoch 237/500
+1/1 [==============================] - ETA: 0s - loss: 0.1350 - mae: 0.2409 - rmse: 0.36741/1 [==============================] - 0s 39ms/step - loss: 0.1350 - mae: 0.2409 - rmse: 0.3674 - val_loss: 0.3734 - val_mae: 0.4807 - val_rmse: 0.6111
+
+Epoch 00237: val_loss did not improve from 0.36634
+Epoch 238/500
+1/1 [==============================] - ETA: 0s - loss: 0.1020 - mae: 0.2355 - rmse: 0.31931/1 [==============================] - 0s 41ms/step - loss: 0.1020 - mae: 0.2355 - rmse: 0.3193 - val_loss: 0.3741 - val_mae: 0.4799 - val_rmse: 0.6117
+
+Epoch 00238: val_loss did not improve from 0.36634
+Epoch 239/500
+1/1 [==============================] - ETA: 0s - loss: 0.0971 - mae: 0.2486 - rmse: 0.31161/1 [==============================] - 0s 40ms/step - loss: 0.0971 - mae: 0.2486 - rmse: 0.3116 - val_loss: 0.3749 - val_mae: 0.4791 - val_rmse: 0.6123
+
+Epoch 00239: ReduceLROnPlateau reducing learning rate to 9.999999747378752e-06.
+
+Epoch 00239: val_loss did not improve from 0.36634
+Epoch 240/500
+1/1 [==============================] - ETA: 0s - loss: 0.0821 - mae: 0.2160 - rmse: 0.28651/1 [==============================] - 0s 41ms/step - loss: 0.0821 - mae: 0.2160 - rmse: 0.2865 - val_loss: 0.3755 - val_mae: 0.4785 - val_rmse: 0.6128
+
+Epoch 00240: val_loss did not improve from 0.36634
+Epoch 241/500
+1/1 [==============================] - ETA: 0s - loss: 0.0837 - mae: 0.2246 - rmse: 0.28941/1 [==============================] - 0s 45ms/step - loss: 0.0837 - mae: 0.2246 - rmse: 0.2894 - val_loss: 0.3762 - val_mae: 0.4778 - val_rmse: 0.6133
+
+Epoch 00241: val_loss did not improve from 0.36634
+Epoch 242/500
+1/1 [==============================] - ETA: 0s - loss: 0.1066 - mae: 0.2394 - rmse: 0.32661/1 [==============================] - 0s 39ms/step - loss: 0.1066 - mae: 0.2394 - rmse: 0.3266 - val_loss: 0.3768 - val_mae: 0.4771 - val_rmse: 0.6139
+
+Epoch 00242: val_loss did not improve from 0.36634
+Epoch 243/500
+1/1 [==============================] - ETA: 0s - loss: 0.0874 - mae: 0.2127 - rmse: 0.29561/1 [==============================] - 0s 40ms/step - loss: 0.0874 - mae: 0.2127 - rmse: 0.2956 - val_loss: 0.3775 - val_mae: 0.4764 - val_rmse: 0.6144
+
+Epoch 00243: val_loss did not improve from 0.36634
+Epoch 244/500
+1/1 [==============================] - ETA: 0s - loss: 0.0771 - mae: 0.2043 - rmse: 0.27761/1 [==============================] - 0s 40ms/step - loss: 0.0771 - mae: 0.2043 - rmse: 0.2776 - val_loss: 0.3782 - val_mae: 0.4757 - val_rmse: 0.6149
+
+Epoch 00244: val_loss did not improve from 0.36634
+Epoch 245/500
+1/1 [==============================] - ETA: 0s - loss: 0.0647 - mae: 0.1866 - rmse: 0.25431/1 [==============================] - 0s 39ms/step - loss: 0.0647 - mae: 0.1866 - rmse: 0.2543 - val_loss: 0.3789 - val_mae: 0.4751 - val_rmse: 0.6155
+
+Epoch 00245: val_loss did not improve from 0.36634
+Epoch 246/500
+1/1 [==============================] - ETA: 0s - loss: 0.0804 - mae: 0.2187 - rmse: 0.28351/1 [==============================] - 0s 44ms/step - loss: 0.0804 - mae: 0.2187 - rmse: 0.2835 - val_loss: 0.3796 - val_mae: 0.4744 - val_rmse: 0.6161
+
+Epoch 00246: val_loss did not improve from 0.36634
+Epoch 247/500
+1/1 [==============================] - ETA: 0s - loss: 0.0928 - mae: 0.2198 - rmse: 0.30461/1 [==============================] - 0s 41ms/step - loss: 0.0928 - mae: 0.2198 - rmse: 0.3046 - val_loss: 0.3803 - val_mae: 0.4737 - val_rmse: 0.6167
+
+Epoch 00247: val_loss did not improve from 0.36634
+Epoch 248/500
+1/1 [==============================] - ETA: 0s - loss: 0.0740 - mae: 0.2047 - rmse: 0.27211/1 [==============================] - 0s 39ms/step - loss: 0.0740 - mae: 0.2047 - rmse: 0.2721 - val_loss: 0.3811 - val_mae: 0.4730 - val_rmse: 0.6173
+
+Epoch 00248: val_loss did not improve from 0.36634
+Epoch 249/500
+1/1 [==============================] - ETA: 0s - loss: 0.1436 - mae: 0.2312 - rmse: 0.37891/1 [==============================] - 0s 40ms/step - loss: 0.1436 - mae: 0.2312 - rmse: 0.3789 - val_loss: 0.3819 - val_mae: 0.4723 - val_rmse: 0.6180
+
+Epoch 00249: val_loss did not improve from 0.36634
+Epoch 250/500
+1/1 [==============================] - ETA: 0s - loss: 0.0715 - mae: 0.1932 - rmse: 0.26751/1 [==============================] - 0s 44ms/step - loss: 0.0715 - mae: 0.1932 - rmse: 0.2675 - val_loss: 0.3827 - val_mae: 0.4717 - val_rmse: 0.6186
+
+Epoch 00250: val_loss did not improve from 0.36634
+Epoch 251/500
+1/1 [==============================] - ETA: 0s - loss: 0.0833 - mae: 0.2065 - rmse: 0.28861/1 [==============================] - 0s 46ms/step - loss: 0.0833 - mae: 0.2065 - rmse: 0.2886 - val_loss: 0.3835 - val_mae: 0.4710 - val_rmse: 0.6193
+
+Epoch 00251: val_loss did not improve from 0.36634
+Epoch 252/500
+1/1 [==============================] - ETA: 0s - loss: 0.0634 - mae: 0.1889 - rmse: 0.25191/1 [==============================] - 0s 39ms/step - loss: 0.0634 - mae: 0.1889 - rmse: 0.2519 - val_loss: 0.3844 - val_mae: 0.4704 - val_rmse: 0.6200
+
+Epoch 00252: val_loss did not improve from 0.36634
+Epoch 253/500
+1/1 [==============================] - ETA: 0s - loss: 0.0511 - mae: 0.1557 - rmse: 0.22611/1 [==============================] - 0s 42ms/step - loss: 0.0511 - mae: 0.1557 - rmse: 0.2261 - val_loss: 0.3852 - val_mae: 0.4697 - val_rmse: 0.6207
+
+Epoch 00253: val_loss did not improve from 0.36634
+Epoch 254/500
+1/1 [==============================] - ETA: 0s - loss: 0.0643 - mae: 0.2000 - rmse: 0.25371/1 [==============================] - 0s 39ms/step - loss: 0.0643 - mae: 0.2000 - rmse: 0.2537 - val_loss: 0.3860 - val_mae: 0.4691 - val_rmse: 0.6213
+
+Epoch 00254: val_loss did not improve from 0.36634
+Epoch 255/500
+1/1 [==============================] - ETA: 0s - loss: 0.0857 - mae: 0.2113 - rmse: 0.29281/1 [==============================] - 0s 37ms/step - loss: 0.0857 - mae: 0.2113 - rmse: 0.2928 - val_loss: 0.3869 - val_mae: 0.4684 - val_rmse: 0.6220
+
+Epoch 00255: val_loss did not improve from 0.36634
+Epoch 256/500
+1/1 [==============================] - ETA: 0s - loss: 0.0634 - mae: 0.1959 - rmse: 0.25171/1 [==============================] - 0s 38ms/step - loss: 0.0634 - mae: 0.1959 - rmse: 0.2517 - val_loss: 0.3878 - val_mae: 0.4678 - val_rmse: 0.6228
+
+Epoch 00256: val_loss did not improve from 0.36634
+Epoch 257/500
+1/1 [==============================] - ETA: 0s - loss: 0.0744 - mae: 0.1896 - rmse: 0.27281/1 [==============================] - 0s 53ms/step - loss: 0.0744 - mae: 0.1896 - rmse: 0.2728 - val_loss: 0.3888 - val_mae: 0.4671 - val_rmse: 0.6235
+
+Epoch 00257: val_loss did not improve from 0.36634
+Epoch 258/500
+1/1 [==============================] - ETA: 0s - loss: 0.0665 - mae: 0.1966 - rmse: 0.25781/1 [==============================] - 0s 43ms/step - loss: 0.0665 - mae: 0.1966 - rmse: 0.2578 - val_loss: 0.3897 - val_mae: 0.4665 - val_rmse: 0.6243
+
+Epoch 00258: val_loss did not improve from 0.36634
+Epoch 259/500
+1/1 [==============================] - ETA: 0s - loss: 0.0826 - mae: 0.1963 - rmse: 0.28731/1 [==============================] - 0s 47ms/step - loss: 0.0826 - mae: 0.1963 - rmse: 0.2873 - val_loss: 0.3907 - val_mae: 0.4658 - val_rmse: 0.6251
+
+Epoch 00259: ReduceLROnPlateau reducing learning rate to 4.999999873689376e-06.
+
+Epoch 00259: val_loss did not improve from 0.36634
+Epoch 260/500
+1/1 [==============================] - ETA: 0s - loss: 0.0966 - mae: 0.2225 - rmse: 0.31091/1 [==============================] - 0s 39ms/step - loss: 0.0966 - mae: 0.2225 - rmse: 0.3109 - val_loss: 0.3916 - val_mae: 0.4652 - val_rmse: 0.6258
+
+Epoch 00260: val_loss did not improve from 0.36634
+Epoch 261/500
+1/1 [==============================] - ETA: 0s - loss: 0.0940 - mae: 0.2186 - rmse: 0.30671/1 [==============================] - 0s 38ms/step - loss: 0.0940 - mae: 0.2186 - rmse: 0.3067 - val_loss: 0.3926 - val_mae: 0.4646 - val_rmse: 0.6266
+
+Epoch 00261: val_loss did not improve from 0.36634
+Epoch 262/500
+1/1 [==============================] - ETA: 0s - loss: 0.0762 - mae: 0.2060 - rmse: 0.27611/1 [==============================] - 0s 40ms/step - loss: 0.0762 - mae: 0.2060 - rmse: 0.2761 - val_loss: 0.3935 - val_mae: 0.4640 - val_rmse: 0.6273
+
+Epoch 00262: val_loss did not improve from 0.36634
+Epoch 263/500
+1/1 [==============================] - ETA: 0s - loss: 0.0632 - mae: 0.1872 - rmse: 0.25141/1 [==============================] - 0s 43ms/step - loss: 0.0632 - mae: 0.1872 - rmse: 0.2514 - val_loss: 0.3945 - val_mae: 0.4634 - val_rmse: 0.6281
+
+Epoch 00263: val_loss did not improve from 0.36634
+Epoch 264/500
+1/1 [==============================] - ETA: 0s - loss: 0.1010 - mae: 0.2175 - rmse: 0.31791/1 [==============================] - 0s 46ms/step - loss: 0.1010 - mae: 0.2175 - rmse: 0.3179 - val_loss: 0.3955 - val_mae: 0.4627 - val_rmse: 0.6289
+
+Epoch 00264: val_loss did not improve from 0.36634
+Epoch 265/500
+1/1 [==============================] - ETA: 0s - loss: 0.0683 - mae: 0.1819 - rmse: 0.26131/1 [==============================] - 0s 46ms/step - loss: 0.0683 - mae: 0.1819 - rmse: 0.2613 - val_loss: 0.3964 - val_mae: 0.4621 - val_rmse: 0.6296
+
+Epoch 00265: val_loss did not improve from 0.36634
+Epoch 266/500
+1/1 [==============================] - ETA: 0s - loss: 0.0955 - mae: 0.2278 - rmse: 0.30911/1 [==============================] - 0s 41ms/step - loss: 0.0955 - mae: 0.2278 - rmse: 0.3091 - val_loss: 0.3974 - val_mae: 0.4615 - val_rmse: 0.6304
+
+Epoch 00266: val_loss did not improve from 0.36634
+Epoch 267/500
+1/1 [==============================] - ETA: 0s - loss: 0.0745 - mae: 0.2014 - rmse: 0.27301/1 [==============================] - 0s 44ms/step - loss: 0.0745 - mae: 0.2014 - rmse: 0.2730 - val_loss: 0.3984 - val_mae: 0.4608 - val_rmse: 0.6312
+
+Epoch 00267: val_loss did not improve from 0.36634
+Epoch 268/500
+1/1 [==============================] - ETA: 0s - loss: 0.1107 - mae: 0.2380 - rmse: 0.33271/1 [==============================] - 0s 46ms/step - loss: 0.1107 - mae: 0.2380 - rmse: 0.3327 - val_loss: 0.3995 - val_mae: 0.4602 - val_rmse: 0.6320
+
+Epoch 00268: val_loss did not improve from 0.36634
+Epoch 269/500
+1/1 [==============================] - ETA: 0s - loss: 0.0821 - mae: 0.2042 - rmse: 0.28661/1 [==============================] - 0s 42ms/step - loss: 0.0821 - mae: 0.2042 - rmse: 0.2866 - val_loss: 0.4005 - val_mae: 0.4595 - val_rmse: 0.6328
+
+Epoch 00269: val_loss did not improve from 0.36634
+Epoch 270/500
+1/1 [==============================] - ETA: 0s - loss: 0.0747 - mae: 0.1927 - rmse: 0.27321/1 [==============================] - 0s 43ms/step - loss: 0.0747 - mae: 0.1927 - rmse: 0.2732 - val_loss: 0.4015 - val_mae: 0.4589 - val_rmse: 0.6337
+
+Epoch 00270: val_loss did not improve from 0.36634
+Epoch 271/500
+1/1 [==============================] - ETA: 0s - loss: 0.0818 - mae: 0.2071 - rmse: 0.28601/1 [==============================] - 0s 43ms/step - loss: 0.0818 - mae: 0.2071 - rmse: 0.2860 - val_loss: 0.4026 - val_mae: 0.4582 - val_rmse: 0.6345
+
+Epoch 00271: val_loss did not improve from 0.36634
+Epoch 272/500
+1/1 [==============================] - ETA: 0s - loss: 0.0705 - mae: 0.2096 - rmse: 0.26551/1 [==============================] - 0s 43ms/step - loss: 0.0705 - mae: 0.2096 - rmse: 0.2655 - val_loss: 0.4036 - val_mae: 0.4576 - val_rmse: 0.6353
+
+Epoch 00272: val_loss did not improve from 0.36634
+Epoch 273/500
+1/1 [==============================] - ETA: 0s - loss: 0.0878 - mae: 0.1939 - rmse: 0.29631/1 [==============================] - 0s 46ms/step - loss: 0.0878 - mae: 0.1939 - rmse: 0.2963 - val_loss: 0.4047 - val_mae: 0.4569 - val_rmse: 0.6362
+
+Epoch 00273: val_loss did not improve from 0.36634
+Epoch 274/500
+1/1 [==============================] - ETA: 0s - loss: 0.0678 - mae: 0.1982 - rmse: 0.26041/1 [==============================] - 0s 43ms/step - loss: 0.0678 - mae: 0.1982 - rmse: 0.2604 - val_loss: 0.4058 - val_mae: 0.4563 - val_rmse: 0.6370
+
+Epoch 00274: val_loss did not improve from 0.36634
+Epoch 275/500
+1/1 [==============================] - ETA: 0s - loss: 0.0645 - mae: 0.1808 - rmse: 0.25401/1 [==============================] - 0s 41ms/step - loss: 0.0645 - mae: 0.1808 - rmse: 0.2540 - val_loss: 0.4069 - val_mae: 0.4557 - val_rmse: 0.6379
+
+Epoch 00275: val_loss did not improve from 0.36634
+Epoch 276/500
+1/1 [==============================] - ETA: 0s - loss: 0.0508 - mae: 0.1681 - rmse: 0.22541/1 [==============================] - 0s 41ms/step - loss: 0.0508 - mae: 0.1681 - rmse: 0.2254 - val_loss: 0.4080 - val_mae: 0.4550 - val_rmse: 0.6388
+
+Epoch 00276: val_loss did not improve from 0.36634
+Epoch 277/500
+1/1 [==============================] - ETA: 0s - loss: 0.1176 - mae: 0.2299 - rmse: 0.34291/1 [==============================] - 0s 42ms/step - loss: 0.1176 - mae: 0.2299 - rmse: 0.3429 - val_loss: 0.4092 - val_mae: 0.4544 - val_rmse: 0.6396
+
+Epoch 00277: val_loss did not improve from 0.36634
+Epoch 278/500
+1/1 [==============================] - ETA: 0s - loss: 0.0989 - mae: 0.2224 - rmse: 0.31451/1 [==============================] - 0s 41ms/step - loss: 0.0989 - mae: 0.2224 - rmse: 0.3145 - val_loss: 0.4103 - val_mae: 0.4538 - val_rmse: 0.6405
+
+Epoch 00278: val_loss did not improve from 0.36634
+Epoch 279/500
+1/1 [==============================] - ETA: 0s - loss: 0.0595 - mae: 0.1740 - rmse: 0.24391/1 [==============================] - 0s 40ms/step - loss: 0.0595 - mae: 0.1740 - rmse: 0.2439 - val_loss: 0.4114 - val_mae: 0.4531 - val_rmse: 0.6414
+
+Epoch 00279: ReduceLROnPlateau reducing learning rate to 2.499999936844688e-06.
+
+Epoch 00279: val_loss did not improve from 0.36634
+Epoch 280/500
+1/1 [==============================] - ETA: 0s - loss: 0.0929 - mae: 0.2182 - rmse: 0.30481/1 [==============================] - 0s 42ms/step - loss: 0.0929 - mae: 0.2182 - rmse: 0.3048 - val_loss: 0.4125 - val_mae: 0.4525 - val_rmse: 0.6423
+
+Epoch 00280: val_loss did not improve from 0.36634
+Epoch 281/500
+1/1 [==============================] - ETA: 0s - loss: 0.0858 - mae: 0.1933 - rmse: 0.29301/1 [==============================] - 0s 42ms/step - loss: 0.0858 - mae: 0.1933 - rmse: 0.2930 - val_loss: 0.4136 - val_mae: 0.4519 - val_rmse: 0.6431
+
+Epoch 00281: val_loss did not improve from 0.36634
+Epoch 282/500
+1/1 [==============================] - ETA: 0s - loss: 0.0728 - mae: 0.1961 - rmse: 0.26971/1 [==============================] - 0s 45ms/step - loss: 0.0728 - mae: 0.1961 - rmse: 0.2697 - val_loss: 0.4147 - val_mae: 0.4514 - val_rmse: 0.6440
+
+Epoch 00282: val_loss did not improve from 0.36634
+Epoch 283/500
+1/1 [==============================] - ETA: 0s - loss: 0.0767 - mae: 0.2089 - rmse: 0.27701/1 [==============================] - 0s 50ms/step - loss: 0.0767 - mae: 0.2089 - rmse: 0.2770 - val_loss: 0.4158 - val_mae: 0.4508 - val_rmse: 0.6448
+
+Epoch 00283: val_loss did not improve from 0.36634
+Epoch 284/500
+1/1 [==============================] - ETA: 0s - loss: 0.0698 - mae: 0.1967 - rmse: 0.26421/1 [==============================] - 0s 41ms/step - loss: 0.0698 - mae: 0.1967 - rmse: 0.2642 - val_loss: 0.4169 - val_mae: 0.4503 - val_rmse: 0.6457
+
+Epoch 00284: val_loss did not improve from 0.36634
+Epoch 285/500
+1/1 [==============================] - ETA: 0s - loss: 0.0705 - mae: 0.1993 - rmse: 0.26551/1 [==============================] - 0s 47ms/step - loss: 0.0705 - mae: 0.1993 - rmse: 0.2655 - val_loss: 0.4181 - val_mae: 0.4497 - val_rmse: 0.6466
+
+Epoch 00285: val_loss did not improve from 0.36634
+Epoch 286/500
+1/1 [==============================] - ETA: 0s - loss: 0.0652 - mae: 0.1852 - rmse: 0.25541/1 [==============================] - 0s 43ms/step - loss: 0.0652 - mae: 0.1852 - rmse: 0.2554 - val_loss: 0.4192 - val_mae: 0.4492 - val_rmse: 0.6475
+
+Epoch 00286: val_loss did not improve from 0.36634
+Epoch 287/500
+1/1 [==============================] - ETA: 0s - loss: 0.0553 - mae: 0.1669 - rmse: 0.23511/1 [==============================] - 0s 44ms/step - loss: 0.0553 - mae: 0.1669 - rmse: 0.2351 - val_loss: 0.4204 - val_mae: 0.4487 - val_rmse: 0.6484
+
+Epoch 00287: val_loss did not improve from 0.36634
+Epoch 288/500
+1/1 [==============================] - ETA: 0s - loss: 0.0761 - mae: 0.1931 - rmse: 0.27591/1 [==============================] - 0s 45ms/step - loss: 0.0761 - mae: 0.1931 - rmse: 0.2759 - val_loss: 0.4215 - val_mae: 0.4481 - val_rmse: 0.6493
+
+Epoch 00288: val_loss did not improve from 0.36634
+Epoch 289/500
+1/1 [==============================] - ETA: 0s - loss: 0.0448 - mae: 0.1595 - rmse: 0.21171/1 [==============================] - 0s 50ms/step - loss: 0.0448 - mae: 0.1595 - rmse: 0.2117 - val_loss: 0.4227 - val_mae: 0.4476 - val_rmse: 0.6502
+
+Epoch 00289: val_loss did not improve from 0.36634
+Epoch 290/500
+1/1 [==============================] - ETA: 0s - loss: 0.0766 - mae: 0.2010 - rmse: 0.27681/1 [==============================] - 0s 41ms/step - loss: 0.0766 - mae: 0.2010 - rmse: 0.2768 - val_loss: 0.4239 - val_mae: 0.4471 - val_rmse: 0.6511
+
+Epoch 00290: val_loss did not improve from 0.36634
+Epoch 291/500
+1/1 [==============================] - ETA: 0s - loss: 0.0654 - mae: 0.1916 - rmse: 0.25581/1 [==============================] - 0s 44ms/step - loss: 0.0654 - mae: 0.1916 - rmse: 0.2558 - val_loss: 0.4251 - val_mae: 0.4466 - val_rmse: 0.6520
+
+Epoch 00291: val_loss did not improve from 0.36634
+Epoch 292/500
+1/1 [==============================] - ETA: 0s - loss: 0.0713 - mae: 0.1990 - rmse: 0.26711/1 [==============================] - 0s 47ms/step - loss: 0.0713 - mae: 0.1990 - rmse: 0.2671 - val_loss: 0.4263 - val_mae: 0.4461 - val_rmse: 0.6529
+
+Epoch 00292: val_loss did not improve from 0.36634
+Epoch 293/500
+1/1 [==============================] - ETA: 0s - loss: 0.0858 - mae: 0.2184 - rmse: 0.29291/1 [==============================] - 0s 46ms/step - loss: 0.0858 - mae: 0.2184 - rmse: 0.2929 - val_loss: 0.4275 - val_mae: 0.4455 - val_rmse: 0.6538
+
+Epoch 00293: val_loss did not improve from 0.36634
+Epoch 294/500
+1/1 [==============================] - ETA: 0s - loss: 0.0658 - mae: 0.1952 - rmse: 0.25651/1 [==============================] - 0s 51ms/step - loss: 0.0658 - mae: 0.1952 - rmse: 0.2565 - val_loss: 0.4287 - val_mae: 0.4450 - val_rmse: 0.6547
+
+Epoch 00294: val_loss did not improve from 0.36634
+Epoch 295/500
+1/1 [==============================] - ETA: 0s - loss: 0.0665 - mae: 0.1875 - rmse: 0.25791/1 [==============================] - 0s 39ms/step - loss: 0.0665 - mae: 0.1875 - rmse: 0.2579 - val_loss: 0.4299 - val_mae: 0.4444 - val_rmse: 0.6556
+
+Epoch 00295: val_loss did not improve from 0.36634
+Epoch 296/500
+1/1 [==============================] - ETA: 0s - loss: 0.0611 - mae: 0.1845 - rmse: 0.24711/1 [==============================] - 0s 42ms/step - loss: 0.0611 - mae: 0.1845 - rmse: 0.2471 - val_loss: 0.4310 - val_mae: 0.4439 - val_rmse: 0.6565
+
+Epoch 00296: val_loss did not improve from 0.36634
+Epoch 297/500
+1/1 [==============================] - ETA: 0s - loss: 0.0677 - mae: 0.1895 - rmse: 0.26011/1 [==============================] - 0s 40ms/step - loss: 0.0677 - mae: 0.1895 - rmse: 0.2601 - val_loss: 0.4322 - val_mae: 0.4433 - val_rmse: 0.6574
+
+Epoch 00297: val_loss did not improve from 0.36634
+Epoch 298/500
+1/1 [==============================] - ETA: 0s - loss: 0.0836 - mae: 0.1889 - rmse: 0.28911/1 [==============================] - 0s 43ms/step - loss: 0.0836 - mae: 0.1889 - rmse: 0.2891 - val_loss: 0.4334 - val_mae: 0.4428 - val_rmse: 0.6583
+
+Epoch 00298: val_loss did not improve from 0.36634
+Epoch 299/500
+1/1 [==============================] - ETA: 0s - loss: 0.0749 - mae: 0.1914 - rmse: 0.27361/1 [==============================] - 0s 41ms/step - loss: 0.0749 - mae: 0.1914 - rmse: 0.2736 - val_loss: 0.4346 - val_mae: 0.4422 - val_rmse: 0.6592
+
+Epoch 00299: ReduceLROnPlateau reducing learning rate to 1.249999968422344e-06.
+
+Epoch 00299: val_loss did not improve from 0.36634
+Epoch 300/500
+1/1 [==============================] - ETA: 0s - loss: 0.0629 - mae: 0.1831 - rmse: 0.25071/1 [==============================] - 0s 62ms/step - loss: 0.0629 - mae: 0.1831 - rmse: 0.2507 - val_loss: 0.4357 - val_mae: 0.4417 - val_rmse: 0.6601
+Restoring model weights from the end of the best epoch.
+
+Epoch 00300: val_loss did not improve from 0.36634
+Epoch 00300: early stopping

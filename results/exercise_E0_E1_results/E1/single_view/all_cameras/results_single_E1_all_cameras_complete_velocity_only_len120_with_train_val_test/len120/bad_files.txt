@@ -1,0 +1,1 @@
+('E1_P14_T3_C2_seg6_MMPose_human3d_motionbert_3D.npz', 'bad shape (0,)')

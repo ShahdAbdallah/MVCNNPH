@@ -331,7 +331,7 @@ else:
     model = Model(inputs=[seq_input, feat_input], outputs=output)
 
 model.compile(
-    optimizer=Adam(learning_rate=5e-4),
+    optimizer=Adam(learning_rate=1e-3),
     loss=Huber(delta=1.0),
     metrics=["mae"]
 )
@@ -357,9 +357,9 @@ if MODE == "exp2":
         X_train,
         y_train_scaled,
         validation_split=0.2,
-        epochs=1000,
+        epochs=500,
         batch_size=8,
-        callbacks=[early_stop, reduce_lr],
+        callbacks=[reduce_lr],
         verbose=1
     )
 else:
@@ -367,9 +367,9 @@ else:
         [X_train_seq, X_train_feat],
         y_train_scaled,
         validation_split=0.2,
-        epochs=1000,
+        epochs=500,
         batch_size=8,
-        callbacks=[early_stop, reduce_lr],
+        callbacks=[reduce_lr],
         verbose=1
     )
 

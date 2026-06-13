@@ -1,0 +1,4 @@
+split,exercise,num_samples,mean_score,min_score,max_score,good_count,bad_count
+test,E1,11,4.1863636363636365,2.66,5.0,7,4
+train,E1,33,3.9710606060606057,2.02,5.0,19,14
+valid,E1,11,4.075,2.85,4.94,7,4

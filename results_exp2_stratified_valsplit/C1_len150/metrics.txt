@@ -1,0 +1,84 @@
+===== EXP2 Stratified Validation Split Results =====
+Camera = C1
+Target_len = 150
+Epochs requested = 300
+Epochs trained = 66
+MAE  = 0.4109804332256317
+RMSE = 0.5704572796821594
+R2   = 0.4788536899535968
+Test Loss = 0.21262632310390472
+Test MAE scaled = 0.5021214485168457
+Fit samples = 330
+Validation samples = 83
+Test samples = 104
+X_fit shape = (330, 150, 51)
+X_val shape = (83, 150, 51)
+X_test shape = (104, 150, 51)
+Bad skipped files = 1
+
+Fit performance distribution:
+good    214
+bad     116
+Name: performance, dtype: int64
+
+Validation performance distribution:
+good    54
+bad     29
+Name: performance, dtype: int64
+
+Test performance distribution:
+good    67
+bad     37
+Name: performance, dtype: int64
+
+Fit exercise distribution:
+E0    38
+E1    35
+E2    30
+E3    35
+E4    35
+E5    34
+E6    35
+E7    34
+E8    28
+E9    26
+Name: exercise, dtype: int64
+
+Validation exercise distribution:
+E0    10
+E1     9
+E2     6
+E3     9
+E4     9
+E5     9
+E6     9
+E7     9
+E8     7
+E9     6
+Name: exercise, dtype: int64
+
+Test exercise distribution:
+E0    12
+E1    11
+E2    10
+E3    11
+E4    10
+E5    10
+E6    11
+E7    12
+E8     9
+E9     8
+Name: exercise, dtype: int64
+
+Per-exercise scores:
+exercise  num_test_trials  mean_true_score  mean_predicted_score      MAE     RMSE       R2
+      E0               12         3.765000              4.058410 0.422072 0.562800 0.467605
+      E1               11         4.229545              4.155434 0.325470 0.390001 0.666918
+      E2               10         3.914000              4.273407 0.547066 0.780058 0.355088
+      E3               11         3.850909              4.069889 0.520489 0.776183 0.257281
+      E4               10         3.784000              4.003678 0.442693 0.706884 0.384065
+      E5               10         4.501420              4.344135 0.332917 0.459182 0.433512
+      E6               11         4.492727              4.263941 0.340653 0.437825 0.411700
+      E7               12         4.133333              4.402250 0.337402 0.390845 0.271954
+      E8                9         4.152778              4.082642 0.450810 0.558693 0.574123
+      E9                8         4.064588              4.257744 0.411437 0.474545 0.397997

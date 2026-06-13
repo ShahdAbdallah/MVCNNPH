@@ -1,0 +1,6 @@
+group,count_before,target_count
+low_<3,74,414
+mid_low_3_to_4,140,414
+high_>=4,414,414
+oversampled_added,614,414
+final_train,1242,414

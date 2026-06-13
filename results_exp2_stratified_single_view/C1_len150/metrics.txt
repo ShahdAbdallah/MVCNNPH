@@ -1,0 +1,64 @@
+===== EXP2 Stratified Single-View Results =====
+Camera = C1
+Target_len = 150
+Epochs requested = 300
+Epochs trained = 66
+MAE  = 0.4204753339290619
+RMSE = 0.6103926301002502
+R2   = 0.4033329789170924
+Test Loss = 0.24276597797870636
+Test MAE scaled = 0.5255323648452759
+Train samples = 413
+Test samples  = 104
+X_train shape = (413, 150, 51)
+X_test shape  = (104, 150, 51)
+Bad skipped files = 1
+
+Train performance distribution:
+good    268
+bad     145
+Name: performance, dtype: int64
+
+Test performance distribution:
+good    67
+bad     37
+Name: performance, dtype: int64
+
+Train exercise distribution:
+E0    48
+E1    44
+E2    36
+E3    44
+E4    44
+E5    43
+E6    44
+E7    43
+E8    35
+E9    32
+Name: exercise, dtype: int64
+
+Test exercise distribution:
+E0    12
+E1    11
+E2    10
+E3    11
+E4    10
+E5    10
+E6    11
+E7    12
+E8     9
+E9     8
+Name: exercise, dtype: int64
+
+Per-exercise scores:
+exercise  num_test_trials  mean_true_score  mean_predicted_score      MAE     RMSE       R2
+      E0               12         3.765000              4.106192 0.487015 0.656482 0.275611
+      E1               11         4.229545              4.233538 0.365559 0.436663 0.582447
+      E2               10         3.914000              4.222026 0.628881 0.856307 0.222848
+      E3               11         3.850909              4.098016 0.582386 0.881806 0.041388
+      E4               10         3.784000              4.126405 0.547576 0.862266 0.083527
+      E5               10         4.501420              4.275879 0.358546 0.417997 0.530573
+      E6               11         4.492727              4.347223 0.244883 0.287410 0.746486
+      E7               12         4.133333              4.363537 0.264782 0.344648 0.433892
+      E8                9         4.152778              4.214970 0.431856 0.560510 0.571347
+      E9                8         4.064588              4.255048 0.293754 0.395183 0.582515

@@ -1,0 +1,70 @@
+===== All-Views Single-View CNN Results =====
+Target_len = 150
+Epochs = 100
+MAE  = 0.4973481297492981
+RMSE = 0.6990661025047302
+R2   = 0.28980754287193
+Test Loss = 0.32358691096305847
+Test MAE scaled = 0.6351001858711243
+Train single-view samples = 1254
+Test single-view samples  = 318
+Train unique trials = 424
+Test unique trials  = 107
+X_train shape = (1254, 150, 51)
+X_test shape  = (318, 150, 51)
+Bad skipped files = 3
+
+Train performance distribution:
+good    279
+bad     145
+Name: performance, dtype: int64
+
+Test performance distribution:
+good    70
+bad     37
+Name: performance, dtype: int64
+
+Train exercise distribution:
+E0    48
+E1    44
+E2    39
+E3    44
+E4    44
+E5    43
+E6    44
+E7    43
+E8    39
+E9    36
+Name: exercise, dtype: int64
+
+Test exercise distribution:
+E0    12
+E1    11
+E2    10
+E3    11
+E4    10
+E5    10
+E6    11
+E7    12
+E8    11
+E9     9
+Name: exercise, dtype: int64
+
+Per-exercise scores:
+exercise  num_test_samples  mean_true_score  mean_predicted_score      MAE     RMSE        R2
+      E0                36         3.700833              3.774449 0.522060 0.726957  0.337436
+      E1                33         4.073936              4.158539 0.454568 0.587619  0.565039
+      E2                28         3.768571              4.044782 0.556516 0.784176  0.199767
+      E3                33         3.850909              3.957550 0.704577 1.052485 -0.365615
+      E4                30         3.784000              3.689297 0.667136 0.863523  0.080853
+      E5                30         4.501420              4.197845 0.397269 0.528986  0.248189
+      E6                33         4.492727              4.280789 0.282443 0.407724  0.489810
+      E7                36         4.133333              4.346067 0.369688 0.429939  0.119026
+      E8                32         4.212656              3.901543 0.591749 0.776405  0.055467
+      E9                27         3.975933              4.256015 0.445585 0.577891  0.485024
+
+Per-camera scores:
+camera  num_test_samples  mean_true_score  mean_predicted_score      MAE     RMSE       R2
+    C0               107         4.057158              4.023350 0.482164 0.684986 0.316497
+    C1               104         4.036691              4.095875 0.465510 0.666683 0.356973
+    C2               107         4.057158              4.061645 0.543478 0.742407 0.197101

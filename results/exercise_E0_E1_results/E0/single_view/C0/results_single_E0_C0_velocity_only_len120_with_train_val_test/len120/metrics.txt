@@ -1,0 +1,119 @@
+===== Single-view E0 C0 Velocity Only Results =====
+Target exercise = E0
+Target camera mode = C0
+Target_len = 120
+Epochs requested = 500
+Epochs trained = 500
+Batch size = 256
+Loss = MSE
+Learning rate = 2e-5
+Filters = 16, 24, 24, 32
+Dropout = 0.10
+Added features = velocity only
+Exercise embedding = No
+Oversampling = No
+Replacement = No
+Augmentation = No
+Extra checks = label-camera debug CSV, train/validation/test metrics, camera counts
+Images archive = images.tar.gz
+
+===== Train Metrics =====
+Train MAE = 0.19341765344142914
+Train RMSE = 0.28391894698143005
+Train R2 = 0.9175053426194462
+Train PCC = 0.9698382449075973
+Train PCC p-value = 1.4470439290096705e-20
+Train Loss scaled = 0.08249466866254807
+Train MAE scaled = 0.19566567242145538
+Train RMSE scaled = 0.28721883893013
+
+===== Validation Metrics =====
+Validation MAE = 0.4672757089138031
+Validation RMSE = 0.5598801374435425
+Validation R2 = 0.6121798062410573
+Validation PCC = 0.8056719778309198
+Validation PCC p-value = 0.004898691558392137
+Validation Loss scaled = 0.3207946717739105
+Validation MAE scaled = 0.47270673513412476
+Validation RMSE scaled = 0.566387414932251
+
+===== Test Metrics =====
+Test MAE = 0.4568093419075012
+Test RMSE = 0.5647589564323425
+Test R2 = 0.4791249836520832
+Test PCC = 0.8144065556853011
+Test PCC p-value = 0.00012258388317309328
+Test Loss scaled = 0.32640987634658813
+Test MAE scaled = 0.4621186852455139
+Test RMSE scaled = 0.5713229179382324
+
+===== Dataset Sizes =====
+Fit samples = 33
+Validation samples = 10
+Test samples = 16
+X_fit shape = (33, 120, 102)
+X_val shape = (10, 120, 102)
+X_test shape = (16, 120, 102)
+Bad skipped files = 10
+Skipped non-target files = 14796
+Incomplete camera trials = 0
+
+===== Camera Counts =====
+Train camera counts = {'C0': 33}
+Validation camera counts = {'C0': 10}
+Test camera counts = {'C0': 16}
+
+===== Split Person Summary =====
+split person  num_samples  mean_score  min_score  max_score  good_count  bad_count
+ test    P12            5    2.928000       2.30     3.5800           0          5
+ test    P13            5    3.300000       2.84     3.9200           0          5
+ test     P8            3    4.653333       4.58     4.7000           3          0
+ test     P9            3    4.336667       4.10     4.7500           3          0
+train     P0            3    4.262233       4.16     4.3667           3          0
+train    P10            5    2.394660       1.34     3.8333           0          5
+train    P14            5    3.184000       2.10     4.6400           1          4
+train    P15            5    3.136660       2.00     3.7833           0          5
+train     P2            3    4.733333       4.72     4.7400           3          0
+train     P3            3    4.413333       4.38     4.4400           3          0
+train     P4            3    4.473333       4.40     4.5800           3          0
+train     P5            3    4.246667       4.22     4.3000           3          0
+train     P7            3    4.553333       4.48     4.6400           3          0
+valid     P1            2    4.660000       4.64     4.6800           2          0
+valid    P11            5    2.708000       2.28     3.5600           0          5
+valid     P6            3    4.106667       3.82     4.2800           2          1
+
+===== Camera Split Summary =====
+split camera  num_samples  mean_score  good_count  bad_count
+ test     C0           16    3.631875           6         10
+train     C0           33    3.746161          19         14
+valid     C0           10    3.518000           4          6
+
+===== Per-person test scores =====
+person  num_trials  mean_true_score  mean_predicted_score      MAE     RMSE        R2       PCC
+   P12           5         2.928000              2.722993 0.485480 0.550589 -0.198708  0.210850
+   P13           5         3.300000              2.769483 0.780391 0.821705 -4.459247 -0.540466
+    P8           3         4.653333              4.504304 0.149030 0.170042 -9.493151 -0.990613
+    P9           3         4.336667              4.357700 0.177502 0.203927  0.516565  0.726709
+
+===== Per-camera test scores =====
+camera  num_trials  mean_true_score  mean_predicted_score      MAE     RMSE       R2      PCC
+    C0          16         3.631875              3.378024 0.456809 0.564759 0.479125 0.814407
+
+===== Worst 30 test predictions =====
+split exercise person trial camera  true_score  predicted_score  abs_error
+ test       E0    P13    T0     C0        3.92         2.673393   1.246607
+ test       E0    P12    T4     C0        3.44         2.592475   0.847525
+ test       E0    P13    T3     C0        3.22         2.394927   0.825073
+ test       E0    P12    T0     C0        3.58         2.859131   0.720869
+ test       E0    P13    T5     C0        3.34         2.627046   0.712954
+ test       E0    P13    T4     C0        2.84         3.464685   0.624686
+ test       E0    P13    T6     C0        3.18         2.687364   0.492636
+ test       E0    P12    T5     C0        2.30         2.709985   0.409985
+ test       E0     P9    T1     C0        4.10         4.397804   0.297804
+ test       E0    P12    T3     C0        2.80         3.091196   0.291196
+ test       E0     P8    T2     C0        4.70         4.473821   0.226179
+ test       E0     P8    T0     C0        4.68         4.494759   0.185241
+ test       E0     P9    T2     C0        4.75         4.567347   0.182653
+ test       E0    P12    T6     C0        2.52         2.362178   0.157822
+ test       E0     P9    T0     C0        4.16         4.107949   0.052051
+ test       E0     P8    T1     C0        4.58         4.544331   0.035669

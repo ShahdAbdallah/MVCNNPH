@@ -1,0 +1,104 @@
+===== Multi-view E1 Late Fusion Velocity Only Results =====
+Output folder = /mvdlph/shahd/MVCNNPH/results_multiview_E1_late_fusion_velocity_only_batch_train_val_test_checked_v2/len120
+Batch name = batch_train_val_test_checked_v2
+Target_len = 120
+Epochs requested = 500
+Epochs trained = 408
+
+===== Train Metrics =====
+MAE = 0.2380511462688446
+RMSE = 0.30307960510253906
+R2 = 0.8805535434765003
+PCC = 0.9665288472747189
+PCC_p_value = 7.101829995512876e-20
+Train Loss scaled = 0.11944645643234253
+Train MAE scaled = 0.2714564800262451
+Train RMSE scaled = 0.34561026096343994
+
+===== Validation Metrics =====
+MAE = 0.42269793152809143
+RMSE = 0.5292378067970276
+R2 = 0.522311506933328
+PCC = 0.7833908077001528
+PCC_p_value = 0.004340507596337968
+Validation Loss scaled = 0.364218145608902
+Validation MAE scaled = 0.4820142984390259
+Validation RMSE scaled = 0.6035048961639404
+
+===== Test Metrics =====
+MAE = 0.41450661420822144
+RMSE = 0.49687790870666504
+R2 = 0.644207702575028
+PCC = 0.8744787579936325
+PCC_p_value = 0.0004282576039235926
+Test Loss scaled = 0.32104018330574036
+Test MAE scaled = 0.4726737141609192
+Test RMSE scaled = 0.5666040778160095
+
+===== Dataset Sizes =====
+Fit samples = 33
+Validation samples = 11
+Test samples = 11
+X0_fit shape = (33, 120, 102)
+X1_fit shape = (33, 120, 102)
+X2_fit shape = (33, 120, 102)
+Bad skipped files = 1
+Incomplete camera trials = 0
+Skipped non-target files = 13767
+Label mismatch rows = 0
+
+===== Split Person Summary =====
+split person  num_samples  mean_score  min_score  max_score  good_count  bad_count
+ test    P12            5    3.379000     2.6600     4.3750           1          4
+ test     P8            3    4.800000     4.7000     4.9000           3          0
+ test     P9            3    4.918333     4.8750     5.0000           3          0
+train     P0            3    3.946667     3.7000     4.3200           1          2
+train    P10            5    3.137000     2.4333     4.3667           1          4
+train    P14            5    3.044000     2.0200     4.9200           1          4
+train    P15            5    3.636000     3.1000     4.0000           1          4
+train     P2            3    4.913333     4.7600     5.0000           3          0
+train     P3            3    4.480000     4.4400     4.5400           3          0
+train     P4            3    4.500000     4.2000     4.7400           3          0
+train     P5            3    4.820000     4.7400     4.8800           3          0
+train     P7            3    4.660000     4.5200     4.7600           3          0
+valid     P1            3    4.940000     4.9400     4.9400           3          0
+valid    P11            5    3.425000     2.8500     4.4750           1          4
+valid     P6            3    4.293333     4.0600     4.4200           3          0
+
+===== Train Per-person Scores =====
+person  num_trials  mean_true_score  mean_predicted_score      MAE     RMSE         R2       PCC
+    P0           3         3.946667              4.232804 0.286137 0.326917  -0.482536  0.967375
+   P10           5         3.137000              3.266326 0.298112 0.313102   0.767562  0.965343
+   P14           5         3.044000              3.199651 0.508473 0.563374   0.739311  0.976355
+   P15           5         3.636000              3.679517 0.141062 0.189621   0.658679  0.968176
+    P2           3         4.913333              4.675771 0.237562 0.255623  -4.527175  0.599525
+    P3           3         4.480000              4.401232 0.078768 0.082310  -2.629473  0.944259
+    P4           3         4.500000              4.399663 0.119125 0.135942   0.633331  0.960259
+    P5           3         4.820000              4.621959 0.198041 0.211847 -11.945824 -0.872212
+    P7           3         4.660000              4.540483 0.119517 0.125614  -0.517199  0.934015
+
+===== Validation Per-person Scores =====
+person  num_trials  mean_true_score  mean_predicted_score      MAE     RMSE        R2       PCC
+    P1           3         4.940000              4.381207 0.558793 0.562659  0.000000       NaN
+   P11           5         3.425000              3.234775 0.478412 0.629468 -0.060687  0.190903
+    P6           3         4.293333              4.330111 0.193746 0.223691 -0.833623 -0.939720
+
+===== Test Per-person Scores =====
+person  num_trials  mean_true_score  mean_predicted_score      MAE     RMSE         R2       PCC
+   P12           5         3.379000              3.345061 0.427425 0.577867  -0.039103  0.011427
+    P8           3         4.800000              4.436400 0.363600 0.369130 -19.438520  0.658431
+    P9           3         4.918333              4.474451 0.443883 0.460920 -62.628126 -0.284088
+
+===== Worst 30 Test Predictions =====
+split exercise person trial  true_score  predicted_score  abs_error
+ test       E1    P12    T0       4.375         3.338311   1.036689
+ test       E1    P12    T3       2.660         3.389219   0.729219
+ test       E1     P9    T2       5.000         4.440965   0.559035
+ test       E1     P9    T0       4.880         4.378899   0.501101
+ test       E1     P8    T2       4.900         4.486143   0.413857
+ test       E1     P8    T1       4.800         4.396847   0.403153
+ test       E1     P8    T0       4.700         4.426210   0.273790
+ test       E1     P9    T1       4.875         4.603488   0.271512
+ test       E1    P12    T5       3.100         3.319873   0.219873
+ test       E1    P12    T6       3.280         3.163280   0.116720
+ test       E1    P12    T4       3.480         3.514622   0.034622

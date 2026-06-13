@@ -1,0 +1,14 @@
+===== Multi-view E3 Middle Fusion =====
+
+MAE = 0.7898349165916443
+RMSE = 0.9007401466369629
+R2 = -0.6963479113602526
+PCC = 0.256671205236165
+PCC p-value = 0.44612970739868846
+
+Train samples = 33
+Validation samples = 10
+Test samples = 11
+
+Incomplete trials removed = 1
+Bad files = 0

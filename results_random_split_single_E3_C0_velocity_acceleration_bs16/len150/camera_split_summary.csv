@@ -1,0 +1,4 @@
+split,camera,num_samples,mean_score,good_count,bad_count
+test,C0,8,3.481025,4,4
+train,C0,38,4.07578947368421,26,12
+valid,C0,8,3.5861749999999994,4,4

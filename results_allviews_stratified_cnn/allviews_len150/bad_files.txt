@@ -1,0 +1,3 @@
+('E0_P13_T5_C2_seg2_MMPose_human3d_motionbert_3D.npz', (0,))
+('E1_P14_T3_C2_seg6_MMPose_human3d_motionbert_3D.npz', (0,))
+('E4_P12_T3_C1_seg5_MMPose_human3d_motionbert_3D.npz', (0,))

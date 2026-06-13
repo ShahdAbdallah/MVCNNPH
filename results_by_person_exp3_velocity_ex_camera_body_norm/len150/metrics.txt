@@ -1,0 +1,105 @@
+===== EXP3 Velocity + Exercise Embedding + Camera Embedding + Body Normalization Results =====
+Target_len = 150
+Epochs requested = 500
+Epochs trained = 139
+Loss = Huber(delta=1.0)
+Learning rate = 2e-5
+Batch size = 128
+Filters = 16, 32, 32, 64
+Dropout = 0.20
+Added features = velocity only
+Exercise embedding = Yes, embedding_dim=4
+Camera embedding = Yes, embedding_dim=2
+Body-scale normalization = Yes
+Sample weighting = No
+
+===== Overall Test Metrics =====
+Overall MAE = 0.4796605706214905
+Overall RMSE = 0.6251139044761658
+Overall R2 = 0.36366043175482554
+Overall PCC = 0.6528795100579928
+Overall PCC p-value = 2.2342894929848343e-40
+Test Loss = 0.2709379494190216
+Test MAE scaled = 0.5943588018417358
+Test RMSE scaled = 0.7731669545173645
+
+===== Dataset Sizes =====
+Fit samples = 964
+Validation samples = 287
+Test samples = 321
+X_fit shape = (964, 150, 102)
+X_val shape = (287, 150, 102)
+X_test shape = (321, 150, 102)
+Bad skipped files = 53
+
+===== Split Person Summary =====
+split person  num_samples  mean_score  min_score  max_score  good_count  bad_count
+ test    P12           72    3.144792      2.140       4.64           9         63
+ test    P13           75    3.699000      2.425       5.00          18         57
+ test     P8           87    4.603452      3.940       5.00          84          3
+ test     P9           87    4.413255      3.400       5.00          75         12
+train     P0           84    4.505652      3.700       5.00          75          9
+train    P10          150    3.312232      1.340       4.96          36        114
+train    P14          150    3.659432      1.800       5.00          54         96
+train    P15          150    3.641866      1.580       4.90          48        102
+train     P2           87    4.733448      4.375       5.00          87          0
+train     P3           84    4.594323      4.160       4.98          84          0
+train     P4           85    4.572208      4.100       5.00          85          0
+train     P5           87    4.659769      4.160       5.00          87          0
+train     P7           87    4.657252      4.240       5.00          87          0
+valid     P1           84    4.798217      4.450       5.00          84          0
+valid    P11          120    3.541000      2.280       5.00          33         87
+valid     P6           83    4.570783      3.820       4.96          80          3
+
+===== Split Exercise Summary =====
+split exercise  num_samples  mean_score  good_count  bad_count
+ test       E0           48    3.631875          18         30
+ test       E1           33    4.186364          21         12
+ test       E2           27    3.997778          15         12
+ test       E3           33    3.495400           9         24
+ test       E4           30    3.614000          15         15
+ test       E5           33    4.268182          24          9
+ test       E6           33    4.489091          21         12
+ test       E7           33    4.121818          24          9
+ test       E8           33    4.248636          21         12
+ test       E9           18    4.383350          18          0
+train       E0           99    3.746161          57         42
+train       E1           99    3.971061          57         42
+train       E2           87    4.140230          45         42
+train       E3           99    4.014188          72         27
+train       E4           99    3.933421          60         39
+train       E5           93    4.397394          75         18
+train       E6           98    4.561633          77         21
+train       E7           99    4.075152          75         24
+train       E8           93    4.344624          66         27
+train       E9           98    4.009695          59         39
+valid       E0           31    3.556774          13         18
+valid       E1           33    4.075000          21         12
+valid       E2           30    4.076000          15         15
+valid       E3           31    4.074194          22          9
+valid       E4           33    3.989091          21         12
+valid       E5           33    4.480909          24          9
+valid       E6           32    4.470625          23          9
+valid       E7           33    4.383636          27          6
+valid       E8           18    4.900000          18          0
+valid       E9           13    4.507708          13          0
+
+===== Per-exercise scores =====
+exercise  num_test_trials  mean_true_score  mean_predicted_score      MAE     RMSE        R2       PCC
+      E0               48         3.631875              3.879778 0.439925 0.549433  0.507012  0.799150
+      E1               33         4.186364              4.073702 0.465456 0.552311  0.560393  0.779019
+      E2               27         3.997778              4.254431 0.459838 0.591156  0.486713  0.798219
+      E3               33         3.495400              4.146862 0.851348 0.947545 -0.877222  0.285362
+      E4               30         3.614000              4.205469 0.627419 0.845447 -0.203325  0.662369
+      E5               33         4.268182              4.208984 0.383886 0.508599  0.188710  0.614463
+      E6               33         4.489091              4.320805 0.289207 0.411862  0.612578  0.823178
+      E7               33         4.121818              4.335442 0.580409 0.692041 -0.659796  0.301638
+      E8               33         4.248636              4.402034 0.365219 0.512443  0.603191  0.819565
+      E9               18         4.383350              4.603073 0.263562 0.313385 -1.921414 -0.071009
+
+===== Per-person scores =====
+person  num_test_trials  mean_true_score  mean_predicted_score      MAE     RMSE        R2       PCC
+   P12               72         3.144792              3.687132 0.802317 0.945741 -1.004715 -0.225891
+   P13               75         3.699000              3.703882 0.524037 0.657282 -0.024976  0.077390
+    P8               87         4.603452              4.613868 0.248029 0.310970  0.077822  0.351256
+    P9               87         4.413255              4.672938 0.406010 0.482130 -0.103459  0.465652

@@ -1,0 +1,63 @@
+===== Stratified Pure CNN Results =====
+Camera = C2
+Target_len = 150
+Epochs = 100
+MAE  = 0.47957730293273926
+RMSE = 0.6676360964775085
+R2   = 0.2848737909490754
+Test Loss = 0.2877828776836395
+Test MAE scaled = 0.6039208173751831
+Train trials = 420
+Test trials  = 106
+X_train shape = (420, 150, 51)
+X_test shape  = (106, 150, 51)
+Bad skipped files = 2
+
+Train performance distribution:
+good    275
+bad     145
+Name: performance, dtype: int64
+
+Test performance distribution:
+good    69
+bad     37
+Name: performance, dtype: int64
+
+Train exercise distribution:
+E0    47
+E1    44
+E2    39
+E3    43
+E4    44
+E5    43
+E6    42
+E7    43
+E8    40
+E9    35
+Name: exercise, dtype: int64
+
+Test exercise distribution:
+E0    12
+E1    11
+E2    10
+E3    11
+E4    10
+E5    10
+E6    11
+E7    12
+E8    10
+E9     9
+Name: exercise, dtype: int64
+
+Per-exercise scores:
+exercise  num_test_trials  mean_true_score  mean_predicted_score      MAE     RMSE        R2
+      E0               12         3.751667              4.092766 0.486743 0.634373  0.286849
+      E1               11         4.229545              4.405248 0.585349 0.767015 -0.288329
+      E2               10         3.832000              3.949235 0.546885 0.698807  0.368702
+      E3               11         3.847273              3.908110 0.770364 1.061230 -0.392284
+      E4               10         3.784000              3.913925 0.448423 0.706852  0.384123
+      E5               10         4.501420              4.292696 0.322203 0.361950  0.648019
+      E6               11         4.490909              4.257908 0.339542 0.455426  0.359745
+      E7               12         4.133333              4.409127 0.362791 0.434819  0.098917
+      E8               10         4.169500              4.042638 0.582140 0.798742  0.019914
+      E9                9         3.967589              4.113987 0.332941 0.399905  0.749190

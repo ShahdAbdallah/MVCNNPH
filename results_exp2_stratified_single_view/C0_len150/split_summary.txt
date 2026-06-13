@@ -1,0 +1,40 @@
+Split summary
+Camera = C0
+Train trials = 423
+Test trials = 106
+
+Train performance distribution:
+good    278
+bad     145
+Name: performance, dtype: int64
+
+Test performance distribution:
+good    69
+bad     37
+Name: performance, dtype: int64
+
+Train exercise distribution:
+E0    47
+E1    44
+E2    39
+E3    43
+E4    44
+E5    43
+E6    44
+E7    43
+E8    40
+E9    36
+Name: exercise, dtype: int64
+
+Test exercise distribution:
+E0    12
+E1    11
+E2    10
+E3    11
+E4    10
+E5    10
+E6    11
+E7    12
+E8    10
+E9     9
+Name: exercise, dtype: int64

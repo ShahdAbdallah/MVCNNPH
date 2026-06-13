@@ -1,0 +1,52 @@
+===== By-Person EXP2 Pure CNN All-Views Weighted Results =====
+Target_len = 150
+Epochs requested = 500
+Epochs trained = 125
+Learning rate = 1e-4
+Batch size = 16
+Sample weighting = score-bin inverse frequency
+
+===== Overall Test Metrics =====
+Overall MAE = 0.46368473768234253
+Overall RMSE = 0.6117151975631714
+Overall R2 = 0.390646661697753
+Overall PCC = 0.6755546674801937
+Overall PCC p-value = 3.9702513474768163e-44
+Test Loss = 0.26046615839004517
+Test MAE scaled = 0.5725650787353516
+
+===== Dataset Sizes =====
+Fit samples = 964
+Validation samples = 287
+Test samples = 321
+X_fit shape = (964, 150, 51)
+X_val shape = (287, 150, 51)
+X_test shape = (321, 150, 51)
+Bad skipped files = 53
+
+===== Fit Score Bin Counts =====
+high        386
+mid_high    254
+low         198
+mid_low     126
+dtype: int64
+
+===== Per-exercise scores =====
+exercise  num_test_trials  mean_true_score  mean_predicted_score      MAE     RMSE        R2       PCC
+      E0               48         3.631875              3.898240 0.414051 0.536988  0.529091  0.823164
+      E1               33         4.186364              4.131763 0.398380 0.486761  0.658548  0.850540
+      E2               27         3.997778              4.348186 0.471196 0.625174  0.425940  0.830153
+      E3               33         3.495400              4.136283 0.857787 0.954122 -0.903371  0.250573
+      E4               30         3.614000              4.215879 0.640302 0.800424 -0.078575  0.757404
+      E5               33         4.268182              4.188202 0.375932 0.504613  0.201379  0.629930
+      E6               33         4.489091              4.331409 0.248312 0.373973  0.680581  0.858834
+      E7               33         4.121818              4.303633 0.567820 0.664081 -0.528386  0.345519
+      E8               33         4.248636              4.324226 0.353532 0.529485  0.576359  0.769776
+      E9               18         4.383350              4.615970 0.254379 0.317908 -2.006356 -0.187626
+
+===== Per-person scores =====
+person  num_test_trials  mean_true_score  mean_predicted_score      MAE     RMSE        R2       PCC
+   P12               72         3.144792              3.696361 0.767981 0.914780 -0.875605 -0.123626
+   P13               75         3.699000              3.649645 0.509122 0.651262 -0.006288  0.116444
+    P8               87         4.603452              4.638019 0.238987 0.299132  0.146700  0.399817
+    P9               87         4.413255              4.706016 0.397381 0.482690 -0.106025  0.589455

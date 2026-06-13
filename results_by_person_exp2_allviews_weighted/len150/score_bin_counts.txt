@@ -1,0 +1,5 @@
+high        386
+mid_high    254
+low         198
+mid_low     126
+dtype: int64

@@ -1,0 +1,4 @@
+file_name,exercise,person,trial,camera,segment,problem,shape
+E0_P13_T5_C2_seg2_MMPose_human3d_motionbert_3D.npz,E0,P13,T5,C2,2,invalid or empty keypoints_3d,"(0,)"
+E1_P14_T3_C2_seg6_MMPose_human3d_motionbert_3D.npz,E1,P14,T3,C2,6,invalid or empty keypoints_3d,"(0,)"
+E4_P12_T3_C1_seg5_MMPose_human3d_motionbert_3D.npz,E4,P12,T3,C1,5,invalid or empty keypoints_3d,"(0,)"
